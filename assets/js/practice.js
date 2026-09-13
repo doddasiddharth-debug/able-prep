@@ -47,7 +47,7 @@ window.Practice = (() => {
       mode: opts.mode, section: opts.section || "all", label: opts.label, questions: opts.questions, index: 0,
       answers: opts.answers || {}, marked: new Set(), eliminated: {}, checked: new Set(opts.checked || []),
       elimMode: false, seconds: opts.seconds || 0, remaining: opts.seconds || 0, pace: opts.pace || 0, qRemaining: 0,
-      timerHidden: false, timerId: null, qTimerId: null, startedAt: Date.now(), shownAt: null,
+      timerHidden: false, timerId: null, qTimerId: null, startedAt: Date.now(), shownAt: null, reviewing: false,
       times: opts.times || {}, elapsed: opts.elapsed || 0, onExit: opts.onExit || (() => {}), parent: opts.parent || null,
       studentName: (window.Store && Store.load().settings.name) || "ABLE Preps student"
     };
@@ -58,6 +58,7 @@ window.Practice = (() => {
     $("directions").hidden = true;
     $("btn-calc").hidden = sec === "rw";
     $("calc-panel").hidden = true; $("nav-pop").hidden = true;
+    $("review-page").hidden = true; $("test-body").hidden = false;
     $("btn-check").hidden = S.mode !== "bank";
     $("btn-mark").hidden = isRush;
     $("btn-back").hidden = isRush;
@@ -151,6 +152,12 @@ window.Practice = (() => {
   const syncButtons = () => {
     const q = current();
     const last = S.index === S.questions.length - 1;
+    if (S.reviewing) {
+      $("btn-back").disabled = false;
+      $("btn-next").textContent = "Submit";
+      $("nav-label").textContent = "Review";
+      return;
+    }
     $("btn-back").disabled = S.index === 0;
     $("btn-check").disabled = !isAnswered(q) || S.checked.has(q.id);
     const labels = { bank: last ? "Finish" : "Next", test: last ? "Review" : "Next", diagnostic: last ? "Finish" : "Next", rush: "Skip", review: last ? "Done" : "Next" };
@@ -158,7 +165,32 @@ window.Practice = (() => {
   };
 
   // ---------------------------------------------------------------- actions
-  const goTo = (i) => { stampTime(); S.index = Math.max(0, Math.min(S.questions.length - 1, i)); $("nav-pop").hidden = true; renderQuestion(); };
+  const goTo = (i) => { stampTime(); S.index = Math.max(0, Math.min(S.questions.length - 1, i)); $("nav-pop").hidden = true; if (S.reviewing) hideReview(); renderQuestion(); };
+
+  // Bluebook's "Check Your Work" page: the full question grid after the last
+  // question, before the module is submitted. The clock keeps running.
+  const showReview = () => {
+    stampTime();
+    S.shownAt = null; // time on the review page belongs to no question
+    S.reviewing = true;
+    $("nav-pop").hidden = true;
+    $("test-body").hidden = true;
+    $("btn-nav").hidden = true;
+    $("review-page-title").textContent = `${S.label} Questions`;
+    $("review-grid").innerHTML = navButtons();
+    $("review-grid").querySelectorAll(".nav-q").forEach((b) => b.addEventListener("click", () => goTo(+b.dataset.i)));
+    $("review-page").hidden = false;
+    $("review-page").scrollTop = 0;
+    syncButtons();
+  };
+  const hideReview = () => {
+    S.reviewing = false;
+    S.shownAt = Date.now();
+    $("review-page").hidden = true;
+    $("test-body").hidden = false;
+    $("btn-nav").hidden = false;
+  };
+  const back = () => { if (S.reviewing) { goTo(S.index); return; } goTo(S.index - 1); };
 
   const check = () => {
     const q = current();
@@ -171,6 +203,7 @@ window.Practice = (() => {
 
   const next = () => {
     const last = S.index === S.questions.length - 1;
+    if (S.reviewing) return finish();
     if (S.mode === "bank") {
       // Moving on without checking still grades the item, so the explanation
       // is never skipped by accident.
@@ -179,7 +212,7 @@ window.Practice = (() => {
     } else if (S.mode === "rush") {
       return answerRush(); // "Skip": no answer recorded, clock stops, move on
     } else if ((S.mode === "test" || S.mode === "diagnostic") && last) {
-      return finish();
+      return showReview();
     } else if (S.mode === "review" && last) {
       return showResults();
     }
@@ -257,15 +290,16 @@ window.Practice = (() => {
   const stopTimers = () => { if (S && S.timerId) { clearInterval(S.timerId); S.timerId = null; } stopQuestionClock(); };
 
   // ---------------------------------------------------------------- nav popup
+  const navButtons = () => S.questions.map((q, i) => {
+    let cls = "nav-q";
+    if (isAnswered(q)) cls += " answered";
+    if (S.marked.has(q.id)) cls += " marked";
+    if (i === S.index && !S.reviewing) cls += " current";
+    return `<button type="button" class="${cls}" data-i="${i}">${i + 1}</button>`;
+  }).join("");
   const renderNav = () => {
     $("nav-pop-title").textContent = `${S.label} Questions`;
-    $("nav-grid").innerHTML = S.questions.map((q, i) => {
-      let cls = "nav-q";
-      if (isAnswered(q)) cls += " answered";
-      if (S.marked.has(q.id)) cls += " marked";
-      if (i === S.index) cls += " current";
-      return `<button type="button" class="${cls}" data-i="${i}">${i + 1}</button>`;
-    }).join("");
+    $("nav-grid").innerHTML = navButtons();
     $("nav-grid").querySelectorAll(".nav-q").forEach((b) => b.addEventListener("click", () => goTo(+b.dataset.i)));
     $("btn-review").hidden = S.mode === "review";
     $("btn-review").textContent = S.mode === "bank" ? "Finish" : "Go to Review Page";
@@ -339,7 +373,7 @@ window.Practice = (() => {
 
   // ---------------------------------------------------------------- wiring
   const init = () => {
-    $("btn-back").addEventListener("click", () => goTo(S.index - 1));
+    $("btn-back").addEventListener("click", back);
     $("btn-next").addEventListener("click", next);
     $("btn-check").addEventListener("click", check);
     $("btn-exit").addEventListener("click", exit);
@@ -349,7 +383,7 @@ window.Practice = (() => {
     $("btn-directions-close").addEventListener("click", () => { $("directions").hidden = true; });
     $("btn-nav").addEventListener("click", () => { const p = $("nav-pop"); p.hidden = !p.hidden; if (!p.hidden) renderNav(); });
     $("btn-nav-close").addEventListener("click", () => { $("nav-pop").hidden = true; });
-    $("btn-review").addEventListener("click", () => { $("nav-pop").hidden = true; finish(); });
+    $("btn-review").addEventListener("click", () => { $("nav-pop").hidden = true; if (S.mode === "test" || S.mode === "diagnostic") showReview(); else finish(); });
     $("btn-timer-toggle").addEventListener("click", () => { S.timerHidden = !S.timerHidden; $("timer-text").hidden = S.timerHidden; $("btn-timer-toggle").textContent = S.timerHidden ? "Show" : "Hide"; });
     $("btn-calc").addEventListener("click", () => { const p = $("calc-panel"); p.hidden = !p.hidden; if (!p.hidden && !$("calc-frame").src) $("calc-frame").src = "https://www.desmos.com/calculator"; });
     $("btn-calc-close").addEventListener("click", () => { $("calc-panel").hidden = true; });
@@ -359,10 +393,10 @@ window.Practice = (() => {
       const tag = e.target.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
       const q = current();
-      if (!isSpr(q) && !S.checked.has(q.id) && /^[1-4]$/.test(e.key)) { S.answers[q.id] = +e.key - 1; if (S.mode === "rush") answerRush(); else renderQuestion(); return; }
+      if (!S.reviewing && !isSpr(q) && !S.checked.has(q.id) && /^[1-4]$/.test(e.key)) { S.answers[q.id] = +e.key - 1; if (S.mode === "rush") answerRush(); else renderQuestion(); return; }
       // Enter on a focused button already fires its click; only bare Enter advances.
       if ((e.key === "ArrowRight") || (e.key === "Enter" && tag !== "BUTTON")) { e.preventDefault(); next(); }
-      if (e.key === "ArrowLeft" && S.mode !== "rush") goTo(S.index - 1);
+      if (e.key === "ArrowLeft" && S.mode !== "rush") back();
       if (e.key === "Escape") { $("nav-pop").hidden = true; $("calc-panel").hidden = true; }
     });
   };

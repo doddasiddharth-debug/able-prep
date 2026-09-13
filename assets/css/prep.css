@@ -104,7 +104,7 @@ img { max-width: 100%; display: block; }
 .menu-toggle { width: 38px; height: 38px; border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: none; display: grid; place-items: center; }
 .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after { content: ""; display: block; width: 16px; height: 2px; background: var(--ink); position: relative; }
 .menu-toggle span::before { position: absolute; top: -5px; } .menu-toggle span::after { position: absolute; top: 5px; }
-.page { padding: 44px 48px 80px; max-width: 1120px; width: 100%; }
+.page { padding: 44px 48px 80px; max-width: 1360px; width: 100%; margin: 0 auto; }
 
 .page-head { margin-bottom: 28px; }
 .page-head h1 { font-size: 32px; letter-spacing: -0.04em; margin-bottom: 6px; }
@@ -346,6 +346,14 @@ img { max-width: 100%; display: block; }
 .btn-nav-primary:disabled:hover { background: var(--bb-blue); }
 .nav-pop { position: fixed; left: 50%; bottom: 76px; transform: translateX(-50%); z-index: 30; width: min(560px, calc(100vw - 32px)); background: #fff; border: 1px solid var(--bb-line); border-radius: 10px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18); padding: 18px 20px 20px; }
 .nav-pop::after { content: ""; position: absolute; left: 50%; bottom: -9px; transform: translateX(-50%) rotate(45deg); width: 16px; height: 16px; background: #fff; border-right: 1px solid var(--bb-line); border-bottom: 1px solid var(--bb-line); }
+.review-page { flex: 1; min-height: 0; overflow-y: auto; padding: 40px 24px; }
+.review-page-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.review-page h1 { font-family: var(--font-body); font-size: 26px; font-weight: 600; letter-spacing: -0.01em; color: var(--bb-ink); margin-bottom: 10px; }
+.review-page > .review-page-inner > p { font-size: 15px; color: var(--bb-soft); max-width: 60ch; margin: 0 auto 28px; }
+.review-card { text-align: left; background: #fff; border: 1px solid var(--bb-line); border-radius: 10px; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); padding: 20px 24px 24px; }
+.review-card-head { text-align: center; font-size: 15px; margin-bottom: 12px; }
+.review-card .nav-legend { justify-content: center; }
+.nav-grid-lg { grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); }
 .nav-pop-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .nav-pop-close { background: none; border: none; font-size: 22px; line-height: 1; color: var(--bb-soft); }
 .nav-legend { display: flex; gap: 18px; font-size: 12.5px; color: var(--bb-soft); padding-bottom: 12px; border-bottom: 1px solid var(--bb-line); margin-bottom: 14px; }

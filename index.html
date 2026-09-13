@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,500;9..40,600&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/prep.css?v=5">
+<link rel="stylesheet" href="assets/css/prep.css?v=6">
 </head>
 <body>
 
@@ -107,6 +107,18 @@
     </section>
   </main>
 
+  <section class="review-page" id="review-page" hidden>
+    <div class="review-page-inner">
+      <h1>Check Your Work</h1>
+      <p>On test day, you can't move on until time expires. Here, pick any question to go back to it, and click <strong>Submit</strong> when you're done.</p>
+      <div class="review-card">
+        <div class="review-card-head"><strong id="review-page-title">Questions</strong></div>
+        <div class="nav-legend"><span><i class="lg lg-unanswered"></i>Unanswered</span><span><i class="lg lg-marked"></i>For Review</span></div>
+        <div class="nav-grid nav-grid-lg" id="review-grid"></div>
+      </div>
+    </div>
+  </section>
+
   <footer class="test-foot">
     <div class="test-foot-left" id="student-name">ABLE Preps student</div>
     <button type="button" class="q-nav-btn" id="btn-nav"><span id="nav-label">Question 1 of 12</span> <span class="chev">▴</span></button>
@@ -155,7 +167,7 @@
 
 <script src="assets/js/store.js?v=2"></script>
 <script src="assets/js/scoring.js?v=2"></script>
-<script src="assets/js/practice.js?v=4"></script>
+<script src="assets/js/practice.js?v=5"></script>
 <script src="assets/js/app.js?v=5"></script>
 </body>
 </html>
