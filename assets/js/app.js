@@ -429,6 +429,9 @@
   const STATUS_TEXT = { idle: "", syncing: "Saving…", synced: "Saved to your account", offline: "Offline. Will save when you're back.", error: "Couldn't save. Check your connection." };
   const renderFoot = () => {
     const u = Auth.user();
+    $("account-bar").innerHTML = u
+      ? `<a class="who" href="#/account" title="${esc(u.email)}"><i>${esc(u.email[0].toUpperCase())}</i><span>${esc(u.email)}</span></a>`
+      : Auth.enabled ? `<a class="btn btn-outline btn-sm" href="#/account">Sign in</a><a class="btn btn-primary btn-sm" href="#/account?new">Create account</a>` : "";
     $("sidebar-foot").innerHTML = u
       ? `<a href="#/account" title="${esc(u.email)}">${esc(u.email)}</a><span id="sync-status">${STATUS_TEXT[Auth.status()] || ""}</span>`
       : Auth.enabled ? `<a href="#/account">Sign in</a><span>Save progress across devices</span>`
@@ -491,6 +494,7 @@
         </section>
       </div>
       <p class="fine">What's saved: your answers, sessions, plan, vocabulary progress, and settings. Nothing else. Questions about your data: <a href="mailto:ableinitiativespchs@gmail.com">ableinitiativespchs@gmail.com</a>.</p>`;
+    if (location.hash.includes("?new")) $("up-form").email.focus();
     wireForm("in-form", async (fd) => { await Auth.signIn(fd.get("email").trim(), fd.get("password")); go("dashboard"); });
     wireForm("up-form", async (fd) => { const r = await Auth.signUp(fd.get("email").trim(), fd.get("password")); if (r.needsConfirm) return "Check your email for a confirmation link, then sign in."; go("dashboard"); });
     $("forgot").addEventListener("click", async () => {

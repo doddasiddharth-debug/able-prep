@@ -11,7 +11,7 @@ window.Auth = (() => {
   "use strict";
   const cfg = window.ABLE_CONFIG || {};
   const enabled = !!(cfg.supabaseUrl && cfg.supabaseAnonKey);
-  const SDK = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";
+  const SDK = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.min.js";
   let client = null, user = null, ready = null, pushTimer = null, lastPushed = "";
   let status = "idle"; // idle | syncing | synced | offline | error
   let recovery = false; // arrived by a password-reset link
