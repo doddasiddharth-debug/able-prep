@@ -1,4 +1,5 @@
-/* All persistent state, one localStorage key. Nothing leaves the browser.
+/* All persistent state, one localStorage key. With an account (auth.js),
+   the same object is mirrored to the server after every save.
    Shape:
      history   every graded answer: { qid, section, domain, skill, difficulty,
                correct, seconds, mode, ts }
@@ -25,8 +26,36 @@ window.Store = (() => {
     state.settings = { ...blank().settings, ...(state.settings || {}) };
     return state;
   };
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode: session-only */ } };
+  const listeners = [];
+  const subscribe = (fn) => { listeners.push(fn); };
+  const save = () => {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode: session-only */ }
+    listeners.forEach((fn) => fn(state));
+  };
   const reset = () => { state = blank(); save(); };
+  // Swap in a state built elsewhere (the merge after sign-in).
+  const replace = (next) => { state = { ...blank(), ...next }; state.settings = { ...blank().settings, ...(next.settings || {}) }; save(); };
+
+  // Union of two states, for a device that has practised offline and an
+  // account that has practised elsewhere. Answers and sessions are keyed so
+  // nothing doubles; for the rest, the more advanced copy wins.
+  const merge = (a, b) => {
+    const out = blank();
+    const hk = (h) => `${h.qid}|${h.ts}`;
+    const seenH = new Set();
+    [...(a.history || []), ...(b.history || [])].forEach((h) => { const k = hk(h); if (!seenH.has(k)) { seenH.add(k); out.history.push(h); } });
+    out.history.sort((x, y) => x.ts - y.ts);
+    const seenA = new Set();
+    [...(a.attempts || []), ...(b.attempts || [])].forEach((x) => { const k = x.id || `${x.mode}|${x.ts}`; if (!seenA.has(k)) { seenA.add(k); out.attempts.push(x); } });
+    out.attempts.sort((x, y) => x.ts - y.ts);
+    const d = blank().settings, sa = a.settings || {}, sb = b.settings || {};
+    Object.keys(d).forEach((k) => { out.settings[k] = sa[k] !== undefined && sa[k] !== d[k] && sa[k] !== "" ? sa[k] : (sb[k] !== undefined ? sb[k] : d[k]); });
+    const pa = a.plan, pb = b.plan;
+    out.plan = pa && pb ? (pa.createdAt >= pb.createdAt ? pa : pb) : (pa || pb || null);
+    const words = new Set([...Object.keys(a.vocab || {}), ...Object.keys(b.vocab || {})]);
+    words.forEach((w) => { const x = (a.vocab || {})[w] || { seen: 0, right: 0 }, y = (b.vocab || {})[w] || { seen: 0, right: 0 }; out.vocab[w] = { seen: Math.max(x.seen, y.seen), right: Math.max(x.right, y.right) }; });
+    return out;
+  };
 
   const addHistory = (entries) => { load().history.push(...entries); save(); };
   const addAttempt = (a) => { load().attempts.push({ id: "a" + Date.now().toString(36), ...a }); save(); };
@@ -69,5 +98,5 @@ window.Store = (() => {
     return n;
   };
 
-  return { load, save, reset, addHistory, addAttempt, setSettings, setPlan, markSession, vocabResult, latestByQuestion, accuracy, activityByDay, streak, dayKey };
+  return { load, save, reset, replace, merge, subscribe, addHistory, addAttempt, setSettings, setPlan, markSession, vocabResult, latestByQuestion, accuracy, activityByDay, streak, dayKey };
 })();

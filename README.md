@@ -2,8 +2,9 @@
 
 A free Digital SAT practice app from ABLE Preps. Static site, no build step:
 serve the folder with any static server (`python3 -m http.server`) or host it
-on GitHub Pages exactly like ableinitiatives.com. No accounts; everything a
-student does stays in their browser.
+on GitHub Pages exactly like ableinitiatives.com. Works without an account
+(everything stays in the browser); with an account, progress syncs across
+devices through Supabase.
 
 ## What it does
 
@@ -21,6 +22,7 @@ student does stays in their browser.
 | **Score predictor** | 16-question mixed diagnostic → estimated 400–1600 total, plus a running prediction from all practice |
 | **Score calculator** | Raw module scores → estimated scaled score |
 | **Settings** | Name (shown on the test screen), test date, target, reset |
+| **Account** | Sign in / create account (email + password), password reset, sync status, delete server data |
 
 The **practice screen** copies the real testing app's layout: passage left /
 question right (Math centres the question alone), Mark for Review, answer
@@ -33,7 +35,10 @@ grid-in inputs. Keyboard: 1–4 to answer, arrows to move, Esc to close popups.
 ```
 index.html             app shell (sidebar + page), practice screen, results screen
 assets/css/prep.css    shell (ABLE palette) + practice screen (Bluebook palette)
+assets/js/config.js    Supabase URL + anon key (blank = accounts off)
 assets/js/store.js     localStorage state: history, attempts, settings, plan, vocab
+assets/js/auth.js      accounts and sync (Supabase); merges device + account on sign-in
+supabase/schema.sql    the one table and its row-level-security policies
 assets/js/scoring.js   raw→scaled curves and the running prediction
 assets/js/practice.js  the session engine: bank / test / diagnostic / rush / review
 assets/js/app.js       router and every page
@@ -77,6 +82,27 @@ Grid-in grading is forgiving on format and strict on value: `9`, `9.0`, and
 `18/2` all match `"9"`.
 
 Words go in `data/vocab.json`: `word`, `pos`, `def`, `example`.
+
+## Accounts (Supabase)
+
+1. Create a free project at supabase.com. In **SQL Editor**, run
+   `supabase/schema.sql` once.
+2. **Authentication → Providers → Email**: leave Email on. Turn **Confirm
+   email off** unless you've set up custom SMTP: the built-in mailer sends
+   only a few messages an hour, which won't survive a classroom signing up
+   at once.
+3. **Authentication → URL Configuration**: Site URL
+   `https://prep.ableinitiatives.com`; add `https://prep.ableinitiatives.com/**`
+   and `http://localhost:4178/**` to Redirect URLs (password-reset links go
+   there).
+4. **Project Settings → API**: copy the Project URL and the `anon` `public`
+   key into `assets/js/config.js`, bump its `?v=`, push.
+
+The anon key is meant to be public; row-level security means each user can
+only read and write their own `progress` row. Every save is pushed (debounced
+1.5 s); signing in merges the browser's progress with the account's (answers
+and sessions are unioned, the fuller record wins elsewhere); signing out clears
+the browser copy so a shared computer doesn't hand it to the next student.
 
 ## Cache version
 

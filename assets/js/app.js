@@ -24,7 +24,7 @@
   };
 
   // ---------------------------------------------------------------- router
-  const ROUTES = ["dashboard", "bank", "tests", "rush", "challenge", "vocab", "planner", "analytics", "calculator", "predictor", "mistakes", "settings"];
+  const ROUTES = ["dashboard", "bank", "tests", "rush", "challenge", "vocab", "planner", "analytics", "calculator", "predictor", "mistakes", "settings", "account"];
   const route = () => (location.hash.replace(/^#\/?/, "").split("?")[0] || "dashboard");
   const go = (r) => { location.hash = "#/" + r; };
   const render = () => {
@@ -419,10 +419,87 @@
         <label>Target score<input type="number" name="target" min="400" max="1600" step="10" value="${s.target}"></label>
         <button type="submit" class="btn btn-primary">Save</button>
       </form></section>
-      <section class="card"><h2>Data</h2><p class="fine">Your progress is stored in this browser only.</p><button class="btn btn-outline btn-sm" id="reset-all">Reset progress</button></section>
+      <section class="card"><h2>Data</h2><p class="fine">${Auth.user() ? `Your progress is saved to your account (${esc(Auth.user().email)}) and to this browser.` : Auth.enabled ? `Your progress is stored in this browser. <a href="#/account">Create an account</a> to keep it across devices.` : "Your progress is stored in this browser only."}</p><button class="btn btn-outline btn-sm" id="reset-all">Reset progress</button></section>
       <section class="card"><h2>About</h2><p class="fine">Built by <a href="https://ableinitiatives.com">ABLE Initiatives</a>. Report a question issue at <a href="mailto:ableinitiativespchs@gmail.com">ableinitiativespchs@gmail.com</a>.</p><p class="fine">SAT is a registered trademark of College Board, which is not affiliated with this site.</p></section>`;
     $("settings-form").addEventListener("submit", (e) => { e.preventDefault(); const fd = new FormData(e.target); Store.setSettings({ name: fd.get("name").trim(), testDate: fd.get("testDate"), target: +fd.get("target") || 1300 }); render(); });
-    $("reset-all").addEventListener("click", () => { if (confirm("Clear every answer, session, plan, and setting in this browser?")) { Store.reset(); render(); } });
+    $("reset-all").addEventListener("click", () => { if (confirm(Auth.user() ? "Clear every answer, session, plan, and setting on this account and this browser?" : "Clear every answer, session, plan, and setting in this browser?")) { Store.reset(); render(); } });
+  };
+
+  // ---- Account -----------------------------------------------------------
+  const STATUS_TEXT = { idle: "", syncing: "Saving…", synced: "Saved to your account", offline: "Offline. Will save when you're back.", error: "Couldn't save. Check your connection." };
+  const renderFoot = () => {
+    const u = Auth.user();
+    $("sidebar-foot").innerHTML = u
+      ? `<a href="#/account" title="${esc(u.email)}">${esc(u.email)}</a><span id="sync-status">${STATUS_TEXT[Auth.status()] || ""}</span>`
+      : Auth.enabled ? `<a href="#/account">Sign in</a><span>Save progress across devices</span>`
+      : `<a href="https://ableinitiatives.com/preps.html">ABLE Preps</a><span>No account needed</span>`;
+  };
+  const authError = (e) => {
+    const m = (e && e.message) || "Something went wrong.";
+    if (/invalid login/i.test(m)) return "Wrong email or password.";
+    if (/already registered/i.test(m)) return "That email already has an account. Sign in instead.";
+    if (/rate limit/i.test(m)) return "Too many tries. Wait a minute and try again.";
+    if (/password/i.test(m) && /6/.test(m)) return "Use at least 6 characters.";
+    return m;
+  };
+  const form = (id, fields, submit, extra = "") => `<form id="${id}" class="filters auth-form">${fields}<button type="submit" class="btn btn-primary">${submit}</button>${extra}<p class="fine auth-msg" hidden></p></form>`;
+  const wireForm = (id, handler) => {
+    const f = $(id); if (!f) return;
+    f.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const msg = f.querySelector(".auth-msg"), btn = f.querySelector("[type=submit]");
+      msg.hidden = true; btn.disabled = true;
+      try { const note = await handler(new FormData(f)); if (note) { msg.textContent = note; msg.className = "fine auth-msg ok"; msg.hidden = false; } }
+      catch (err) { msg.textContent = authError(err); msg.className = "fine auth-msg bad"; msg.hidden = false; }
+      btn.disabled = false;
+    });
+  };
+  PAGES.account = () => {
+    if (!Auth.enabled) { $("page").innerHTML = `<div class="page-head"><h1>Account</h1><p class="lede">Accounts aren't switched on for this copy of the app. Progress stays in this browser.</p></div>`; return; }
+    const u = Auth.user();
+    if (u) {
+      const st = Store.load();
+      $("page").innerHTML = `
+        <div class="page-head"><h1>Account</h1><p class="lede">${esc(u.email)}</p></div>
+        <div class="two-col">
+          <section class="card"><h2>Progress</h2>
+            <p>${st.history.length} answers and ${st.attempts.length} sessions are saved to this account. Sign in on any device to pick up where you left off.</p>
+            <p class="fine" id="sync-line">${STATUS_TEXT[Auth.status()] || ""}</p>
+            <div class="toolbar" style="margin:0"><button class="btn btn-outline btn-sm" id="sync-now">Sync now</button><button class="btn btn-outline btn-sm" id="sign-out">Sign out</button></div>
+          </section>
+          <section class="card"><h2>${Auth.inRecovery() ? "Set a new password" : "Change password"}</h2>
+            ${form("pw-form", `<label>New password<input type="password" name="password" minlength="6" required autocomplete="new-password"></label>`, "Update password")}
+          </section>
+        </div>
+        <section class="card"><h2>Delete account data</h2><p class="fine">Removes everything saved to this account on the server. This browser keeps its copy until you reset progress in Settings.</p><button class="btn btn-outline btn-sm" id="delete-data">Delete server data</button></section>`;
+      $("sign-out").addEventListener("click", async () => { await Auth.signOut(); go("dashboard"); });
+      $("sync-now").addEventListener("click", async () => { await Auth.pull(); render(); });
+      $("delete-data").addEventListener("click", async () => { if (confirm("Delete everything saved to this account on the server?")) { try { await Auth.deleteData(); alert("Deleted."); } catch (e) { alert(authError(e)); } } });
+      wireForm("pw-form", async (fd) => { await Auth.updatePassword(fd.get("password")); return "Password updated."; });
+      return;
+    }
+    const st = Store.load();
+    $("page").innerHTML = `
+      <div class="page-head"><h1>Account</h1><p class="lede">Free. Your progress follows you to any device.</p></div>
+      <div class="two-col">
+        <section class="card"><h2>Sign in</h2>
+          ${form("in-form", `<label>Email<input type="email" name="email" required autocomplete="email"></label><label>Password<input type="password" name="password" required autocomplete="current-password"></label>`, "Sign in", `<button type="button" class="btn-text" id="forgot">Forgot password?</button>`)}
+        </section>
+        <section class="card"><h2>Create an account</h2>
+          ${st.history.length ? `<p class="fine">The ${st.history.length} answers already in this browser will be added to the new account.</p>` : ""}
+          ${form("up-form", `<label>Email<input type="email" name="email" required autocomplete="email"></label><label>Password<input type="password" name="password" minlength="6" required autocomplete="new-password"></label>`, "Create account")}
+        </section>
+      </div>
+      <p class="fine">What's saved: your answers, sessions, plan, vocabulary progress, and settings. Nothing else. Questions about your data: <a href="mailto:ableinitiativespchs@gmail.com">ableinitiativespchs@gmail.com</a>.</p>`;
+    wireForm("in-form", async (fd) => { await Auth.signIn(fd.get("email").trim(), fd.get("password")); go("dashboard"); });
+    wireForm("up-form", async (fd) => { const r = await Auth.signUp(fd.get("email").trim(), fd.get("password")); if (r.needsConfirm) return "Check your email for a confirmation link, then sign in."; go("dashboard"); });
+    $("forgot").addEventListener("click", async () => {
+      const f = $("in-form"), email = f.email.value.trim(), msg = f.querySelector(".auth-msg");
+      if (!email) { f.email.focus(); return; }
+      try { await Auth.resetPassword(email); msg.textContent = "Reset link sent. Check your email."; msg.className = "fine auth-msg ok"; }
+      catch (e) { msg.textContent = authError(e); msg.className = "fine auth-msg bad"; }
+      msg.hidden = false;
+    });
   };
 
   // ---------------------------------------------------------------- boot
@@ -432,7 +509,15 @@
       Practice.init();
       $("menu-toggle").addEventListener("click", () => $("sidebar").classList.toggle("open"));
       window.addEventListener("hashchange", render);
+      renderFoot();
+      Auth.onChange((u, status) => {
+        renderFoot();
+        const line = $("sync-line"); if (line) line.textContent = STATUS_TEXT[status] || "";
+      });
+      // A pull can change every number on the page; redraw unless mid-session.
+      Auth.onPull(() => { if ($("view-practice").hidden && $("view-results").hidden) render(); });
       render();
+      Auth.init();
     })
     .catch((err) => { $("page").innerHTML = `<p class="lede">Couldn't load the question bank. ${esc(err.message)}</p>`; });
 })();

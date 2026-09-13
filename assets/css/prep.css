@@ -141,6 +141,11 @@ img { max-width: 100%; display: block; }
 .ticks { list-style: none; padding: 0; margin: 0 0 18px; display: grid; gap: 6px; font-size: 14px; }
 .ticks li::before { content: "✓"; color: var(--good); font-weight: 700; margin-right: 8px; }
 
+.auth-form { max-width: 380px; }
+.auth-form .btn-text { justify-self: start; }
+.auth-msg.ok { color: var(--good); } .auth-msg.bad { color: var(--bad); }
+.sidebar-foot a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
 /* ---------- stat bars (shared by dashboard, analytics, results) ---------- */
 .stat { font-size: 14px; margin-bottom: 12px; }
 .stat:last-child { margin-bottom: 0; }
