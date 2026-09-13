@@ -23,6 +23,72 @@
     return `<div class="stat"><div class="stat-label"><span>${esc(label)}</span><small>${n ? `${ok}/${n}` : (sub || "")}</small></div><div class="stat-bar"><i style="width:${pct}%"></i></div></div>`;
   };
 
+  // ---------------------------------------------------------------- graphics
+  // One stroke icon set, 24-unit grid, drawn in currentColor.
+  const ICON = {
+    dashboard: '<rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/>',
+    bank: '<path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0 0 4h13"/><path d="M8 7h7M8 11h5"/>',
+    tests: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3M8.5 12l2.5 2.5 4.5-5"/>',
+    rush: '<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" stroke-linejoin="round"/>',
+    challenge: '<path d="M3 20h18M6 20l5-12 3 6 2-3 4 9"/><circle cx="17" cy="5" r="2"/>',
+    vocab: '<path d="M4 19V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v13M12 19V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v13"/><path d="M4 19h16"/>',
+    mistakes: '<path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4l3 2"/>',
+    planner: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 15h3M13 15h3"/>',
+    analytics: '<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',
+    predictor: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
+    calculator: '<rect x="5" y="2.5" width="14" height="19" rx="2"/><rect x="8" y="5.5" width="8" height="4" rx="0.8"/><path d="M8.5 13h1M12 13h1M15.5 13h1M8.5 17h1M12 17h1M15.5 17h1"/>',
+    settings: '<path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.5"/><circle cx="9" cy="17" r="2.5"/>',
+    account: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+    flame: '<path d="M12 3c1 3 4 4.5 4 9a4 4 0 0 1-8 0c0-1.5.5-2.5 1-3.5.5 1 1 1.5 2 1.5 0-3-1-4.5 1-7z" stroke-linejoin="round"/>',
+    check: '<path d="M5 12.5 10 17.5 19 7"/>',
+    star: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" stroke-linejoin="round"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    pencil: '<path d="m4 20 4-1L19.5 7.5a2 2 0 0 0-3-3L5 16z" stroke-linejoin="round"/><path d="m14 6 4 4"/>'
+  };
+  const icon = (name, size = 18) => `<svg class="ico" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">${ICON[name] || ""}</svg>`;
+  const spot = (name) => `<span class="spot">${icon(name, 22)}</span>`;
+
+  // Half-ring gauge for a 400 to 1600 score.
+  const gauge = (score, target) => {
+    const f = score ? Math.max(0, Math.min(1, (score - 400) / 1200)) : 0;
+    const t = target ? Math.max(0, Math.min(1, (target - 400) / 1200)) : null;
+    const pt = (fr) => { const a = Math.PI * (1 - fr); return [100 + 84 * Math.cos(a), 96 - 84 * Math.sin(a)]; };
+    const [tx, ty] = t !== null ? pt(t) : [0, 0];
+    return `<svg class="gauge" viewBox="0 0 200 118" aria-hidden="true">
+      <path d="M16 96 A84 84 0 0 1 184 96" pathLength="100" class="gauge-track"/>
+      <path d="M16 96 A84 84 0 0 1 184 96" pathLength="100" class="gauge-fill" style="stroke-dasharray:${(f * 100).toFixed(1)} 100"/>
+      ${t !== null ? `<circle cx="${tx.toFixed(1)}" cy="${ty.toFixed(1)}" r="5" class="gauge-target"><title>Target ${target}</title></circle>` : ""}
+      <text x="16" y="116" text-anchor="middle" class="gauge-lbl">400</text><text x="184" y="116" text-anchor="middle" class="gauge-lbl">1600</text>
+    </svg>`;
+  };
+
+  // Small progress ring, 0 to 1.
+  const ring = (frac, label) => `<svg class="ring" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="18" class="ring-track"/><circle cx="22" cy="22" r="18" pathLength="100" class="ring-fill" style="stroke-dasharray:${(Math.max(0, Math.min(1, frac)) * 100).toFixed(1)} 100"/><text x="22" y="26" text-anchor="middle" class="ring-lbl">${label}</text></svg>`;
+
+  // Accuracy by day, most recent days with activity, as an area line.
+  const trend = (history, days = 14) => {
+    const by = {};
+    history.forEach((h) => { const k = Store.dayKey(h.ts); (by[k] = by[k] || { n: 0, ok: 0 }); by[k].n++; if (h.correct) by[k].ok++; });
+    const keys = Object.keys(by).sort().slice(-days);
+    if (keys.length < 2) return `<p class="fine">Accuracy over time appears after two days of practice.</p>`;
+    const W = 320, H = 110, px = 8, py = 10;
+    const x = (i) => px + (i * (W - 2 * px)) / (keys.length - 1);
+    const y = (p) => py + (1 - p) * (H - 2 * py - 14);
+    const pts = keys.map((k, i) => [x(i), y(by[k].ok / by[k].n)]);
+    const line = pts.map(([a, b], i) => `${i ? "L" : "M"}${a.toFixed(1)} ${b.toFixed(1)}`).join(" ");
+    const area = `${line} L${pts[pts.length - 1][0].toFixed(1)} ${H - 14} L${pts[0][0].toFixed(1)} ${H - 14} Z`;
+    const lbl = (k) => { const d = new Date(k + "T00:00"); return d.toLocaleDateString(undefined, { month: "short", day: "numeric" }); };
+    return `<svg class="trend" viewBox="0 0 ${W} ${H}" aria-label="Accuracy by day">
+      ${[0.5, 1].map((g) => `<line x1="${px}" x2="${W - px}" y1="${y(g).toFixed(1)}" y2="${y(g).toFixed(1)}" class="trend-grid"/>`).join("")}
+      <path d="${area}" class="trend-area"/><path d="${line}" class="trend-line"/>
+      ${pts.map(([a, b], i) => `<circle cx="${a.toFixed(1)}" cy="${b.toFixed(1)}" r="3" class="trend-dot"><title>${lbl(keys[i])}: ${Math.round(100 * by[keys[i]].ok / by[keys[i]].n)}% of ${by[keys[i]].n}</title></circle>`).join("")}
+      <text x="${px}" y="${H - 2}" class="trend-lbl">${lbl(keys[0])}</text><text x="${W - px}" y="${H - 2}" text-anchor="end" class="trend-lbl">${lbl(keys[keys.length - 1])}</text>
+      <text x="${W - px}" y="${(y(1) - 3).toFixed(1)}" text-anchor="end" class="trend-lbl">100%</text><text x="${W - px}" y="${(y(0.5) - 3).toFixed(1)}" text-anchor="end" class="trend-lbl">50%</text>
+    </svg>`;
+  };
+
+  const pageHead = (name, title, lede) => `<div class="page-head"><div class="page-title">${spot(name)}<h1>${title}</h1></div>${lede ? `<p class="lede">${lede}</p>` : ""}</div>`;
+
   // ---------------------------------------------------------------- router
   const ROUTES = ["dashboard", "bank", "tests", "rush", "challenge", "vocab", "planner", "analytics", "calculator", "predictor", "mistakes", "settings", "account"];
   const route = () => (location.hash.replace(/^#\/?/, "").split("?")[0] || "dashboard");
@@ -56,24 +122,24 @@
     const nextSession = st.plan && st.plan.weeks.flatMap((w) => w.sessions).find((x) => !x.done);
 
     $("page").innerHTML = `
-      <div class="page-head"><h1>Dashboard</h1></div>
+      ${pageHead("dashboard", `Dashboard${name}`)}
       <div class="dash-grid">
         <section class="card card-score">
           <h2>Predicted score</h2>
           ${pred.total ? `
-            <div class="pred-total">${pred.total}<small>400 to 1600</small></div>
+            <div class="gauge-wrap">${gauge(pred.total, st.settings.target)}<div class="pred-total">${pred.total}<small>400 to 1600</small></div></div>
             <div class="pred-split"><div><span>Reading &amp; Writing</span><strong>${pred.rw.score}</strong></div><div><span>Math</span><strong>${pred.math.score}</strong></div></div>
             <p class="fine">Based on your last ${pred.rw.n + pred.math.n} answers${st.settings.target ? `. Target ${st.settings.target}` : ""}</p>`
-          : `<div class="pred-empty"><p>Take the diagnostic to get a predicted score.</p><button class="btn btn-primary" data-go="predictor">Take the diagnostic</button></div>`}
+          : `<div class="pred-empty">${gauge(0, st.settings.target)}<p>Take the diagnostic to get a predicted score.</p><button class="btn btn-primary" data-go="predictor">Take the diagnostic</button></div>`}
         </section>
         <section class="card">
           <h2>Focus next</h2>
           ${focus.length ? focus.map((f) => `<button type="button" class="focus-row" data-domain="${esc(f.d)}" data-section="${f.s}"><span>${esc(f.d)}</span><strong class="${f.pct < 60 ? "bad" : f.pct < 80 ? "mid" : "good"}">${f.pct}%</strong></button>`).join("") : `<p class="fine">Practice a few questions to see your weakest areas.</p>`}
         </section>
         <section class="card card-streak">
-          <div class="streak-num">${streak}<small>day streak</small></div>
-          <div class="streak-num">${total}<small>questions answered</small></div>
-          ${days !== null ? `<div class="streak-num ${days <= 14 ? "warn" : ""}">${days > 0 ? days : 0}<small>day${days === 1 ? "" : "s"} to test day</small></div>` : `<button class="btn-text" data-go="settings">Set your test date</button>`}
+          <div class="streak-num"><span class="streak-ico ${streak ? "lit" : ""}">${icon("flame", 22)}</span>${streak}<small>day streak</small></div>
+          <div class="streak-num"><span class="streak-ico">${icon("pencil", 22)}</span>${total}<small>questions answered</small></div>
+          ${days !== null ? `<div class="streak-num ${days <= 14 ? "warn" : ""}"><span class="streak-ico">${icon("planner", 22)}</span>${days > 0 ? days : 0}<small>day${days === 1 ? "" : "s"} to test day</small></div>` : `<div class="streak-num"><span class="streak-ico">${icon("planner", 22)}</span><button class="btn-text" data-go="settings">Set your test date</button></div>`}
         </section>
         <section class="card card-next">
           <h2>Up next</h2>
@@ -82,12 +148,13 @@
         <section class="card card-actions">
           <h2>Practice</h2>
           <div class="action-grid">
-            <button data-go="bank"><strong>Question bank</strong><span>Practice by skill</span></button>
-            <button data-go="tests"><strong>Practice test</strong><span>Full-length, timed</span></button>
-            <button data-go="rush"><strong>Question Rush</strong><span>Timed drills</span></button>
-            <button data-go="mistakes"><strong>Mistakes</strong><span>Review and retry</span></button>
+            <button data-go="bank">${spot("bank")}<strong>Question bank</strong><span>Practice by skill</span></button>
+            <button data-go="tests">${spot("tests")}<strong>Practice test</strong><span>Full-length, timed</span></button>
+            <button data-go="rush">${spot("rush")}<strong>Question Rush</strong><span>Timed drills</span></button>
+            <button data-go="mistakes">${spot("mistakes")}<strong>Mistakes</strong><span>Review and retry</span></button>
           </div>
         </section>
+        <section class="card card-trend"><h2>Accuracy</h2>${trend(st.history)}</section>
         <section class="card card-activity"><h2>Activity</h2>${heatmap(12)}</section>
       </div>`;
     wireGo();
@@ -135,7 +202,7 @@
     }).join("");
     const total = qsIn({ section, difficulty: diff }).length;
     $("page").innerHTML = `
-      <div class="page-head"><h1>Question bank</h1><p class="lede">Practice by skill with an explanation after every question.</p></div>
+      ${pageHead("bank", "Question bank", `Practice by skill with an explanation after every question.`)}
       <div class="toolbar">
         <div class="seg">${["rw", "math"].map((s) => `<button class="${s === section ? "on" : ""}" data-sec="${s}">${secName(s)}</button>`).join("")}</div>
         <div class="seg">${["all", "easy", "medium", "hard"].map((d) => `<button class="${d === diff ? "on" : ""}" data-diff="${d}">${d === "all" ? "All levels" : d[0].toUpperCase() + d.slice(1)}</button>`).join("")}</div>
@@ -158,14 +225,13 @@
   PAGES.tests = () => {
     const attempts = Store.load().attempts.filter((a) => a.mode === "test").slice().reverse();
     $("page").innerHTML = `
-      <div class="page-head"><h1>Practice tests</h1><p class="lede">Full-length timed modules in the Digital SAT format.</p></div>
+      ${pageHead("tests", "Practice tests", `Full-length timed modules in the Digital SAT format.`)}
       <div class="two-col">
         ${["rw", "math"].map((s) => { const n = Math.min(MODULE_SIZE[s], bank.questions.filter((q) => q.section === s).length); return `
         <section class="card module-card">
-          
+          ${spot(s === "rw" ? "vocab" : "calculator")}
           <h2>${secName(s)}</h2>
-          <p>${n} questions, ${fmtMin(moduleSeconds(s, n))}</p>
-          
+          <p>${icon("clock", 15)} ${n} questions, ${fmtMin(moduleSeconds(s, n))}</p>
           <button class="btn btn-primary" data-module="${s}">Start module</button>
         </section>`; }).join("")}
       </div>
@@ -181,7 +247,7 @@
     const attempts = Store.load().attempts.filter((a) => a.mode === "rush").slice().reverse().slice(0, 8);
     const best = attempts.reduce((m, a) => Math.max(m, a.stars || 0), 0);
     $("page").innerHTML = `
-      <div class="page-head"><h1>Question Rush</h1><p class="lede">Timed drills. Earn stars for speed and accuracy.</p></div>
+      ${pageHead("rush", "Question Rush", `Timed drills. Earn stars for speed and accuracy.`)}
       <div class="two-col">
         <section class="card">
           <h2>New rush</h2>
@@ -197,7 +263,7 @@
         <section class="card">
           <h2>History</h2>
           
-          ${attempts.length ? `<table class="table"><thead><tr><th>Date</th><th>Set</th><th>Stars</th><th>Accuracy</th></tr></thead><tbody>${attempts.map((a) => `<tr><td>${fmtDate(a.ts)}</td><td>${esc(a.label)}</td><td>${a.stars}/${a.n * 3}</td><td>${a.correct}/${a.n}</td></tr>`).join("")}</tbody></table>` : `<p class="fine">No rushes yet.</p>`}
+          ${attempts.length ? `<table class="table"><thead><tr><th>Date</th><th>Set</th><th>Stars</th><th>Accuracy</th></tr></thead><tbody>${attempts.map((a) => `<tr><td>${fmtDate(a.ts)}</td><td>${esc(a.label)}</td><td><span class="stars">${icon("star", 14)} ${a.stars}/${a.n * 3}</span></td><td>${a.correct}/${a.n}</td></tr>`).join("")}</tbody></table>` : `<p class="fine">No rushes yet.</p>`}
         </section>
       </div>`;
     const f = $("rush-form");
@@ -218,9 +284,9 @@
   PAGES.challenge = () => {
     const latest = Store.latestByQuestion();
     $("page").innerHTML = `
-      <div class="page-head"><h1>Challenge questions</h1><p class="lede">The hardest questions in the bank.</p></div>
+      ${pageHead("challenge", "Challenge questions", `The hardest questions in the bank.`)}
       <div class="two-col">${["rw", "math"].map((s) => { const qs = qsIn({ section: s, difficulty: "hard" }); const done = qs.filter((q) => latest[q.id]).length, right = qs.filter((q) => latest[q.id] && latest[q.id].correct).length; return `
-        <section class="card"><h2>${secName(s)}</h2><p>${qs.length} questions${done ? `, ${done} solved` : ""}</p>${pctBar("Accuracy", right, done)}<button class="btn btn-primary" data-ch="${s}" style="margin-top:16px" ${qs.length ? "" : "disabled"}>Practice</button></section>`; }).join("")}</div>`;
+        <section class="card">${spot("challenge")}<h2>${secName(s)}</h2><p>${qs.length} questions${done ? `, ${done} solved` : ""}</p>${pctBar("Accuracy", right, done)}<button class="btn btn-primary" data-ch="${s}" style="margin-top:16px" ${qs.length ? "" : "disabled"}>Practice</button></section>`; }).join("")}</div>`;
     document.querySelectorAll("[data-ch]").forEach((b) => b.addEventListener("click", () => startBank({ section: b.dataset.ch, difficulty: "hard", label: `${secName(b.dataset.ch)}: hard` })));
   };
 
@@ -229,10 +295,10 @@
     const prog = Store.load().vocab;
     const mastered = vocab.words.filter((w) => prog[w.word] && prog[w.word].right >= 2).length;
     $("page").innerHTML = `
-      <div class="page-head"><h1>Vocabulary</h1><p class="lede">${vocab.words.length} words for Words in Context questions.</p></div>
+      ${pageHead("vocab", "Vocabulary", `${vocab.words.length} words for Words in Context questions.`)}
       <div class="two-col">
         <section class="card"><h2>Flashcards</h2><div class="flash" id="flash"></div><div class="flash-controls"><button class="btn btn-outline btn-sm" id="flash-prev">Previous</button><button class="btn btn-primary btn-sm" id="flash-flip">Flip</button><button class="btn btn-outline btn-sm" id="flash-next">Next</button></div></section>
-        <section class="card"><h2>Quiz</h2>${pctBar("Mastered", mastered, vocab.words.length)}<div id="quiz" style="margin-top:18px"></div></section>
+        <section class="card"><div class="ring-row">${ring(mastered / vocab.words.length, mastered)}<div><h2>Quiz</h2><p class="fine">${mastered} of ${vocab.words.length} words mastered</p></div></div><div id="quiz" style="margin-top:18px"></div></section>
       </div>
       <section class="card"><h2>Word list</h2><div class="word-grid">${vocab.words.map((w) => { const p = prog[w.word]; const m = p && p.right >= 2; return `<div class="word-chip ${m ? "mastered" : ""}"><strong>${esc(w.word)}</strong> <em>${esc(w.pos)}</em><span>${esc(w.def)}</span></div>`; }).join("")}</div></section>`;
 
@@ -309,7 +375,7 @@
     const plan = st.plan;
     const days = s.testDate ? Math.ceil((new Date(s.testDate + "T00:00") - new Date()) / 86400000) : null;
     $("page").innerHTML = `
-      <div class="page-head"><h1>Study planner</h1><p class="lede">A weekly plan built around your test date and weakest areas.</p></div>
+      ${pageHead("planner", "Study planner", `A weekly plan built around your test date and weakest areas.`)}
       <section class="card"><form id="plan-form" class="filters filters-row">
         <label>Test date<input type="date" name="testDate" value="${esc(s.testDate)}" required></label>
         <label>Target score<input type="number" name="target" min="400" max="1600" step="10" value="${s.target}"></label>
@@ -335,8 +401,8 @@
     const byDiff = ["easy", "medium", "hard"].map((d) => { const rows = h.filter((x) => x.difficulty === d && x.seconds > 0); return { d, n: rows.length, avg: rows.length ? rows.reduce((a, x) => a + x.seconds, 0) / rows.length : null, acc: Store.accuracy((x) => x.difficulty === d) }; });
     const attempts = st.attempts.slice().reverse().slice(0, 12);
     $("page").innerHTML = `
-      <div class="page-head"><h1>Analytics</h1><p class="lede">${h.length} question${h.length === 1 ? "" : "s"} answered.</p></div>
-      ${h.length ? "" : `<section class="card"><p>No data yet.</p></section>`}
+      ${pageHead("analytics", "Analytics", `${h.length} question${h.length === 1 ? "" : "s"} answered.`)}
+      ${h.length ? `<section class="card"><h2>Accuracy over time</h2>${trend(h, 30)}</section>` : `<section class="card"><p>No data yet.</p></section>`}
       <div class="two-col">
         ${["rw", "math"].map((s) => `<section class="card"><h2>${secName(s)}</h2>${bank.meta.sections[s].domains.map((d) => { const a = Store.accuracy((x) => x.domain === d); return pctBar(d, a.ok, a.n); }).join("")}</section>`).join("")}
       </div>
@@ -352,7 +418,7 @@
   // ---- Score calculator --------------------------------------------------
   PAGES.calculator = () => {
     $("page").innerHTML = `
-      <div class="page-head"><h1>Score calculator</h1><p class="lede">Estimate a scaled score from raw module scores.</p></div>
+      ${pageHead("calculator", "Score calculator", `Estimate a scaled score from raw module scores.`)}
       <div class="two-col">
         <section class="card"><form id="calc-form" class="filters">
           ${[["rw1", "Reading and Writing, Module 1", 27], ["rw2", "Reading and Writing, Module 2", 27], ["m1", "Math, Module 1", 22], ["m2", "Math, Module 2", 22]].map(([k, l, max]) => `<label>${l}<div class="range-row"><input type="range" name="${k}" min="0" max="${max}" value="${Math.round(max / 2)}"><output name="${k}o">${Math.round(max / 2)}</output><span class="fine">/ ${max}</span></div></label>`).join("")}
@@ -374,10 +440,10 @@
   PAGES.predictor = () => {
     const last = Store.load().attempts.filter((a) => a.mode === "diagnostic").slice(-1)[0];
     $("page").innerHTML = `
-      <div class="page-head"><h1>Score predictor</h1><p class="lede">A 16-question diagnostic with an estimated score.</p></div>
+      ${pageHead("predictor", "Score predictor", `A 16-question diagnostic with an estimated score.`)}
       <div class="two-col">
-        <section class="card"><h2>Diagnostic</h2><p>16 questions, 22 minutes</p><button class="btn btn-primary" id="diag-start">Start the diagnostic</button>${last ? `<p class="fine" style="margin-top:14px">Last taken ${fmtDate(last.ts)}, ${last.correct}/${last.n}</p>` : ""}</section>
-        <section class="card"><h2>Predicted score</h2>${(() => { const p = Scoring.predict(Store.load().history); return p.total ? `<div class="pred-total">${p.total}<small>400 to 1600</small></div><div class="pred-split"><div><span>Reading &amp; Writing</span><strong>${p.rw.score}</strong></div><div><span>Math</span><strong>${p.math.score}</strong></div></div>` : `<p class="fine">Take the diagnostic or answer ${Scoring.MIN_PER_SECTION} questions per section.</p>`; })()}</section>
+        <section class="card">${spot("predictor")}<h2>Diagnostic</h2><p>${icon("clock", 15)} 16 questions, 22 minutes</p><button class="btn btn-primary" id="diag-start">Start the diagnostic</button>${last ? `<p class="fine" style="margin-top:14px">Last taken ${fmtDate(last.ts)}, ${last.correct}/${last.n}</p>` : ""}</section>
+        <section class="card"><h2>Predicted score</h2>${(() => { const p = Scoring.predict(Store.load().history); return p.total ? `<div class="gauge-wrap">${gauge(p.total, Store.load().settings.target)}<div class="pred-total">${p.total}<small>400 to 1600</small></div></div><div class="pred-split"><div><span>Reading &amp; Writing</span><strong>${p.rw.score}</strong></div><div><span>Math</span><strong>${p.math.score}</strong></div></div>` : `<p class="fine">Take the diagnostic or answer ${Scoring.MIN_PER_SECTION} questions per section.</p>`; })()}</section>
       </div>`;
     $("diag-start").addEventListener("click", () => {
       const qs = [];
@@ -399,7 +465,7 @@
     const latest = Store.latestByQuestion(); const ids = mistakeIds();
     const qs = bank.questions.filter((q) => ids.has(q.id));
     $("page").innerHTML = `
-      <div class="page-head"><h1>Mistakes</h1><p class="lede">Questions you got wrong most recently.</p></div>
+      ${pageHead("mistakes", "Mistakes", `Questions you got wrong most recently.`)}
       <section class="card">${qs.length ? `<div class="toolbar"><span>${qs.length} question${qs.length === 1 ? "" : "s"} to revisit</span><button class="btn btn-primary" id="redo-all">Redo all</button></div><ol class="review-list">${qs.map((q) => `<li><button class="review-item" data-q="${q.id}"><span class="review-num no">${q.section === "rw" ? "RW" : "M"}</span><span><span>${esc(q.stem.split("\n")[0]).slice(0, 110)}</span><div class="review-meta">${esc(q.skill)}, ${fmtDate(latest[q.id].ts)}</div></span><span class="review-ans">Redo</span></button></li>`).join("")}</ol>` : `<p>No mistakes to review.</p>`}</section>`;
     wireGo();
     if (qs.length) {
@@ -412,7 +478,7 @@
   PAGES.settings = () => {
     const s = Store.load().settings;
     $("page").innerHTML = `
-      <div class="page-head"><h1>Settings</h1></div>
+      ${pageHead("settings", "Settings")}
       <section class="card"><form id="settings-form" class="filters filters-row">
         <label>Your name<input type="text" name="name" value="${esc(s.name)}"></label>
         <label>Test date<input type="date" name="testDate" value="${esc(s.testDate)}"></label>
@@ -463,7 +529,7 @@
     if (u) {
       const st = Store.load();
       $("page").innerHTML = `
-        <div class="page-head"><h1>Account</h1><p class="lede">${esc(u.email)}</p></div>
+        ${pageHead("account", "Account", esc(u.email))}
         <div class="two-col">
           <section class="card"><h2>Progress</h2>
             <p>${st.history.length} answers and ${st.attempts.length} sessions are saved to this account. Sign in on any device to pick up where you left off.</p>
@@ -483,7 +549,7 @@
     }
     const st = Store.load();
     $("page").innerHTML = `
-      <div class="page-head"><h1>Account</h1><p class="lede">Free. Your progress follows you to any device.</p></div>
+      ${pageHead("account", "Account", "Free. Your progress follows you to any device.")}
       <div class="two-col">
         <section class="card"><h2>Sign in</h2>
           ${form("in-form", `<label>Email<input type="email" name="email" required autocomplete="email"></label><label>Password<input type="password" name="password" required autocomplete="current-password"></label>`, "Sign in", `<button type="button" class="btn-text" id="forgot">Forgot password?</button>`)}
@@ -511,6 +577,7 @@
     .then(([q, v]) => {
       bank = q; vocab = v;
       Practice.init();
+      document.querySelectorAll(".nav-item[data-route]").forEach((a) => { a.insertAdjacentHTML("afterbegin", icon(a.dataset.route)); });
       $("menu-toggle").addEventListener("click", () => $("sidebar").classList.toggle("open"));
       window.addEventListener("hashchange", render);
       renderFoot();
