@@ -4,89 +4,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SAT Practice · ABLE Preps</title>
-<meta name="description" content="Free Digital SAT practice from ABLE Preps: a question bank with explanations and timed practice modules in the same layout as the real test.">
+<meta name="description" content="Free Digital SAT practice from ABLE Preps: a question bank by skill, timed modules in the real test's layout, Question Rush, vocabulary, a study planner, and analytics. No account needed.">
 <meta name="theme-color" content="#2B2BC4">
+<link rel="icon" href="assets/images/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/prep.css?v=1">
+<link rel="stylesheet" href="assets/css/prep.css?v=2">
 </head>
 <body>
 
-<!-- ============================================================ HOME -->
-<div id="view-home" class="view">
-  <header class="site-bar">
-    <a class="brand" href="https://ableinitiatives.com">
-      <span class="brand-mark" aria-hidden="true">A</span>
-      <span>ABLE Preps <span class="brand-sub">SAT Practice</span></span>
+<!-- ============================================================= APP -->
+<div id="app" class="view">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#/dashboard">
+      <img src="assets/images/logo-preps.png" alt="" width="40" height="37">
+      <span>ABLE Preps<small>SAT Practice</small></span>
     </a>
-    <span class="site-bar-note">Free. No account. Progress stays in this browser.</span>
-  </header>
-
-  <main class="home">
-    <section class="home-hero">
-      <p class="eyebrow">Digital SAT</p>
-      <h1>Practice in the format you'll <em>actually see.</em></h1>
-      <p class="lede">Same layout as the real testing app, so nothing about test day is a surprise. Work through the question bank at your own pace, or take a timed module and see where you stand.</p>
-    </section>
-
-    <section class="modes">
-      <div class="mode-card">
-        <h2>Question bank</h2>
-        <p>Untimed. Check each answer as you go and read the full explanation.</p>
-        <form id="bank-form" class="filters">
-          <label>Section
-            <select name="section">
-              <option value="all">Both sections</option>
-              <option value="rw">Reading and Writing</option>
-              <option value="math">Math</option>
-            </select>
-          </label>
-          <label>Domain
-            <select name="domain"><option value="all">All domains</option></select>
-          </label>
-          <label>Difficulty
-            <select name="difficulty">
-              <option value="all">All</option>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
-          </label>
-          <button type="submit" class="btn btn-primary">Start practicing <span id="bank-count" class="count"></span></button>
-        </form>
-      </div>
-
-      <div class="mode-card">
-        <h2>Timed module</h2>
-        <p>One section, on the clock, no feedback until you finish. Scored by domain at the end.</p>
-        <div class="module-options">
-          <button type="button" class="module-btn" data-module="rw">
-            <span class="module-name">Reading and Writing</span>
-            <span class="module-meta" data-meta="rw"></span>
-          </button>
-          <button type="button" class="module-btn" data-module="math">
-            <span class="module-name">Math</span>
-            <span class="module-meta" data-meta="math"></span>
-          </button>
-        </div>
-        <p class="fine">Timing is scaled to the real test's pace (about 71 seconds per Reading and Writing question, 95 per Math question).</p>
-      </div>
-    </section>
-
-    <section class="stats" id="stats" hidden>
-      <div class="stats-head">
-        <h2>Your progress</h2>
-        <button type="button" id="stats-reset" class="btn-text">Reset</button>
-      </div>
-      <div class="stats-grid" id="stats-grid"></div>
-    </section>
-
-    <footer class="home-foot">
-      <p>Built by <a href="https://ableinitiatives.com">ABLE Initiatives</a>, a student-run 501(c)(3). Every question is original and reviewed by a person before it's added. Found a mistake? <a href="mailto:ableinitiativespchs@gmail.com?subject=SAT%20practice%20question">Tell us</a>.</p>
-      <p class="fine">Not affiliated with or endorsed by College Board. SAT is a registered trademark of College Board.</p>
-    </footer>
-  </main>
+    <nav class="nav">
+      <p class="nav-group">Study</p>
+      <a class="nav-item" data-route="dashboard" href="#/dashboard">Dashboard</a>
+      <a class="nav-item" data-route="bank" href="#/bank">Question bank</a>
+      <a class="nav-item" data-route="tests" href="#/tests">Practice tests</a>
+      <a class="nav-item" data-route="rush" href="#/rush">Question Rush</a>
+      <a class="nav-item" data-route="challenge" href="#/challenge">Challenge questions</a>
+      <a class="nav-item" data-route="vocab" href="#/vocab">Vocabulary</a>
+      <a class="nav-item" data-route="mistakes" href="#/mistakes">Mistakes</a>
+      <p class="nav-group">Plan</p>
+      <a class="nav-item" data-route="planner" href="#/planner">Study planner</a>
+      <a class="nav-item" data-route="analytics" href="#/analytics">Analytics</a>
+      <p class="nav-group">Tools</p>
+      <a class="nav-item" data-route="predictor" href="#/predictor">Score predictor</a>
+      <a class="nav-item" data-route="calculator" href="#/calculator">Score calculator</a>
+      <a class="nav-item" data-route="settings" href="#/settings">Settings</a>
+    </nav>
+    <div class="sidebar-foot">
+      <a href="https://ableinitiatives.com/preps.html">About ABLE Preps →</a>
+      <span>Free. No account. Progress stays in this browser.</span>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Menu"><span></span></button>
+      <a class="brand brand-compact" href="#/dashboard"><img src="assets/images/logo-preps.png" alt="" width="30" height="28"><span>ABLE Preps</span></a>
+    </header>
+    <main id="page" class="page"></main>
+  </div>
 </div>
 
 <!-- ======================================================== PRACTICE -->
@@ -99,15 +62,16 @@
     <div class="test-bar-center">
       <div class="timer" id="timer" hidden><span id="timer-text">32:00</span></div>
       <button type="button" class="test-link" id="btn-timer-toggle" hidden>Hide</button>
+      <span class="rush-progress" id="rush-progress" hidden>1 / 10</span>
     </div>
     <div class="test-bar-right">
       <button type="button" class="test-tool" id="btn-calc" hidden>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2.5" width="14" height="19" rx="2"/><rect x="8" y="5.5" width="8" height="4" rx="0.8"/><path d="M8.5 13h1M12 13h1M15.5 13h1M8.5 17h1M12 17h1M15.5 17h1"/></svg>
-        Calculator
+        <span>Calculator</span>
       </button>
       <button type="button" class="test-tool" id="btn-exit">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="6" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="18" r="1.4" fill="currentColor"/></svg>
-        Exit
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4M10 17l5-5-5-5M15 12H3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Exit</span>
       </button>
     </div>
   </header>
@@ -122,16 +86,14 @@
       <div class="passage" id="passage"></div>
     </section>
     <div class="pane-divider" aria-hidden="true"></div>
-    <section class="pane pane-right">
+    <section class="pane pane-right" id="pane-right">
       <div class="q-head">
         <span class="q-num" id="q-num">1</span>
         <button type="button" class="q-mark" id="btn-mark" aria-pressed="false">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4z" stroke-linejoin="round"/></svg>
           Mark for Review
         </button>
-        <button type="button" class="q-elim" id="btn-elim" aria-pressed="false" title="Toggle answer eliminator">
-          <span class="q-elim-letters"><s>ABC</s></span>
-        </button>
+        <button type="button" class="q-elim" id="btn-elim" aria-pressed="false" title="Toggle answer eliminator"><s>ABC</s></button>
       </div>
       <div class="q-stem" id="q-stem"></div>
       <div class="q-choices" id="q-choices"></div>
@@ -141,9 +103,7 @@
 
   <footer class="test-foot">
     <div class="test-foot-left" id="student-name">ABLE Preps student</div>
-    <button type="button" class="q-nav-btn" id="btn-nav">
-      <span id="nav-label">Question 1 of 12</span> <span class="chev">▴</span>
-    </button>
+    <button type="button" class="q-nav-btn" id="btn-nav"><span id="nav-label">Question 1 of 12</span> <span class="chev">▴</span></button>
     <div class="test-foot-right">
       <button type="button" class="btn btn-nav" id="btn-check" hidden>Check</button>
       <button type="button" class="btn btn-nav" id="btn-back">Back</button>
@@ -152,15 +112,8 @@
   </footer>
 
   <div class="nav-pop" id="nav-pop" hidden>
-    <div class="nav-pop-head">
-      <strong id="nav-pop-title">Reading and Writing Questions</strong>
-      <button type="button" class="nav-pop-close" id="btn-nav-close" aria-label="Close">×</button>
-    </div>
-    <div class="nav-legend">
-      <span><i class="lg lg-current"></i>Current</span>
-      <span><i class="lg lg-unanswered"></i>Unanswered</span>
-      <span><i class="lg lg-marked"></i>For Review</span>
-    </div>
+    <div class="nav-pop-head"><strong id="nav-pop-title">Questions</strong><button type="button" class="nav-pop-close" id="btn-nav-close" aria-label="Close">×</button></div>
+    <div class="nav-legend"><span><i class="lg lg-current"></i>Current</span><span><i class="lg lg-unanswered"></i>Unanswered</span><span><i class="lg lg-marked"></i>For Review</span></div>
     <div class="nav-grid" id="nav-grid"></div>
     <button type="button" class="btn btn-outline btn-block" id="btn-review">Go to Review Page</button>
   </div>
@@ -173,30 +126,28 @@
 
 <!-- ========================================================= RESULTS -->
 <div id="view-results" class="view" hidden>
-  <header class="site-bar">
-    <a class="brand" href="#" id="results-home">
-      <span class="brand-mark" aria-hidden="true">A</span>
-      <span>ABLE Preps <span class="brand-sub">SAT Practice</span></span>
-    </a>
-  </header>
-  <main class="results">
+  <div class="results">
     <p class="eyebrow" id="results-eyebrow">Timed module</p>
     <h1 id="results-title">Reading and Writing</h1>
     <div class="score-row">
       <div class="score-big"><span id="score-pct">0%</span><small id="score-frac">0 of 12 correct</small></div>
       <div class="score-time" id="score-time"></div>
     </div>
+    <div class="estimate card" id="score-estimate" hidden></div>
     <h2>By domain</h2>
     <div class="domain-bars" id="domain-bars"></div>
     <h2>Every question</h2>
     <ol class="review-list" id="review-list"></ol>
     <div class="results-actions">
       <button type="button" class="btn btn-primary" id="btn-retry">Take it again</button>
-      <button type="button" class="btn btn-outline" id="btn-results-home">Back to home</button>
+      <button type="button" class="btn btn-outline" id="btn-results-home">Back</button>
     </div>
-  </main>
+  </div>
 </div>
 
-<script src="assets/js/prep.js?v=1"></script>
+<script src="assets/js/store.js?v=2"></script>
+<script src="assets/js/scoring.js?v=2"></script>
+<script src="assets/js/practice.js?v=2"></script>
+<script src="assets/js/app.js?v=2"></script>
 </body>
 </html>

@@ -2,8 +2,76 @@
   "meta": {
     "note": "Sample bank for the ABLE Preps SAT practice prototype. Every item is original. Tags follow the College Board Digital SAT domain/skill taxonomy so the bank can grow into it. Each item is reviewed by a person before it ships; nothing here is auto-generated at runtime.",
     "sections": {
-      "rw": { "name": "Reading and Writing", "domains": ["Information and Ideas", "Craft and Structure", "Expression of Ideas", "Standard English Conventions"] },
-      "math": { "name": "Math", "domains": ["Algebra", "Advanced Math", "Problem-Solving and Data Analysis", "Geometry and Trigonometry"] }
+      "rw": {
+        "name": "Reading and Writing",
+        "domains": [
+          "Information and Ideas",
+          "Craft and Structure",
+          "Expression of Ideas",
+          "Standard English Conventions"
+        ]
+      },
+      "math": {
+        "name": "Math",
+        "domains": [
+          "Algebra",
+          "Advanced Math",
+          "Problem-Solving and Data Analysis",
+          "Geometry and Trigonometry"
+        ]
+      }
+    },
+    "skills": {
+      "rw": {
+        "Information and Ideas": [
+          "Central Ideas and Details",
+          "Command of Evidence",
+          "Inferences"
+        ],
+        "Craft and Structure": [
+          "Words in Context",
+          "Text Structure and Purpose",
+          "Cross-Text Connections"
+        ],
+        "Expression of Ideas": [
+          "Rhetorical Synthesis",
+          "Transitions"
+        ],
+        "Standard English Conventions": [
+          "Boundaries",
+          "Form, Structure, and Sense"
+        ]
+      },
+      "math": {
+        "Algebra": [
+          "Linear equations in one variable",
+          "Linear functions",
+          "Linear equations in two variables",
+          "Systems of two linear equations",
+          "Linear inequalities"
+        ],
+        "Advanced Math": [
+          "Equivalent expressions",
+          "Nonlinear equations in one variable",
+          "Nonlinear functions",
+          "Systems of equations in two variables"
+        ],
+        "Problem-Solving and Data Analysis": [
+          "Ratios, rates, proportional relationships, and units",
+          "Percentages",
+          "One-variable data: distributions and measures of center and spread",
+          "Two-variable data: models and scatterplots",
+          "Probability and conditional probability",
+          "Inference from sample statistics and margin of error",
+          "Evaluating statistical claims"
+        ],
+        "Geometry and Trigonometry": [
+          "Area and volume",
+          "Lines, angles, and triangles",
+          "Right triangles and trigonometry",
+          "Circles"
+        ]
+      }
     }
   },
   "questions": [
@@ -66,7 +134,12 @@
       "difficulty": "easy",
       "passage": "The committee's decision was far from ______: members debated for hours before reaching a narrow majority.",
       "stem": "Which choice completes the text with the most logical and precise word or phrase?",
-      "choices": ["unanimous", "deliberate", "temporary", "predictable"],
+      "choices": [
+        "unanimous",
+        "deliberate",
+        "temporary",
+        "predictable"
+      ],
       "answer": 0,
       "explanation": "A \"narrow majority\" after hours of debate means the members did not all agree, so the decision was far from unanimous. \"Deliberate\" would actually fit a long debate, and nothing in the text concerns whether the decision was temporary or predictable."
     },
@@ -112,7 +185,12 @@
       "difficulty": "easy",
       "passage": "The museum's new wing was designed to maximize natural light. ______ nearly every gallery has floor-to-ceiling windows.",
       "stem": "Which choice completes the text with the most logical transition?",
-      "choices": ["However,", "Accordingly,", "In contrast,", "Nevertheless,"],
+      "choices": [
+        "However,",
+        "Accordingly,",
+        "In contrast,",
+        "Nevertheless,"
+      ],
       "answer": 1,
       "explanation": "The second sentence is a consequence of the design goal in the first, so a cause-and-effect transition fits: \"Accordingly.\" The other three all signal contrast, which the sentences do not have."
     },
@@ -141,7 +219,12 @@
       "difficulty": "easy",
       "passage": "The collection of essays, which spans three decades of the author's career, ______ readers a rare view of her evolving style.",
       "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
-      "choices": ["offer", "offers", "have offered", "are offering"],
+      "choices": [
+        "offer",
+        "offers",
+        "have offered",
+        "are offering"
+      ],
       "answer": 1,
       "explanation": "The subject is the singular noun \"collection\" (not \"essays,\" which sits inside the prepositional phrase \"of essays\"), so the verb must be singular: \"offers.\""
     },
@@ -153,7 +236,12 @@
       "difficulty": "medium",
       "passage": "Three elements make the bridge remarkable: its ______ its span, and its age.",
       "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
-      "choices": ["height;", "height,", "height:", "height—"],
+      "choices": [
+        "height;",
+        "height,",
+        "height:",
+        "height—"
+      ],
       "answer": 1,
       "explanation": "The blank sits between the first and second items of a simple three-item list, which are separated by commas. Semicolons separate list items only when the items themselves contain commas; a colon or dash would wrongly break the list."
     },
@@ -182,11 +270,15 @@
       "difficulty": "medium",
       "passage": "Although the novel was praised for its ambitious scope, some critics found its plot ______, noting that several storylines were introduced and then abandoned.",
       "stem": "Which choice completes the text with the most logical and precise word or phrase?",
-      "choices": ["cohesive", "fragmented", "conventional", "restrained"],
+      "choices": [
+        "cohesive",
+        "fragmented",
+        "conventional",
+        "restrained"
+      ],
       "answer": 1,
       "explanation": "Storylines that are introduced and then abandoned make a plot broken into pieces: \"fragmented.\" \"Cohesive\" is the opposite, and neither \"conventional\" nor \"restrained\" describes abandoned storylines."
     },
-
     {
       "id": "m-001",
       "section": "math",
@@ -205,7 +297,12 @@
       "skill": "Linear functions",
       "difficulty": "medium",
       "stem": "A gym charges a one-time membership fee of $40 plus $25 per month. Which equation gives the total cost C, in dollars, of a membership lasting m months?",
-      "choices": ["C = 25 + 40m", "C = 40 + 25m", "C = 65m", "C = 40m − 25"],
+      "choices": [
+        "C = 25 + 40m",
+        "C = 40 + 25m",
+        "C = 65m",
+        "C = 40m − 25"
+      ],
       "answer": 1,
       "explanation": "The $40 is paid once, so it is the constant term. The $25 repeats each month, so it multiplies m: C = 40 + 25m. Choice A swaps the two amounts."
     },
@@ -227,7 +324,12 @@
       "skill": "Equivalent expressions",
       "difficulty": "easy",
       "stem": "Which expression is equivalent to (x + 3)(x − 5)?",
-      "choices": ["x² − 2x − 15", "x² + 2x − 15", "x² − 8x − 15", "x² − 2x + 15"],
+      "choices": [
+        "x² − 2x − 15",
+        "x² + 2x − 15",
+        "x² − 8x − 15",
+        "x² − 2x + 15"
+      ],
       "answer": 0,
       "explanation": "Expand: x·x = x², x·(−5) = −5x, 3·x = 3x, 3·(−5) = −15. Combine the middle terms: −5x + 3x = −2x. Result: x² − 2x − 15."
     },
@@ -238,7 +340,12 @@
       "skill": "Nonlinear functions",
       "difficulty": "medium",
       "stem": "The population of a town is 8,000 and increases by 5% each year. Which function models the population P(t) after t years?",
-      "choices": ["P(t) = 8000(1.05)ᵗ", "P(t) = 8000(0.05)ᵗ", "P(t) = 8000 + 1.05t", "P(t) = 8000(1.5)ᵗ"],
+      "choices": [
+        "P(t) = 8000(1.05)ᵗ",
+        "P(t) = 8000(0.05)ᵗ",
+        "P(t) = 8000 + 1.05t",
+        "P(t) = 8000(1.5)ᵗ"
+      ],
       "answer": 0,
       "explanation": "A 5% yearly increase multiplies the population by 1.05 each year, so after t years it is 8000 × 1.05ᵗ. Choice B multiplies by 0.05 (a 95% drop), C is linear rather than exponential, and D uses 50% growth."
     },
@@ -260,7 +367,12 @@
       "skill": "Percentages",
       "difficulty": "easy",
       "stem": "A jacket originally priced at $80 is on sale for 25% off. What is the sale price of the jacket?",
-      "choices": ["$20", "$55", "$60", "$65"],
+      "choices": [
+        "$20",
+        "$55",
+        "$60",
+        "$65"
+      ],
       "answer": 2,
       "explanation": "25% of $80 is $20, so the discount is $20 and the sale price is $80 − $20 = $60. Choice A is the discount itself, not the price."
     },
@@ -271,7 +383,12 @@
       "skill": "Ratios, rates, proportional relationships, and units",
       "difficulty": "medium",
       "stem": "A car travels 210 miles using 6 gallons of gasoline. At the same rate, how many gallons of gasoline are needed to travel 350 miles?",
-      "choices": ["8", "9", "10", "12"],
+      "choices": [
+        "8",
+        "9",
+        "10",
+        "12"
+      ],
       "answer": 2,
       "explanation": "The rate is 210 ÷ 6 = 35 miles per gallon. For 350 miles: 350 ÷ 35 = 10 gallons. Equivalently, set up the proportion 210/6 = 350/g and solve for g."
     },
@@ -282,7 +399,12 @@
       "skill": "One-variable data: distributions and measures of center and spread",
       "difficulty": "hard",
       "stem": "The mean of a list of five numbers is 12. When a sixth number is added to the list, the mean of the six numbers is 14. What is the sixth number?",
-      "choices": ["16", "20", "24", "26"],
+      "choices": [
+        "16",
+        "20",
+        "24",
+        "26"
+      ],
       "answer": 2,
       "explanation": "Mean × count = total. Five numbers with mean 12 total 5 × 12 = 60. Six numbers with mean 14 total 6 × 14 = 84. The sixth number is the difference: 84 − 60 = 24."
     },
@@ -293,7 +415,12 @@
       "skill": "Area and volume",
       "difficulty": "easy",
       "stem": "A rectangle has a length of 12 centimeters and a width of 5 centimeters. What is the area of the rectangle, in square centimeters?",
-      "choices": ["17", "34", "60", "120"],
+      "choices": [
+        "17",
+        "34",
+        "60",
+        "120"
+      ],
       "answer": 2,
       "explanation": "Area of a rectangle = length × width = 12 × 5 = 60. Choice A is the sum of the sides and B is the perimeter."
     },
@@ -304,7 +431,12 @@
       "skill": "Right triangles and trigonometry",
       "difficulty": "medium",
       "stem": "A right triangle has legs of length 9 and 12. What is the length of the hypotenuse?",
-      "choices": ["13", "15", "18", "21"],
+      "choices": [
+        "13",
+        "15",
+        "18",
+        "21"
+      ],
       "answer": 1,
       "explanation": "By the Pythagorean theorem, hypotenuse² = 9² + 12² = 81 + 144 = 225, so the hypotenuse is √225 = 15. (This is the 3-4-5 triangle scaled by 3.)"
     },
@@ -315,9 +447,361 @@
       "skill": "Circles",
       "difficulty": "hard",
       "stem": "A circle in the xy-plane has the equation x² + y² − 6x + 4y = 12. What is the radius of the circle?",
-      "choices": ["5", "12", "13", "25"],
+      "choices": [
+        "5",
+        "12",
+        "13",
+        "25"
+      ],
       "answer": 0,
       "explanation": "Complete the square for each variable. x² − 6x becomes (x − 3)² − 9, and y² + 4y becomes (y + 2)² − 4. So (x − 3)² + (y + 2)² − 13 = 12, giving (x − 3)² + (y + 2)² = 25. The radius is √25 = 5; choice D is the radius squared."
+    },
+    {
+      "id": "rw-013",
+      "section": "rw",
+      "domain": "Information and Ideas",
+      "skill": "Central Ideas and Details",
+      "difficulty": "medium",
+      "passage": "In a 2019 survey of 40 city blocks, researchers found that blocks with mature street trees had summer surface temperatures up to 6°C lower than blocks without them. The effect was strongest where tree canopy covered at least 40 percent of the sidewalk. The researchers caution, however, that newly planted saplings provide little cooling during their first decade.",
+      "stem": "According to the text, what did the researchers find about newly planted saplings?",
+      "choices": [
+        "They lower surface temperatures as effectively as mature trees do.",
+        "They provide little cooling for roughly their first ten years.",
+        "They survive best on blocks with at least 40 percent canopy cover.",
+        "They raise surface temperatures on the blocks where they are planted."
+      ],
+      "answer": 1,
+      "explanation": "The last sentence states directly that saplings \"provide little cooling during their first decade,\" which is choice B. A contradicts that sentence, C connects two details the text never links, and D is not stated anywhere."
+    },
+    {
+      "id": "rw-014",
+      "section": "rw",
+      "domain": "Information and Ideas",
+      "skill": "Command of Evidence",
+      "difficulty": "hard",
+      "passage": "Tutoring hours by volunteer, fall semester\n\nVolunteer   Sept   Oct   Nov\nAna          12     15    18\nBen          20     14     9\nChloe         8      8     8\nDev           5     11    17\n\nA student reviewing the table claims that one volunteer's tutoring hours declined every month.",
+      "stem": "Which choice best supports the student's claim?",
+      "choices": [
+        "Ana tutored 12 hours in September and 18 hours in November.",
+        "Ben tutored 20 hours in September, 14 in October, and 9 in November.",
+        "Chloe tutored 8 hours in each of the three months.",
+        "Dev tutored more hours in November than in September."
+      ],
+      "answer": 1,
+      "explanation": "The claim needs a volunteer whose hours drop from each month to the next. Only Ben's do: 20, then 14, then 9. Ana and Dev increase, and Chloe stays flat."
+    },
+    {
+      "id": "rw-015",
+      "section": "rw",
+      "domain": "Information and Ideas",
+      "skill": "Inferences",
+      "difficulty": "medium",
+      "passage": "Coral reefs depend on a partnership with tiny algae that live inside the coral and supply it with most of its food. When ocean water becomes too warm, corals expel the algae and turn white, a process called bleaching. Bleached corals are not dead, but because they have lost their main food source, ______",
+      "stem": "Which choice most logically completes the text?",
+      "choices": [
+        "they recover fully as soon as the water temperature changes.",
+        "they can starve if the water does not cool soon enough for the algae to return.",
+        "they begin producing their own food instead.",
+        "they no longer depend on the surrounding water."
+      ],
+      "answer": 1,
+      "explanation": "The setup is that the algae supply most of the coral's food and bleaching means losing them. The logical consequence is that a bleached coral risks starving unless the algae come back, which is B. A ignores the food problem, and C and D contradict the dependence the text establishes."
+    },
+    {
+      "id": "rw-016",
+      "section": "rw",
+      "domain": "Craft and Structure",
+      "skill": "Text Structure and Purpose",
+      "difficulty": "easy",
+      "passage": "Most people picture a desert as endless sand. In fact, only about a quarter of the Sahara is sand dunes; the rest is gravel plains, rocky plateaus, and salt flats.",
+      "stem": "Which choice best describes the overall structure of the text?",
+      "choices": [
+        "It presents a common assumption and then corrects it.",
+        "It describes a problem and then proposes a solution.",
+        "It lists several deserts in order of size.",
+        "It explains the process by which deserts form."
+      ],
+      "answer": 0,
+      "explanation": "\"Most people picture...\" sets up the assumption; \"In fact...\" corrects it with the real makeup of the Sahara. No problem or solution is raised, no other deserts are named, and formation is never discussed."
+    },
+    {
+      "id": "rw-017",
+      "section": "rw",
+      "domain": "Craft and Structure",
+      "skill": "Cross-Text Connections",
+      "difficulty": "medium",
+      "passage": "Text 1\n\nScholars have long attributed the anonymous fourteenth-century poem to a single author, pointing to its consistent style and unified structure.\n\nText 2\n\nLinguist Mara Feld analyzed the poem's vocabulary and found two distinct dialect patterns concentrated in different sections. She argues that this distribution is difficult to explain if only one person wrote the poem.",
+      "stem": "Based on the texts, how would Feld (Text 2) most likely respond to the scholars described in Text 1?",
+      "choices": [
+        "By agreeing that the poem's unified structure proves a single author wrote it.",
+        "By suggesting that consistency of style does not rule out more than one author.",
+        "By arguing that the poem was written after the fourteenth century.",
+        "By claiming that the poem has no unified structure at all."
+      ],
+      "answer": 1,
+      "explanation": "Feld's evidence (two dialect patterns) points toward multiple authors even though the style is consistent, so she would say consistency alone does not settle the question: B. She does not dispute the structure (D) or the date (C), and A is the opposite of her position."
+    },
+    {
+      "id": "rw-018",
+      "section": "rw",
+      "domain": "Expression of Ideas",
+      "skill": "Transitions",
+      "difficulty": "medium",
+      "passage": "Solar panels have become far cheaper over the past decade. ______ many homeowners still hesitate to install them because of the upfront cost.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        "As a result,",
+        "Similarly,",
+        "Even so,",
+        "For example,"
+      ],
+      "answer": 2,
+      "explanation": "The second sentence runs against what the first would lead you to expect (cheaper panels, yet hesitation), so a concessive transition is needed: \"Even so.\" \"As a result\" would claim the hesitation follows from the price drop, and the other two do not signal contrast."
+    },
+    {
+      "id": "rw-019",
+      "section": "rw",
+      "domain": "Expression of Ideas",
+      "skill": "Rhetorical Synthesis",
+      "difficulty": "hard",
+      "passage": "While researching a topic, a student has taken the following notes:\n\n• Wangari Maathai was a Kenyan environmental activist.\n• In 1977 she founded the Green Belt Movement.\n• The movement paid rural women to plant trees.\n• By 2004 the movement had planted more than 30 million trees.\n• In 2004 Maathai became the first African woman to win the Nobel Peace Prize.",
+      "stem": "The student wants to convey the scale of the Green Belt Movement to an audience unfamiliar with Maathai. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        "Wangari Maathai won the Nobel Peace Prize in 2004.",
+        "Kenyan activist Wangari Maathai's Green Belt Movement, founded in 1977, had planted more than 30 million trees by 2004.",
+        "The Green Belt Movement paid rural women to plant trees.",
+        "Maathai, the first African woman to win the Nobel Peace Prize, founded a movement."
+      ],
+      "answer": 1,
+      "explanation": "The audience needs to be told who Maathai is (Kenyan activist) and given the scale (30 million trees). Only B does both. A and D are about the prize, not the movement's scale, and C describes the method without any numbers."
+    },
+    {
+      "id": "rw-020",
+      "section": "rw",
+      "domain": "Standard English Conventions",
+      "skill": "Boundaries",
+      "difficulty": "easy",
+      "passage": "The observatory's telescope, which was installed in ______ remains one of the largest of its kind.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        "1962;",
+        "1962,",
+        "1962",
+        "1962:"
+      ],
+      "answer": 1,
+      "explanation": "\"which was installed in 1962\" is a nonessential clause opened by a comma after \"telescope,\" so it must be closed by a matching comma. A semicolon or colon would break the sentence, and leaving the clause unclosed is also wrong."
+    },
+    {
+      "id": "rw-021",
+      "section": "rw",
+      "domain": "Standard English Conventions",
+      "skill": "Boundaries",
+      "difficulty": "hard",
+      "passage": "The kit includes everything a beginner ______ a board, a set of pieces, and an instruction booklet.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        "needs,",
+        "needs;",
+        "needs:",
+        "needs"
+      ],
+      "answer": 2,
+      "explanation": "What follows the blank is a list that explains \"everything a beginner needs,\" and it is not an independent clause. A colon introduces such a list. A semicolon requires an independent clause on both sides, and a comma or nothing would run the list into the sentence."
+    },
+    {
+      "id": "rw-022",
+      "section": "rw",
+      "domain": "Standard English Conventions",
+      "skill": "Form, Structure, and Sense",
+      "difficulty": "medium",
+      "passage": "By the time the rescue team arrived, the hikers ______ two nights on the ridge.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        "spend",
+        "have spent",
+        "had spent",
+        "will spend"
+      ],
+      "answer": 2,
+      "explanation": "\"By the time the rescue team arrived\" places one past event before another past event, which calls for the past perfect: \"had spent.\" The other tenses do not sit before a past arrival."
+    },
+    {
+      "id": "m-013",
+      "section": "math",
+      "domain": "Algebra",
+      "skill": "Linear equations in two variables",
+      "difficulty": "easy",
+      "stem": "The line y = 2x − 3 passes through the point (4, k). What is the value of k?",
+      "type": "spr",
+      "answer": "5",
+      "explanation": "Substitute x = 4: y = 2(4) − 3 = 8 − 3 = 5. So k = 5."
+    },
+    {
+      "id": "m-014",
+      "section": "math",
+      "domain": "Algebra",
+      "skill": "Linear inequalities",
+      "difficulty": "medium",
+      "stem": "Which of the following values of x satisfies the inequality 4x − 5 > 11?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": 3,
+      "explanation": "Add 5 to both sides: 4x > 16. Divide by 4: x > 4. The only choice greater than 4 is 5. Note that 4 itself does not work, since the inequality is strict."
+    },
+    {
+      "id": "m-015",
+      "section": "math",
+      "domain": "Problem-Solving and Data Analysis",
+      "skill": "Two-variable data: models and scatterplots",
+      "difficulty": "medium",
+      "stem": "A scatterplot shows the relationship between the number of hours per day a plant is exposed to sunlight, s, and its height, h, in centimeters. The line of best fit is h = 3.2s + 4. According to the model, what is the predicted increase in height for each additional hour of daily sunlight?",
+      "choices": [
+        "3.2 cm",
+        "4 cm",
+        "7.2 cm",
+        "12.8 cm"
+      ],
+      "answer": 0,
+      "explanation": "In h = 3.2s + 4, the slope 3.2 is the change in h for each 1-unit increase in s. The 4 is the predicted height with zero sunlight (the intercept), not a rate."
+    },
+    {
+      "id": "m-016",
+      "section": "math",
+      "domain": "Problem-Solving and Data Analysis",
+      "skill": "Probability and conditional probability",
+      "difficulty": "medium",
+      "stem": "A bag contains 5 red marbles, 3 blue marbles, and 2 green marbles. If one marble is selected at random, what is the probability that it is not red?",
+      "choices": [
+        "1/5",
+        "3/10",
+        "1/2",
+        "4/5"
+      ],
+      "answer": 2,
+      "explanation": "There are 10 marbles in all and 5 are not red (3 blue + 2 green), so the probability is 5/10 = 1/2. Equivalently, 1 − P(red) = 1 − 5/10."
+    },
+    {
+      "id": "m-017",
+      "section": "math",
+      "domain": "Geometry and Trigonometry",
+      "skill": "Lines, angles, and triangles",
+      "difficulty": "easy",
+      "stem": "Two angles of a triangle measure 35° and 65°. What is the measure, in degrees, of the third angle?",
+      "type": "spr",
+      "answer": "80",
+      "explanation": "The angles of a triangle sum to 180°: 180 − 35 − 65 = 80."
+    },
+    {
+      "id": "m-018",
+      "section": "math",
+      "domain": "Advanced Math",
+      "skill": "Systems of equations in two variables",
+      "difficulty": "hard",
+      "stem": "The graphs of y = x² and y = 2x + 3 intersect at two points. What is the sum of the x-coordinates of those points?",
+      "choices": [
+        "−2",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": 1,
+      "explanation": "Set the equations equal: x² = 2x + 3, so x² − 2x − 3 = 0, which factors as (x − 3)(x + 1) = 0. The x-coordinates are 3 and −1, and their sum is 2. (Shortcut: for x² + bx + c = 0 the roots sum to −b, here 2.)"
+    },
+    {
+      "id": "m-019",
+      "section": "math",
+      "domain": "Problem-Solving and Data Analysis",
+      "skill": "Inference from sample statistics and margin of error",
+      "difficulty": "medium",
+      "stem": "A random sample of 400 students at a school with 2,000 students found that 30% of the sample walk to school. Based on the sample, which of the following is the best estimate of the number of students at the school who walk to school?",
+      "choices": [
+        "120",
+        "300",
+        "600",
+        "1,400"
+      ],
+      "answer": 2,
+      "explanation": "A random sample lets you apply its proportion to the whole population: 30% of 2,000 = 600. Choice A applies 30% to the sample instead of the school."
+    },
+    {
+      "id": "m-020",
+      "section": "math",
+      "domain": "Problem-Solving and Data Analysis",
+      "skill": "Ratios, rates, proportional relationships, and units",
+      "difficulty": "easy",
+      "stem": "A recipe uses 3 cups of flour for every 2 cups of sugar. How many cups of flour are needed for 8 cups of sugar?",
+      "type": "spr",
+      "answer": "12",
+      "explanation": "Set up the proportion 3/2 = f/8. Cross-multiply: 2f = 24, so f = 12. Or notice 8 cups of sugar is 4 times the recipe, so 4 × 3 = 12 cups of flour."
+    },
+    {
+      "id": "m-021",
+      "section": "math",
+      "domain": "Advanced Math",
+      "skill": "Nonlinear functions",
+      "difficulty": "hard",
+      "stem": "The function f is defined by f(x) = x² − 4x + 7. What is the minimum value of f(x)?",
+      "choices": [
+        "−1",
+        "2",
+        "3",
+        "7"
+      ],
+      "answer": 2,
+      "explanation": "The parabola opens upward, so its minimum is at the vertex, x = −b/(2a) = 4/2 = 2. Then f(2) = 4 − 8 + 7 = 3. Choice B is the x-coordinate of the vertex, not the minimum value."
+    },
+    {
+      "id": "m-022",
+      "section": "math",
+      "domain": "Problem-Solving and Data Analysis",
+      "skill": "Percentages",
+      "difficulty": "hard",
+      "stem": "The price of an item is increased by 20%, and then the new price is decreased by 20%. The final price is what percent of the original price?",
+      "choices": [
+        "90%",
+        "96%",
+        "100%",
+        "104%"
+      ],
+      "answer": 1,
+      "explanation": "Multiply the factors: 1.20 × 0.80 = 0.96, so the final price is 96% of the original. The percentages do not cancel because the 20% decrease is taken from a larger number than the 20% increase was added to."
+    },
+    {
+      "id": "m-023",
+      "section": "math",
+      "domain": "Geometry and Trigonometry",
+      "skill": "Area and volume",
+      "difficulty": "medium",
+      "stem": "A right circular cylinder has a radius of 3 and a height of 10. What is the volume of the cylinder?",
+      "choices": [
+        "30π",
+        "60π",
+        "90π",
+        "180π"
+      ],
+      "answer": 2,
+      "explanation": "Volume of a cylinder = πr²h = π(3²)(10) = π(9)(10) = 90π."
+    },
+    {
+      "id": "m-024",
+      "section": "math",
+      "domain": "Problem-Solving and Data Analysis",
+      "skill": "Evaluating statistical claims",
+      "difficulty": "medium",
+      "stem": "A researcher wants to determine whether a new fertilizer causes tomato plants to grow taller. Which study design best supports a cause-and-effect conclusion?",
+      "choices": [
+        "Survey gardeners who chose to use the fertilizer about their plants' heights.",
+        "Randomly assign tomato plants to receive either the fertilizer or no fertilizer, then compare the heights.",
+        "Measure the tallest plants in a garden that uses the fertilizer.",
+        "Compare plant heights in two gardens that already differ in whether they use the fertilizer."
+      ],
+      "answer": 1,
+      "explanation": "Only random assignment to treatment and control groups supports a cause-and-effect conclusion, because it spreads other differences evenly between the groups. The other designs are observational: the gardens or gardeners chose the fertilizer themselves, so anything else about them could explain a height difference."
     }
   ]
 }
