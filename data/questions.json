@@ -1,0 +1,323 @@
+{
+  "meta": {
+    "note": "Sample bank for the ABLE Preps SAT practice prototype. Every item is original. Tags follow the College Board Digital SAT domain/skill taxonomy so the bank can grow into it. Each item is reviewed by a person before it ships; nothing here is auto-generated at runtime.",
+    "sections": {
+      "rw": { "name": "Reading and Writing", "domains": ["Information and Ideas", "Craft and Structure", "Expression of Ideas", "Standard English Conventions"] },
+      "math": { "name": "Math", "domains": ["Algebra", "Advanced Math", "Problem-Solving and Data Analysis", "Geometry and Trigonometry"] }
+    }
+  },
+  "questions": [
+    {
+      "id": "rw-001",
+      "section": "rw",
+      "domain": "Information and Ideas",
+      "skill": "Central Ideas and Details",
+      "difficulty": "easy",
+      "passage": "Urban beekeeping has grown rapidly over the past decade. Cities such as Paris and Toronto now host thousands of hives on rooftops and in parks. Proponents argue that city bees often thrive because urban gardens offer a wide variety of flowers throughout the growing season, whereas bees in farming regions may face vast fields planted with a single crop.",
+      "stem": "Which choice best states the main idea of the text?",
+      "choices": [
+        "Beekeeping in farming regions is declining because farms grow only one crop.",
+        "Urban beekeeping has expanded, in part because cities can offer bees a varied food supply.",
+        "Paris and Toronto have the largest bee populations of any cities in the world.",
+        "Bees kept in cities produce more honey than bees kept in the countryside."
+      ],
+      "answer": 1,
+      "explanation": "The text's first sentence introduces the growth of urban beekeeping, and the rest explains one reason for it: cities offer varied flowers. Choice B captures both. A overstates a comparison the text only hints at, C is not supported (the text says \"thousands of hives,\" not the largest populations), and D is never claimed."
+    },
+    {
+      "id": "rw-002",
+      "section": "rw",
+      "domain": "Information and Ideas",
+      "skill": "Command of Evidence",
+      "difficulty": "medium",
+      "passage": "A researcher hypothesizes that people retain information better when they read it on paper than when they read the same material on a screen.",
+      "stem": "Which finding, if true, would most directly support the researcher's hypothesis?",
+      "choices": [
+        "Participants who read a passage on paper recalled more details in a later test than participants who read the same passage on a screen.",
+        "Participants reported that reading on paper felt more comfortable than reading on a screen.",
+        "Participants finished reading the passage more quickly on a screen than on paper.",
+        "Participants who read on a screen said afterward that they would have preferred paper."
+      ],
+      "answer": 0,
+      "explanation": "The hypothesis is about retention. Only choice A measures retention directly (recall on a later test) and compares the two formats. B and D are about preference, and C is about speed; none of those show that information was retained better."
+    },
+    {
+      "id": "rw-003",
+      "section": "rw",
+      "domain": "Information and Ideas",
+      "skill": "Inferences",
+      "difficulty": "hard",
+      "passage": "Some historians have argued that the printing press caused a sudden rise in literacy in fifteenth-century Europe. Yet surviving records show that reading instruction remained rare for decades after presses appeared, and that most early printed books were purchased by institutions rather than by individuals. Taken together, these records suggest that ______",
+      "stem": "Which choice most logically completes the text?",
+      "choices": [
+        "the printing press was adopted across Europe more slowly than historians have assumed.",
+        "the spread of literacy depended on factors beyond the availability of printed books.",
+        "institutions, not individuals, were the primary producers of early printed books.",
+        "reading instruction became widespread as soon as printed books became affordable."
+      ],
+      "answer": 1,
+      "explanation": "The evidence (instruction stayed rare; books went to institutions) undercuts the idea that presses alone drove literacy, which points to B. A is about the pace of adoption, which the text does not address. C confuses buyers with producers. D contradicts the text, which says instruction remained rare."
+    },
+    {
+      "id": "rw-004",
+      "section": "rw",
+      "domain": "Craft and Structure",
+      "skill": "Words in Context",
+      "difficulty": "easy",
+      "passage": "The committee's decision was far from ______: members debated for hours before reaching a narrow majority.",
+      "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+      "choices": ["unanimous", "deliberate", "temporary", "predictable"],
+      "answer": 0,
+      "explanation": "A \"narrow majority\" after hours of debate means the members did not all agree, so the decision was far from unanimous. \"Deliberate\" would actually fit a long debate, and nothing in the text concerns whether the decision was temporary or predictable."
+    },
+    {
+      "id": "rw-005",
+      "section": "rw",
+      "domain": "Craft and Structure",
+      "skill": "Text Structure and Purpose",
+      "difficulty": "medium",
+      "passage": "Marine biologist Ana Ruiz spent three summers tagging sea turtles off the coast of Costa Rica. Her team's data revealed that the turtles returned to the same nesting beach each year with remarkable precision. Ruiz now hopes to determine how the animals navigate across thousands of miles of open ocean.",
+      "stem": "Which choice best describes the function of the third sentence in the text as a whole?",
+      "choices": [
+        "It presents a question raised by the findings described earlier in the text.",
+        "It summarizes the method the team used to gather its data.",
+        "It challenges the accuracy of the team's data.",
+        "It explains why the turtles prefer one particular beach."
+      ],
+      "answer": 0,
+      "explanation": "Sentences one and two describe the method and the finding; sentence three turns to what Ruiz wants to find out next, a question that the finding (precise return) raises. It does not summarize method (B), doubt the data (C), or explain the preference (D)."
+    },
+    {
+      "id": "rw-006",
+      "section": "rw",
+      "domain": "Craft and Structure",
+      "skill": "Cross-Text Connections",
+      "difficulty": "hard",
+      "passage": "Text 1\n\nMany educators believe that homework builds discipline and reinforces classroom learning, and they point to studies showing a modest correlation between time spent on homework and grades among high school students.\n\nText 2\n\nPsychologist Dana Cole notes that the correlation between homework and grades weakens or disappears among younger students. She argues that for elementary students, time spent on homework would be better spent on reading for pleasure and on unstructured play.",
+      "stem": "Based on the texts, how would Cole (Text 2) most likely respond to the educators described in Text 1?",
+      "choices": [
+        "By arguing that homework should be eliminated at every grade level.",
+        "By noting that the benefits they cite may not apply to younger students.",
+        "By agreeing that homework improves grades for students of all ages.",
+        "By questioning whether discipline can be measured at all."
+      ],
+      "answer": 1,
+      "explanation": "Cole does not dispute the high school correlation; she points out it fades for younger students, which is B. A goes further than she does (she addresses elementary students only), C contradicts her, and D raises a point neither text makes."
+    },
+    {
+      "id": "rw-007",
+      "section": "rw",
+      "domain": "Expression of Ideas",
+      "skill": "Transitions",
+      "difficulty": "easy",
+      "passage": "The museum's new wing was designed to maximize natural light. ______ nearly every gallery has floor-to-ceiling windows.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": ["However,", "Accordingly,", "In contrast,", "Nevertheless,"],
+      "answer": 1,
+      "explanation": "The second sentence is a consequence of the design goal in the first, so a cause-and-effect transition fits: \"Accordingly.\" The other three all signal contrast, which the sentences do not have."
+    },
+    {
+      "id": "rw-008",
+      "section": "rw",
+      "domain": "Expression of Ideas",
+      "skill": "Rhetorical Synthesis",
+      "difficulty": "medium",
+      "passage": "While researching a topic, a student has taken the following notes:\n\n• The Great Green Wall is a project to plant a belt of trees and restore land across Africa's Sahel region.\n• It was launched in 2007 by the African Union.\n• Its goal is to restore 100 million hectares of degraded land by 2030.\n• As of 2023, roughly 18 million hectares had been restored.\n• The project also aims to create millions of jobs.",
+      "stem": "The student wants to emphasize how much of the project's land-restoration goal remains unmet. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        "Launched in 2007, the Great Green Wall aims to restore land across Africa's Sahel region.",
+        "By 2023, the Great Green Wall had restored about 18 million hectares, less than a fifth of its 100-million-hectare goal.",
+        "The Great Green Wall is expected to create millions of jobs in the Sahel.",
+        "The African Union launched the Great Green Wall to restore 100 million hectares by 2030."
+      ],
+      "answer": 1,
+      "explanation": "Only B puts the progress (18 million) next to the goal (100 million) and states the gap, which is exactly what the student wants to emphasize. A, C, and D each state a fact from the notes but say nothing about how much remains."
+    },
+    {
+      "id": "rw-009",
+      "section": "rw",
+      "domain": "Standard English Conventions",
+      "skill": "Form, Structure, and Sense",
+      "difficulty": "easy",
+      "passage": "The collection of essays, which spans three decades of the author's career, ______ readers a rare view of her evolving style.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": ["offer", "offers", "have offered", "are offering"],
+      "answer": 1,
+      "explanation": "The subject is the singular noun \"collection\" (not \"essays,\" which sits inside the prepositional phrase \"of essays\"), so the verb must be singular: \"offers.\""
+    },
+    {
+      "id": "rw-010",
+      "section": "rw",
+      "domain": "Standard English Conventions",
+      "skill": "Boundaries",
+      "difficulty": "medium",
+      "passage": "Three elements make the bridge remarkable: its ______ its span, and its age.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": ["height;", "height,", "height:", "height—"],
+      "answer": 1,
+      "explanation": "The blank sits between the first and second items of a simple three-item list, which are separated by commas. Semicolons separate list items only when the items themselves contain commas; a colon or dash would wrongly break the list."
+    },
+    {
+      "id": "rw-011",
+      "section": "rw",
+      "domain": "Standard English Conventions",
+      "skill": "Form, Structure, and Sense",
+      "difficulty": "hard",
+      "passage": "Originally scheduled for March, ______",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        "the launch was pushed back to May by the engineering team.",
+        "the engineering team pushed the launch back to May.",
+        "May became the new date chosen by the engineering team.",
+        "the engineering team's plans for the launch were pushed back to May."
+      ],
+      "answer": 0,
+      "explanation": "The opening modifier \"Originally scheduled for March\" must describe the noun that follows it. Only the launch was scheduled for March, so \"the launch\" has to come right after the comma. B makes the team the scheduled thing, C makes May, and D makes the team's plans."
+    },
+    {
+      "id": "rw-012",
+      "section": "rw",
+      "domain": "Craft and Structure",
+      "skill": "Words in Context",
+      "difficulty": "medium",
+      "passage": "Although the novel was praised for its ambitious scope, some critics found its plot ______, noting that several storylines were introduced and then abandoned.",
+      "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+      "choices": ["cohesive", "fragmented", "conventional", "restrained"],
+      "answer": 1,
+      "explanation": "Storylines that are introduced and then abandoned make a plot broken into pieces: \"fragmented.\" \"Cohesive\" is the opposite, and neither \"conventional\" nor \"restrained\" describes abandoned storylines."
+    },
+
+    {
+      "id": "m-001",
+      "section": "math",
+      "domain": "Algebra",
+      "skill": "Linear equations in one variable",
+      "difficulty": "easy",
+      "stem": "If 3x + 7 = 22, what is the value of x?",
+      "type": "spr",
+      "answer": "5",
+      "explanation": "Subtract 7 from both sides: 3x = 15. Divide by 3: x = 5."
+    },
+    {
+      "id": "m-002",
+      "section": "math",
+      "domain": "Algebra",
+      "skill": "Linear functions",
+      "difficulty": "medium",
+      "stem": "A gym charges a one-time membership fee of $40 plus $25 per month. Which equation gives the total cost C, in dollars, of a membership lasting m months?",
+      "choices": ["C = 25 + 40m", "C = 40 + 25m", "C = 65m", "C = 40m − 25"],
+      "answer": 1,
+      "explanation": "The $40 is paid once, so it is the constant term. The $25 repeats each month, so it multiplies m: C = 40 + 25m. Choice A swaps the two amounts."
+    },
+    {
+      "id": "m-003",
+      "section": "math",
+      "domain": "Algebra",
+      "skill": "Systems of two linear equations",
+      "difficulty": "hard",
+      "stem": "The system of equations below has no solution. What is the value of k?\n\n2x + 3y = 12\n4x + ky = 20",
+      "type": "spr",
+      "answer": "6",
+      "explanation": "A system has no solution when the lines are parallel: same slope, different intercepts. Multiplying the first equation by 2 gives 4x + 6y = 24. For the second line to be parallel, its y-coefficient must match: k = 6. The constants differ (24 vs. 20), so the lines are distinct and never meet."
+    },
+    {
+      "id": "m-004",
+      "section": "math",
+      "domain": "Advanced Math",
+      "skill": "Equivalent expressions",
+      "difficulty": "easy",
+      "stem": "Which expression is equivalent to (x + 3)(x − 5)?",
+      "choices": ["x² − 2x − 15", "x² + 2x − 15", "x² − 8x − 15", "x² − 2x + 15"],
+      "answer": 0,
+      "explanation": "Expand: x·x = x², x·(−5) = −5x, 3·x = 3x, 3·(−5) = −15. Combine the middle terms: −5x + 3x = −2x. Result: x² − 2x − 15."
+    },
+    {
+      "id": "m-005",
+      "section": "math",
+      "domain": "Advanced Math",
+      "skill": "Nonlinear functions",
+      "difficulty": "medium",
+      "stem": "The population of a town is 8,000 and increases by 5% each year. Which function models the population P(t) after t years?",
+      "choices": ["P(t) = 8000(1.05)ᵗ", "P(t) = 8000(0.05)ᵗ", "P(t) = 8000 + 1.05t", "P(t) = 8000(1.5)ᵗ"],
+      "answer": 0,
+      "explanation": "A 5% yearly increase multiplies the population by 1.05 each year, so after t years it is 8000 × 1.05ᵗ. Choice B multiplies by 0.05 (a 95% drop), C is linear rather than exponential, and D uses 50% growth."
+    },
+    {
+      "id": "m-006",
+      "section": "math",
+      "domain": "Advanced Math",
+      "skill": "Nonlinear equations in one variable",
+      "difficulty": "hard",
+      "stem": "The equation x² − 6x + c = 0 has exactly one real solution. What is the value of c?",
+      "type": "spr",
+      "answer": "9",
+      "explanation": "A quadratic has exactly one real solution when its discriminant is zero: b² − 4ac = 0. Here (−6)² − 4(1)(c) = 36 − 4c = 0, so c = 9. (Check: x² − 6x + 9 = (x − 3)², one solution at x = 3.)"
+    },
+    {
+      "id": "m-007",
+      "section": "math",
+      "domain": "Problem-Solving and Data Analysis",
+      "skill": "Percentages",
+      "difficulty": "easy",
+      "stem": "A jacket originally priced at $80 is on sale for 25% off. What is the sale price of the jacket?",
+      "choices": ["$20", "$55", "$60", "$65"],
+      "answer": 2,
+      "explanation": "25% of $80 is $20, so the discount is $20 and the sale price is $80 − $20 = $60. Choice A is the discount itself, not the price."
+    },
+    {
+      "id": "m-008",
+      "section": "math",
+      "domain": "Problem-Solving and Data Analysis",
+      "skill": "Ratios, rates, proportional relationships, and units",
+      "difficulty": "medium",
+      "stem": "A car travels 210 miles using 6 gallons of gasoline. At the same rate, how many gallons of gasoline are needed to travel 350 miles?",
+      "choices": ["8", "9", "10", "12"],
+      "answer": 2,
+      "explanation": "The rate is 210 ÷ 6 = 35 miles per gallon. For 350 miles: 350 ÷ 35 = 10 gallons. Equivalently, set up the proportion 210/6 = 350/g and solve for g."
+    },
+    {
+      "id": "m-009",
+      "section": "math",
+      "domain": "Problem-Solving and Data Analysis",
+      "skill": "One-variable data: distributions and measures of center and spread",
+      "difficulty": "hard",
+      "stem": "The mean of a list of five numbers is 12. When a sixth number is added to the list, the mean of the six numbers is 14. What is the sixth number?",
+      "choices": ["16", "20", "24", "26"],
+      "answer": 2,
+      "explanation": "Mean × count = total. Five numbers with mean 12 total 5 × 12 = 60. Six numbers with mean 14 total 6 × 14 = 84. The sixth number is the difference: 84 − 60 = 24."
+    },
+    {
+      "id": "m-010",
+      "section": "math",
+      "domain": "Geometry and Trigonometry",
+      "skill": "Area and volume",
+      "difficulty": "easy",
+      "stem": "A rectangle has a length of 12 centimeters and a width of 5 centimeters. What is the area of the rectangle, in square centimeters?",
+      "choices": ["17", "34", "60", "120"],
+      "answer": 2,
+      "explanation": "Area of a rectangle = length × width = 12 × 5 = 60. Choice A is the sum of the sides and B is the perimeter."
+    },
+    {
+      "id": "m-011",
+      "section": "math",
+      "domain": "Geometry and Trigonometry",
+      "skill": "Right triangles and trigonometry",
+      "difficulty": "medium",
+      "stem": "A right triangle has legs of length 9 and 12. What is the length of the hypotenuse?",
+      "choices": ["13", "15", "18", "21"],
+      "answer": 1,
+      "explanation": "By the Pythagorean theorem, hypotenuse² = 9² + 12² = 81 + 144 = 225, so the hypotenuse is √225 = 15. (This is the 3-4-5 triangle scaled by 3.)"
+    },
+    {
+      "id": "m-012",
+      "section": "math",
+      "domain": "Geometry and Trigonometry",
+      "skill": "Circles",
+      "difficulty": "hard",
+      "stem": "A circle in the xy-plane has the equation x² + y² − 6x + 4y = 12. What is the radius of the circle?",
+      "choices": ["5", "12", "13", "25"],
+      "answer": 0,
+      "explanation": "Complete the square for each variable. x² − 6x becomes (x − 3)² − 9, and y² + 4y becomes (y + 2)² − 4. So (x − 3)² + (y + 2)² − 13 = 12, giving (x − 3)² + (y + 2)² = 25. The radius is √25 = 5; choice D is the radius squared."
+    }
+  ]
+}
