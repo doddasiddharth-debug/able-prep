@@ -3,6 +3,6 @@
    security on the `progress` table means a user can only ever read and write
    their own row. Leave both blank and the app runs without accounts. */
 window.ABLE_CONFIG = {
-  supabaseUrl: "",
-  supabaseAnonKey: ""
+  supabaseUrl: "https://kwtyihvcwydjwmmrrljg.supabase.co",
+  supabaseAnonKey: "sb_publishable_tFCjx9O1uKLqRuy_R1zfEA_FIs3Ti29"
 };
