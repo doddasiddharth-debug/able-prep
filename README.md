@@ -11,7 +11,7 @@ student does stays in their browser.
 |---|---|
 | **Dashboard** | Predicted score (from recent answers), "Focus next" weakest domains, streak, days to test day, the next study-plan session, activity heatmap |
 | **Question bank** | Every College Board skill (10 R&W, 19 Math) with question counts, solved counts, and your accuracy; drill by skill, domain, or difficulty; untimed with explanations |
-| **Practice tests** | Timed modules per section at the real test's pace, Bluebook-style screen, score report by domain plus an estimated 200–800 section score; attempt history |
+| **Practice tests** | Full-length timed modules (27 R&W / 22 Math) at the real test's pace, Bluebook-style screen, score report by domain plus an estimated 200–800 section score; attempt history |
 | **Question Rush** | One question at a time against a per-question clock; stars for speed and accuracy |
 | **Challenge questions** | Hard-tier only, per section |
 | **Vocabulary** | Flashcards and a definition quiz; words count as mastered after two correct answers |

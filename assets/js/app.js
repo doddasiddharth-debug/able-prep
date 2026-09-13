@@ -5,7 +5,7 @@
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const SECONDS_PER_Q = { rw: (32 * 60) / 27, math: (35 * 60) / 22 };
-  const MODULE_SIZE = { rw: 12, math: 12 };
+  const MODULE_SIZE = { rw: 27, math: 22 }; // the real module lengths
 
   let bank = null, vocab = null;
   const secName = (s) => (s === "all" ? "Both sections" : bank.meta.sections[s].name);
@@ -158,13 +158,13 @@
   PAGES.tests = () => {
     const attempts = Store.load().attempts.filter((a) => a.mode === "test").slice().reverse();
     $("page").innerHTML = `
-      <div class="page-head"><p class="eyebrow">Practice tests</p><h1>Timed modules, real pacing.</h1><p class="lede">One section on the clock in the same layout as the real test. No feedback until you finish; then a score report by domain and an estimated section score.</p></div>
+      <div class="page-head"><p class="eyebrow">Practice tests</p><h1>Timed modules, real pacing.</h1><p class="lede">One full-length section on the clock in the same layout as the real test: 27 Reading and Writing questions in 32 minutes, or 22 Math questions in 35. No feedback until you finish; then a score report by domain and an estimated section score.</p></div>
       <div class="two-col">
         ${["rw", "math"].map((s) => { const n = Math.min(MODULE_SIZE[s], bank.questions.filter((q) => q.section === s).length); return `
         <section class="card module-card">
           <p class="eyebrow">${s === "rw" ? "Section 1" : "Section 2"}</p>
           <h2>${secName(s)}</h2>
-          <p>${n} questions · ${fmtMin(moduleSeconds(s, n))}. The real module is ${s === "rw" ? "27 questions in 32 minutes" : "22 questions in 35 minutes"}; the clock here is scaled to the same pace.</p>
+          <p>${n} questions · ${fmtMin(moduleSeconds(s, n))}, the same length and pace as a real module. Every attempt draws a fresh set from the bank.</p>
           <ul class="ticks"><li>Mark for Review and the question navigator</li><li>Answer eliminator</li><li>${s === "math" ? "Desmos calculator and grid-in questions" : "Passages side by side with the question"}</li></ul>
           <button class="btn btn-primary" data-module="${s}">Start module</button>
         </section>`; }).join("")}
@@ -426,7 +426,7 @@
   };
 
   // ---------------------------------------------------------------- boot
-  Promise.all([fetch("data/questions.json").then((r) => r.json()), fetch("data/vocab.json").then((r) => r.json())])
+  Promise.all([fetch("data/questions.json?v=3").then((r) => r.json()), fetch("data/vocab.json?v=3").then((r) => r.json())])
     .then(([q, v]) => {
       bank = q; vocab = v;
       Practice.init();
