@@ -1,32 +1,40 @@
 /* ==========================================================================
    ABLE Preps · SAT Practice
-   Two vocabularies on purpose. The app shell speaks ABLE: indigo, the gold
-   of the Preps mark, Fraunces headlines. The practice screen speaks Bluebook:
+   Two vocabularies on purpose. The app shell speaks ABLE Preps: the mark's
+   orange-to-olive gradient and gold swoosh, warm paper, Fraunces headlines.
+   The practice screen speaks Bluebook:
    white, grey hairlines, blue selection, Noto Serif passages. The point of the
    practice screen is to look like the real test, not like us.
    ========================================================================== */
 
 :root {
-  --bg: #F7F8FD;
+  /* Sampled from logo-preps.png: the A runs #F29507 at the apex through
+     #D98F16 and #BD8728 to #A48037 at the feet; the swoosh is #EAB54D.
+     The bright orange only clears 2.2:1 on the page, so it lives in the
+     numeral gradients and the mark itself; --accent (3.2:1) is for graphics
+     and --accent-dark (5.8:1) for any orange text. */
+  --bg: #FBF8F1;
   --paper: #FFFFFF;
-  --ink: #14143A;
-  --ink-soft: #4A4D70;
-  --muted: #63688C;
-  --line: #E0E3F2;
-  --line-strong: #C7CBE6;
-  --accent: #2B2BC4;
-  --accent-dark: #1B1B8F;
-  --accent-tint: #E4E4FA;
-  --gold: #F0C048;
-  --preps: #BD7305;        /* the Preps mark's orange, for the brand accents */
+  --ink: #2A2210;
+  --ink-soft: #5C4E2A;
+  --muted: #7A6A3D;
+  --line: #EAE2CF;
+  --line-strong: #D6CBAE;
+  --accent: #C47A0A;
+  --accent-dark: #8F5405;
+  --accent-tint: #FCEED9;
+  --accent-hot: #F29507;
+  --accent-deep: #A48037;
+  --gold: #EAB54D;
+  --preps: #C47A0A;
   --preps-tint: #FCEED9;
-  --panel: #14143A;
+  --panel: #2A2210;
   --good: #1E7217;  --good-tint: #E0F7DE;
   --mid: #905804;   --mid-tint: #FCEED9;
   --bad: #BC0606;   --bad-tint: #FCD9D9;
   --radius-sm: 8px; --radius-md: 12px; --radius-lg: 20px;
-  --shadow-sm: 0 1px 2px rgba(20, 20, 58, 0.05), 0 2px 8px rgba(20, 20, 58, 0.05);
-  --shadow-md: 0 2px 6px rgba(20, 20, 58, 0.06), 0 12px 32px rgba(20, 20, 58, 0.10);
+  --shadow-sm: 0 1px 2px rgba(42, 34, 16, 0.05), 0 2px 8px rgba(42, 34, 16, 0.05);
+  --shadow-md: 0 2px 6px rgba(42, 34, 16, 0.06), 0 12px 32px rgba(42, 34, 16, 0.10);
   --font-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-head: "Fraunces", Georgia, serif;
   --sidebar: 248px;
@@ -40,7 +48,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--bg); color: var(--ink-soft); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-::selection { background: var(--gold); color: var(--panel); }
+::selection { background: var(--gold); color: var(--ink); }
 h1, h2, h3 { font-family: var(--font-head); font-weight: 600; color: var(--ink); line-height: 1.14; letter-spacing: -0.01em; margin: 0 0 0.5em; }
 h2 { font-size: 21px; }
 p { margin: 0 0 1em; }
@@ -56,7 +64,7 @@ img { max-width: 100%; display: block; }
 .btn:hover { transform: translateY(-1px); }
 .btn:disabled { opacity: 0.45; cursor: default; transform: none; }
 .btn-primary { background: var(--panel); color: #fff; }
-.btn-primary:hover { background: var(--accent-dark); }
+.btn-primary:hover { background: #4A3A14; }
 .btn-outline { background: transparent; color: var(--ink); border-color: var(--line-strong); }
 .btn-outline:hover { border-color: var(--ink); }
 .btn-sm { padding: 8px 16px; font-size: 13.5px; }
@@ -116,7 +124,7 @@ img { max-width: 100%; display: block; }
 .seg button { border: none; background: none; padding: 7px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 500; color: var(--ink-soft); }
 .seg button.on { background: var(--panel); color: #fff; font-weight: 600; }
 .range-row { display: flex; align-items: center; gap: 10px; font-weight: 400; }
-.range-row input[type="range"] { flex: 1; accent-color: var(--accent); }
+.range-row input[type="range"] { flex: 1; accent-color: var(--accent-hot); }
 .range-row output { min-width: 2.2em; text-align: right; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
 .table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .table th { text-align: left; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 0 10px 8px 0; border-bottom: 1px solid var(--line); font-weight: 600; }
@@ -131,7 +139,7 @@ img { max-width: 100%; display: block; }
 .stat-label { display: flex; justify-content: space-between; gap: 12px; color: var(--ink); font-weight: 600; margin-bottom: 6px; }
 .stat-label small { color: var(--muted); font-weight: 500; white-space: nowrap; }
 .stat-bar { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
-.stat-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-dark)); border-radius: 4px; }
+.stat-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent-hot), var(--accent)); border-radius: 4px; }
 
 /* ---------- dashboard ---------- */
 .dash-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
@@ -142,7 +150,7 @@ img { max-width: 100%; display: block; }
 .card-actions { grid-column: span 6; }
 .card-activity { grid-column: span 6; }
 .dash-grid section:nth-child(2) { grid-column: span 2; }
-.pred-total { font-family: var(--font-body); font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--accent-dark); background: linear-gradient(115deg, var(--accent) 10%, var(--accent-dark) 55%, #33339A 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; width: fit-content; margin: 6px 0 4px; }
+.pred-total { font-family: var(--font-body); font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--accent-dark); background: linear-gradient(160deg, var(--accent-hot) 0%, var(--accent) 45%, var(--accent-deep) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; width: fit-content; margin: 6px 0 4px; }
 .pred-total small { display: block; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; -webkit-text-fill-color: var(--muted); color: var(--muted); margin-top: 6px; font-weight: 600; }
 .pred-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
 .pred-split div { background: var(--bg); border-radius: var(--radius-md); padding: 12px 14px; }
@@ -162,7 +170,7 @@ img { max-width: 100%; display: block; }
 .action-grid span { font-size: 12.5px; color: var(--muted); }
 .heatmap { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 12px); grid-auto-columns: 12px; gap: 3px; overflow-x: auto; padding-bottom: 4px; }
 .heatmap i, .heat-legend i { display: block; width: 12px; height: 12px; border-radius: 2px; background: var(--line); }
-.hm-1 { background: #C7C7F2 !important; } .hm-2 { background: #8F8FE3 !important; } .hm-3 { background: #5656D0 !important; } .hm-4 { background: var(--accent-dark) !important; }
+.hm-1 { background: #F5DFB5 !important; } .hm-2 { background: var(--gold) !important; } .hm-3 { background: var(--accent) !important; } .hm-4 { background: var(--accent-dark) !important; }
 .heat-legend { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--muted); margin-top: 8px; }
 .heat-legend span { margin: 0 4px; }
 
@@ -228,7 +236,7 @@ img { max-width: 100%; display: block; }
 .results h2 { font-size: 20px; margin-top: 36px; }
 .score-row { display: flex; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-top: 8px; }
 .score-big { display: flex; flex-direction: column; }
-.score-big span { font-family: var(--font-body); font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--accent-dark); background: linear-gradient(115deg, var(--accent) 10%, var(--accent-dark) 55%, #33339A 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; width: fit-content; }
+.score-big span { font-family: var(--font-body); font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--accent-dark); background: linear-gradient(160deg, var(--accent-hot) 0%, var(--accent) 45%, var(--accent-deep) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; width: fit-content; }
 .score-big small { font-size: 15px; color: var(--muted); margin-top: 6px; }
 .score-time { font-size: 14px; color: var(--muted); padding-bottom: 8px; }
 .estimate { display: flex; align-items: center; gap: 22px; margin-top: 24px; padding: 20px 24px; }
@@ -343,9 +351,27 @@ img { max-width: 100%; display: block; }
 .nav-q.marked::after { content: ""; position: absolute; top: -5px; right: -5px; width: 10px; height: 10px; border-radius: 50%; background: var(--bb-mark); }
 .nav-q.current::before { content: ""; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background: var(--bb-ink); }
 .nav-q.current { border-style: solid; }
-.calc-panel { position: fixed; top: 76px; right: 16px; bottom: 76px; width: min(480px, calc(100vw - 32px)); z-index: 25; background: #fff; border: 1px solid var(--bb-line); border-radius: 10px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18); display: flex; flex-direction: column; overflow: hidden; }
-.calc-head { display: flex; justify-content: space-between; align-items: center; padding: 8px 8px 8px 14px; border-bottom: 1px solid var(--bb-line); font-size: 13.5px; font-weight: 600; }
+.calc-panel {
+  position: fixed; top: 76px; right: 16px; width: min(480px, calc(100vw - 32px)); height: calc(100vh - 152px); z-index: 25;
+  background: #fff; border: 1px solid var(--bb-line); border-radius: 10px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  display: flex; flex-direction: column; overflow: hidden; min-width: min(320px, calc(100vw - 32px)); min-height: min(280px, calc(100vh - 152px));
+}
+/* Expanded: fills the space between the top and bottom bars. !important so it
+   wins over the inline left/top/width/height a drag or resize leaves behind. */
+.calc-panel.max { left: 16px !important; top: 76px !important; right: 16px !important; width: auto !important; height: calc(100vh - 152px) !important; }
+.calc-head { display: flex; align-items: center; gap: 6px; padding: 6px 6px 6px 14px; border-bottom: 1px solid var(--bb-line); font-size: 13.5px; font-weight: 600; cursor: move; user-select: none; touch-action: none; }
+.calc-head span { flex: 1; }
+.calc-head .grip { color: var(--bb-line); letter-spacing: 1px; margin-right: 6px; font-weight: 400; }
+.calc-btn { background: none; border: 1px solid transparent; border-radius: 5px; width: 28px; height: 28px; display: grid; place-items: center; color: var(--bb-soft); font-size: 15px; line-height: 1; }
+.calc-btn:hover { background: #F3F3F3; color: var(--bb-ink); }
 .calc-panel iframe { flex: 1; border: none; width: 100%; }
+/* While dragging or resizing, the iframe must not swallow the pointer. */
+.calc-shield { position: absolute; inset: 0; display: none; }
+.calc-panel.moving .calc-shield { display: block; }
+.calc-panel.moving { box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28); }
+.calc-resize { position: absolute; right: 0; bottom: 0; width: 18px; height: 18px; cursor: nwse-resize; touch-action: none; }
+.calc-resize::before { content: ""; position: absolute; right: 4px; bottom: 4px; width: 8px; height: 8px; border-right: 2px solid var(--bb-soft); border-bottom: 2px solid var(--bb-soft); opacity: 0.6; }
+.calc-panel.max .calc-resize { display: none; }
 
 /* ==========================================================================
    RESPONSIVE

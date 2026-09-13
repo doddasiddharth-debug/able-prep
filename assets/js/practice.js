@@ -353,6 +353,7 @@ window.Practice = (() => {
     $("btn-timer-toggle").addEventListener("click", () => { S.timerHidden = !S.timerHidden; $("timer-text").hidden = S.timerHidden; $("btn-timer-toggle").textContent = S.timerHidden ? "Show" : "Hide"; });
     $("btn-calc").addEventListener("click", () => { const p = $("calc-panel"); p.hidden = !p.hidden; if (!p.hidden && !$("calc-frame").src) $("calc-frame").src = "https://www.desmos.com/calculator"; });
     $("btn-calc-close").addEventListener("click", () => { $("calc-panel").hidden = true; });
+    initCalcPanel();
     document.addEventListener("keydown", (e) => {
       if (!S || $("view-practice").hidden) return;
       const tag = e.target.tagName;
@@ -363,6 +364,72 @@ window.Practice = (() => {
       if ((e.key === "ArrowRight") || (e.key === "Enter" && tag !== "BUTTON")) { e.preventDefault(); next(); }
       if (e.key === "ArrowLeft" && S.mode !== "rush") goTo(S.index - 1);
       if (e.key === "Escape") { $("nav-pop").hidden = true; $("calc-panel").hidden = true; }
+    });
+  };
+
+  // The calculator floats like Bluebook's: drag it by the header, resize from
+  // the corner, or expand it to fill the screen. Pointer events with capture,
+  // so a fast drag that leaves the header still tracks; the shield covers the
+  // iframe during a move because an iframe eats pointer events it receives.
+  const initCalcPanel = () => {
+    const panel = $("calc-panel"), head = $("calc-head"), grip = $("calc-resize");
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+    const pin = () => {
+      // Convert the CSS-positioned default (right/top) into explicit left/top
+      // and size, so subsequent moves are simple arithmetic.
+      const r = panel.getBoundingClientRect();
+      panel.style.left = r.left + "px"; panel.style.top = r.top + "px";
+      panel.style.right = "auto"; panel.style.width = r.width + "px"; panel.style.height = r.height + "px";
+    };
+    let drag = null;
+    head.addEventListener("pointerdown", (e) => {
+      if (e.target.closest("button") || panel.classList.contains("max")) return;
+      pin();
+      const r = panel.getBoundingClientRect();
+      drag = { dx: e.clientX - r.left, dy: e.clientY - r.top };
+      head.setPointerCapture(e.pointerId);
+      panel.classList.add("moving");
+    });
+    head.addEventListener("pointermove", (e) => {
+      if (!drag) return;
+      panel.style.left = clamp(e.clientX - drag.dx, 0, innerWidth - panel.offsetWidth) + "px";
+      panel.style.top = clamp(e.clientY - drag.dy, 0, innerHeight - panel.offsetHeight) + "px";
+    });
+    const endDrag = () => { drag = null; panel.classList.remove("moving"); };
+    head.addEventListener("pointerup", endDrag);
+    head.addEventListener("pointercancel", endDrag);
+    head.addEventListener("dblclick", (e) => { if (!e.target.closest("button")) toggleMax(); });
+
+    let rs = null;
+    grip.addEventListener("pointerdown", (e) => {
+      pin();
+      const r = panel.getBoundingClientRect();
+      rs = { x: e.clientX, y: e.clientY, w: r.width, h: r.height, left: r.left, top: r.top };
+      grip.setPointerCapture(e.pointerId);
+      panel.classList.add("moving");
+      e.preventDefault();
+    });
+    grip.addEventListener("pointermove", (e) => {
+      if (!rs) return;
+      panel.style.width = clamp(rs.w + (e.clientX - rs.x), Math.min(320, innerWidth - 32), innerWidth - rs.left) + "px";
+      panel.style.height = clamp(rs.h + (e.clientY - rs.y), Math.min(280, innerHeight - 152), innerHeight - rs.top) + "px";
+    });
+    const endResize = () => { rs = null; panel.classList.remove("moving"); };
+    grip.addEventListener("pointerup", endResize);
+    grip.addEventListener("pointercancel", endResize);
+
+    const toggleMax = () => {
+      const on = panel.classList.toggle("max");
+      $("btn-calc-max").textContent = on ? "⤡" : "⤢";
+      $("btn-calc-max").setAttribute("aria-label", on ? "Restore calculator size" : "Expand calculator");
+      $("btn-calc-max").title = on ? "Restore" : "Expand";
+    };
+    $("btn-calc-max").addEventListener("click", toggleMax);
+    // If the window shrinks under a pinned panel, pull it back on screen.
+    window.addEventListener("resize", () => {
+      if (panel.hidden || !panel.style.left) return;
+      panel.style.left = clamp(parseFloat(panel.style.left), 0, Math.max(0, innerWidth - panel.offsetWidth)) + "px";
+      panel.style.top = clamp(parseFloat(panel.style.top), 0, Math.max(0, innerHeight - panel.offsetHeight)) + "px";
     });
   };
 
