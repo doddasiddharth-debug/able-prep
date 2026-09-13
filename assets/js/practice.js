@@ -13,7 +13,7 @@ window.Practice = (() => {
   const DIRECTIONS = {
     rw: "The questions in this section address a number of important reading and writing skills. Each question includes one or more passages, which may include a table or graph. Read each passage and question carefully, and then choose the best answer to the question based on the passage(s). All questions in this section are multiple-choice with four answer choices. Each question has a single best answer.",
     math: "The questions in this section address a number of important math skills. Use of a calculator is permitted for all questions. For multiple-choice questions, solve each problem and choose the correct answer from the choices provided. For student-produced response questions, solve each problem and enter your answer in the box. Figures are drawn to scale unless otherwise noted. All variables and expressions represent real numbers unless otherwise noted.",
-    rush: "One question at a time, against the clock. Answer before the timer runs out; the next question loads as soon as you answer. Stars reward speed and accuracy together."
+    rush: "Answer each question before the timer runs out. The next question loads as soon as you answer."
   };
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -53,7 +53,7 @@ window.Practice = (() => {
     };
     const sec = S.section === "all" ? null : S.section;
     const isRush = S.mode === "rush", isTimed = S.mode === "test" || S.mode === "diagnostic";
-    $("test-section").textContent = (S.mode === "review" ? "Review · " : "") + S.label;
+    $("test-section").textContent = (S.mode === "review" ? "Review: " : "") + S.label;
     $("directions-text").textContent = isRush ? DIRECTIONS.rush : sec ? DIRECTIONS[sec] : DIRECTIONS.rw + " " + DIRECTIONS.math;
     $("directions").hidden = true;
     $("btn-calc").hidden = sec === "rw";
@@ -141,8 +141,8 @@ window.Practice = (() => {
       const ok = isCorrect(q), answered = isAnswered(q);
       fb.hidden = false;
       fb.className = "q-feedback " + (ok ? "correct" : "wrong");
-      const t = S.times[q.id] ? ` · ${Math.round(S.times[q.id])}s` : "";
-      fb.innerHTML = `<strong>${ok ? "Correct." : answered ? "Not quite." : "Skipped."}</strong>${esc(q.explanation)}<div class="tag">${esc(q.domain)} · ${esc(q.skill)} · ${esc(q.difficulty)}${t}</div>`;
+      const t = S.times[q.id] ? `, ${Math.round(S.times[q.id])}s` : "";
+      fb.innerHTML = `<strong>${ok ? "Correct" : answered ? "Incorrect" : "Skipped"}</strong>${esc(q.explanation)}<div class="tag">${esc(q.skill)}, ${esc(q.difficulty)}${t}</div>`;
     } else { fb.hidden = true; }
     if (S.mode === "rush") startQuestionClock();
     syncButtons();
@@ -234,7 +234,7 @@ window.Practice = (() => {
     S.remaining = S.seconds; tick();
     S.timerId = setInterval(() => {
       S.remaining--; tick();
-      if (S.remaining <= 0) { stopTimers(); alert("Time's up. Let's see how you did."); finish(); }
+      if (S.remaining <= 0) { stopTimers(); alert("Time is up."); finish(); }
     }, 1000);
   };
   const tick = () => {
@@ -284,44 +284,44 @@ window.Practice = (() => {
     const correctOf = (q) => { const a = s.answers[q.id]; return isSpr(q) ? typeof a === "string" && normalizeSpr(a) === normalizeSpr(q.answer) : a === q.answer; };
     const answeredOf = (q) => { const a = s.answers[q.id]; return isSpr(q) ? typeof a === "string" && a.trim() !== "" : Number.isInteger(a); };
     const ok = qs.filter(correctOf).length;
-    const names = { bank: "Question bank", test: "Timed module", diagnostic: "Diagnostic", rush: "Question Rush" };
+    const names = { bank: "Question bank", test: "Practice test", diagnostic: "Diagnostic", rush: "Question Rush" };
     $("results-eyebrow").textContent = names[s.mode] || "Session";
     $("results-title").textContent = s.label;
     $("score-pct").textContent = `${Math.round(100 * ok / qs.length)}%`;
     $("score-frac").textContent = `${ok} of ${qs.length} correct`;
-    $("score-time").textContent = s.elapsed ? `Time: ${fmtTime(s.elapsed)}${s.mode === "test" || s.mode === "diagnostic" ? ` of ${fmtTime(s.seconds)}` : ""}` : "";
+    $("score-time").textContent = s.elapsed ? `${fmtTime(s.elapsed)}${s.mode === "test" || s.mode === "diagnostic" ? ` of ${fmtTime(s.seconds)}` : ""}` : "";
 
     // Estimate card: modules get a section estimate, the diagnostic a total.
     const est = $("score-estimate");
     if (s.mode === "test" && s.section !== "all") {
       est.hidden = false;
-      est.innerHTML = `<div class="est-num">${Scoring.scaled(s.section, ok / qs.length)}</div><div class="est-label">Estimated ${esc(s.label)} score<br><small>200–800 · from this module alone; an estimate, not a prediction</small></div>`;
+      est.innerHTML = `<div class="est-num">${Scoring.scaled(s.section, ok / qs.length)}</div><div class="est-label">Estimated ${esc(s.label)} score<br><small>200 to 800</small></div>`;
     } else if (s.mode === "diagnostic") {
       const rw = qs.filter((q) => q.section === "rw"), m = qs.filter((q) => q.section === "math");
       const rwS = Scoring.scaled("rw", rw.filter(correctOf).length / rw.length), mS = Scoring.scaled("math", m.filter(correctOf).length / m.length);
       est.hidden = false;
-      est.innerHTML = `<div class="est-num">${rwS + mS}</div><div class="est-label">Estimated total · R&amp;W ${rwS} · Math ${mS}<br><small>400–1600 · a range of about ±60 is realistic from a short diagnostic</small></div>`;
+      est.innerHTML = `<div class="est-num">${rwS + mS}</div><div class="est-label">Estimated total<br><small>Reading and Writing ${rwS}, Math ${mS}</small></div>`;
     } else if (s.mode === "rush") {
       const stars = s.stars || 0, max = qs.length * 3;
       const avg = qs.reduce((a, q) => a + (s.times[q.id] || 0), 0) / qs.length;
       est.hidden = false;
-      est.innerHTML = `<div class="est-num">${"★".repeat(Math.min(3, Math.round(3 * stars / max)))}<span class="est-dim">${"★".repeat(3 - Math.min(3, Math.round(3 * stars / max)))}</span></div><div class="est-label">${stars} of ${max} stars · ${avg.toFixed(1)}s average per question · pace ${s.pace}s<br><small>3 stars: correct in under half the pace · 2: correct within pace · 1: correct but slow</small></div>`;
+      est.innerHTML = `<div class="est-num">${"★".repeat(Math.min(3, Math.round(3 * stars / max)))}<span class="est-dim">${"★".repeat(3 - Math.min(3, Math.round(3 * stars / max)))}</span></div><div class="est-label">${stars} of ${max} stars<br><small>${avg.toFixed(1)}s average per question</small></div>`;
     } else { est.hidden = true; }
 
     const by = {};
     qs.forEach((q) => { const d = by[q.domain] || (by[q.domain] = { n: 0, ok: 0 }); d.n++; if (correctOf(q)) d.ok++; });
     $("domain-bars").innerHTML = Object.keys(by).map((d) => {
       const r = by[d]; const pct = Math.round(100 * r.ok / r.n);
-      return `<div class="stat"><div class="stat-label"><span>${esc(d)}</span><small>${r.ok}/${r.n} · ${pct}%</small></div><div class="stat-bar"><i style="width:${pct}%"></i></div></div>`;
+      return `<div class="stat"><div class="stat-label"><span>${esc(d)}</span><small>${r.ok}/${r.n}</small></div><div class="stat-bar"><i style="width:${pct}%"></i></div></div>`;
     }).join("");
 
     $("review-list").innerHTML = qs.map((q, i) => {
       const answered = answeredOf(q), correct = correctOf(q);
       const a = s.answers[q.id];
-      const yours = !answered ? "—" : isSpr(q) ? esc(a) : LETTERS[a];
+      const yours = !answered ? "-" : isSpr(q) ? esc(a) : LETTERS[a];
       const right = isSpr(q) ? esc(q.answer) : LETTERS[q.answer];
       const t = s.times[q.id] ? `${Math.round(s.times[q.id])}s` : "";
-      return `<li><button type="button" class="review-item" data-i="${i}"><span class="review-num ${correct ? "ok" : answered ? "no" : "skip"}">${i + 1}</span><span><span>${esc(q.stem.split("\n")[0]).slice(0, 110)}${q.stem.length > 110 ? "…" : ""}</span><div class="review-meta">${esc(q.skill)} · ${esc(q.difficulty)}${t ? " · " + t : ""}</div></span><span class="review-ans">${correct ? "✓ " + right : `You: ${yours} · Correct: ${right}`}</span></button></li>`;
+      return `<li><button type="button" class="review-item" data-i="${i}"><span class="review-num ${correct ? "ok" : answered ? "no" : "skip"}">${i + 1}</span><span><span>${esc(q.stem.split("\n")[0]).slice(0, 110)}${q.stem.length > 110 ? "…" : ""}</span><div class="review-meta">${esc(q.skill)}${t ? ", " + t : ""}</div></span><span class="review-ans">${correct ? right : `${yours} / ${right}`}</span></button></li>`;
     }).join("");
     $("review-list").querySelectorAll(".review-item").forEach((b) => b.addEventListener("click", () => {
       start({ mode: "review", section: s.section, label: s.label, questions: s.questions, answers: s.answers, checked: s.questions.map((q) => q.id), times: s.times, elapsed: s.elapsed, seconds: s.seconds, pace: s.pace, onExit: s.onExit, parent: s });
