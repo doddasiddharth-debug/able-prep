@@ -573,7 +573,7 @@
   };
 
   // ---------------------------------------------------------------- boot
-  Promise.all([fetch("data/questions.json?v=3").then((r) => r.json()), fetch("data/vocab.json?v=3").then((r) => r.json())])
+  Promise.all([fetch("data/questions.json?v=4").then((r) => r.json()), fetch("data/vocab.json?v=3").then((r) => r.json())])
     .then(([q, v]) => {
       bank = q; vocab = v;
       Practice.init();
