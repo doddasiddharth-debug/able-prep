@@ -81,9 +81,12 @@ window.Practice = (() => {
     if (!q.passage) { left.classList.add("empty"); $("passage").innerHTML = ""; return; }
     left.classList.remove("empty");
     // Tables in passages are plain text blocks; keep their columns aligned.
-    const html = esc(q.passage).replace(/^(Text [12])$/gm, "<strong>$1</strong>");
+    // Only the table block goes monospaced; the prose around it stays serif.
+    const html = q.passage.split("\n\n").map((blk) => {
+      const e = esc(blk).replace(/^(Text [12])$/gm, "<strong>$1</strong>");
+      return /^\S.*\s{2,}\S.*\n/.test(blk) || /\n\S.*\s{2,}\S/.test(blk) ? `<span class="tbl">${e}</span>` : e;
+    }).join("\n\n");
     $("passage").innerHTML = html;
-    $("passage").classList.toggle("mono-table", /\n\S+\s{2,}\S+/.test(q.passage));
     left.scrollTop = 0;
   };
 

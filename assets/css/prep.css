@@ -340,7 +340,7 @@ img { max-width: 100%; display: block; }
 .pane-left.empty + .pane-divider { display: none; }
 .test-body.math .pane-right { max-width: 760px; margin: 0 auto; }
 .passage { font-family: var(--font-passage); font-size: 16.5px; line-height: 1.75; color: var(--bb-ink); white-space: pre-wrap; }
-.passage.mono-table { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 14px; line-height: 1.6; }
+.passage .tbl { display: block; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13.5px; line-height: 1.6; background: #F7F7F7; border: 1px solid var(--bb-line); border-radius: 6px; padding: 10px 14px; overflow-x: auto; }
 /* The question header runs edge to edge across the right pane, like the
    grey band in Bluebook, and stays put while the choices scroll under it. */
 .q-head { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 14px; background: #F3F3F3; border-bottom: 1px solid var(--bb-line); margin: 0 -44px 20px; padding: 10px 44px; }
