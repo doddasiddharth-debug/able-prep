@@ -1,7 +1,8 @@
 /* ==========================================================================
    ABLE Preps · SAT Practice
    Two vocabularies on purpose. The app shell speaks ABLE Preps: the mark's
-   orange, on white, in Inter with DM Sans headings.
+   orange, the two golds of the SAT promo on ableinitiatives.com, and a true
+   black, on white, in Inter with DM Sans headings.
    The practice screen speaks Bluebook:
    white, grey hairlines, blue selection, Noto Serif passages. The point of the
    practice screen is to look like the real test, not like us.
@@ -13,20 +14,26 @@
      The bright orange only clears 2.2:1 on the page, so it lives in the
      numeral gradients and the mark itself; --accent (3.2:1) is for graphics
      and --accent-dark (5.8:1) for any orange text. */
+  /* The two golds of the SAT promo on ableinitiatives.com (the band and the
+     deeper swoosh across it), so the course and its advert match. Both are
+     light: text on them is --ink, never white (--ink on gold 10.9:1, on the
+     deep gold 8.2:1). */
+  --preps-gold: #E6B33F;
+  --preps-gold-deep: #CE9A22;
   --bg: #F6F3EC;
   --bg-alt: #EFEBE2;
   --paper: #FFFFFF;
-  --ink: #1A1714;
+  --ink: #0F0F0F;
   --ink-soft: #4A443C;
   --muted: #7A7268;
   --line: #E4DED2;
   --line-strong: #CFC7B7;
-  --side: #1C1917;
-  --side-ink: #D9D3C8;
+  --side: #0A0A0A;
+  --side-ink: #E4E0D8;
   --side-muted: #8C857A;
   --side-hover: rgba(255, 255, 255, 0.06);
-  --side-active: rgba(242, 149, 7, 0.18);
-  --side-active-ink: #F6B455;
+  --side-active: var(--preps-gold);
+  --side-active-ink: var(--ink);
   --accent: #C47A0A;
   --accent-dark: #8F5405;
   --accent-tint: #FCEED9;
@@ -35,7 +42,7 @@
   --gold: #EAB54D;
   --preps: #C47A0A;
   --preps-tint: #FCEED9;
-  --panel: #1C1917;
+  --panel: #0A0A0A;
   --good: #1E7217;  --good-tint: #E0F7DE;
   --mid: #905804;   --mid-tint: #FCEED9;
   --bad: #BC0606;   --bad-tint: #FCD9D9;
@@ -46,7 +53,7 @@
   --font-head: "DM Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --sidebar: 248px;
 
-  --bb-ink: #1E1E1E; --bb-soft: #505050; --bb-line: #D9D9D9;
+  --bb-ink: #111111; --bb-soft: #505050; --bb-line: #D9D9D9;
   --bb-blue: #2E5BFF; --bb-blue-tint: #EAF0FF;
   --bb-mark: #D9A400; --bb-mark-tint: #FFF6D6;
   --font-passage: "Noto Serif", Georgia, "Times New Roman", serif;
@@ -70,9 +77,9 @@ img { max-width: 100%; display: block; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 20px; border-radius: 999px; font-weight: 500; font-size: 14.5px; border: 1px solid transparent; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease; white-space: nowrap; text-decoration: none; }
 .btn:disabled { opacity: 0.45; cursor: default; transform: none; }
 .btn-primary { background: var(--panel); color: #fff; }
-.btn-primary:hover { background: #000; }
-.btn-accent { background: var(--accent); color: #fff; }
-.btn-accent:hover { background: #B06D08; }
+.btn-primary:hover { background: var(--preps-gold); color: var(--ink); }
+.btn-accent { background: var(--preps-gold); color: var(--ink); }
+.btn-accent:hover { background: var(--preps-gold-deep); }
 .btn-outline { background: var(--paper); color: var(--ink); border-color: var(--line-strong); }
 .btn-outline:hover { background: var(--bg-alt); border-color: var(--ink); }
 .btn-sm { padding: 7px 14px; font-size: 13.5px; }
@@ -96,6 +103,7 @@ img { max-width: 100%; display: block; }
 .nav-item.active { background: var(--side-active); color: var(--side-active-ink); }
 .nav-item .ico { flex: none; opacity: 0.7; }
 .nav-item.active .ico, .nav-item:hover .ico { opacity: 1; }
+.nav-item.active:hover { background: var(--preps-gold); color: var(--ink); }
 .sidebar-foot { margin-top: auto; padding: 18px 12px 4px; font-size: 12.5px; color: var(--side-muted); display: grid; gap: 4px; }
 .sidebar-foot a { color: var(--side-ink); font-weight: 500; text-decoration: none; }
 .sidebar-foot a:hover { color: #fff; }
@@ -104,7 +112,7 @@ img { max-width: 100%; display: block; }
 .topbar .menu-toggle, .topbar .brand-compact { display: none; }
 .account-bar { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 13.5px; color: var(--muted); }
 .account-bar .who { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink); text-decoration: none; font-weight: 500; max-width: 280px; }
-.account-bar .who i { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-style: normal; font-size: 12px; font-weight: 600; display: grid; place-items: center; flex: none; }
+.account-bar .who i { width: 26px; height: 26px; border-radius: 50%; background: var(--preps-gold); color: var(--ink); font-style: normal; font-size: 12px; font-weight: 600; display: grid; place-items: center; flex: none; }
 .account-bar .who span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .account-bar .who:hover { border-color: var(--ink); }
 .brand-compact { padding: 0; font-size: 16px; color: var(--ink); }
@@ -119,7 +127,7 @@ img { max-width: 100%; display: block; }
 .page-title { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
 .page-title h1 { margin: 0; }
 .ico { display: inline-block; vertical-align: -0.2em; }
-.spot { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--accent-tint); color: var(--accent-dark); flex: none; }
+.spot { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--preps-gold); color: var(--ink); flex: none; }
 .card > .spot { margin-bottom: 14px; }
 .stars { color: var(--accent-dark); white-space: nowrap; }
 .stars .ico { fill: var(--gold); stroke: var(--accent); }
@@ -172,7 +180,15 @@ img { max-width: 100%; display: block; }
 /* ---------- dashboard ---------- */
 .dash-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
 .dash-grid > .card { margin-bottom: 0; }
-.card-score { grid-column: span 2; grid-row: span 2; background: var(--accent-tint); border-color: #F0D3A3; }
+.card-score { grid-column: span 2; grid-row: span 2; background: var(--preps-gold); border-color: var(--preps-gold); position: relative; isolation: isolate; overflow: hidden; }
+/* The deeper gold swept across the corner, as on the homepage SAT promo. */
+.card-score::before { content: ""; position: absolute; z-index: -1; top: -30%; bottom: -30%; right: -38%; width: 80%; background: var(--preps-gold-deep); border-radius: 48% 40% 44% 52%; transform: rotate(-12deg); }
+.card-score .gauge-track { stroke: rgba(15, 15, 15, 0.14); }
+.card-score .gauge-fill { stroke: var(--ink); }
+.card-score .gauge-target { stroke: var(--ink); }
+.card-score .gauge-lbl { fill: var(--ink); }
+.card-score p, .card-score .fine { color: var(--ink); }
+.card-score .btn-primary:hover { background: #FFFFFF; color: var(--ink); }
 .gauge-wrap { position: relative; margin: 4px 0 6px; }
 .gauge { display: block; width: 100%; max-width: 260px; height: auto; overflow: visible; }
 .gauge-track { fill: none; stroke: rgba(164, 128, 55, 0.18); stroke-width: 14; stroke-linecap: round; }
@@ -196,7 +212,7 @@ img { max-width: 100%; display: block; }
 .ring-row { display: flex; align-items: center; gap: 16px; }
 .ring-row h2 { margin-bottom: 2px; }
 .card-score .pred-split div { background: rgba(255, 255, 255, 0.6); }
-.card-score .pred-total small, .card-score .pred-split span { color: var(--accent-dark); }
+.card-score .pred-total small, .card-score .pred-split span { color: var(--ink); }
 .card-streak { grid-column: span 2; display: flex; justify-content: space-around; align-items: center; gap: 12px; text-align: center; }
 .card-next { grid-column: span 4; }
 .card-actions { grid-column: span 6; }
