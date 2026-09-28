@@ -248,6 +248,8 @@ window.Practice = (() => {
     S.stars = S.mode === "rush" ? S.questions.reduce((sum, q) => sum + starsFor(q), 0) : undefined;
     Store.addAttempt({ mode: S.mode, section: S.section, label: S.label, ts: Date.now(), n: S.questions.length, correct: ok, seconds: S.elapsed, stars: S.stars });
     S.finished = true;
+    // Counted (anonymously) as "session-finished/<mode>[-<section>]"; see analytics.js.
+    window.ableTrack?.(`session-finished/${S.mode}${S.section ? "-" + S.section : ""}`);
     showResults();
   };
 

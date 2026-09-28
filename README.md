@@ -112,3 +112,19 @@ When any CSS or JS file changes, bump the `?v=` on its tag in `index.html`.
 
 SAT is a registered trademark of College Board, which is not involved with
 this project.
+
+## Visitor analytics
+
+Anonymous visitor counts come from [GoatCounter](https://www.goatcounter.com)
+(`assets/js/analytics.js`): no cookies, no personal data, nothing that
+identifies a visitor, so no cookie banner is needed. One GoatCounter site
+(code `siddo`, dashboard at https://siddo.goatcounter.com)
+covers every ABLE site: ableinitiatives.com, prep. and business.ableinitiatives.com,
+and Strands of Life. Each path is prefixed with its host to keep them apart.
+The same `analytics.js` is copied into each repo; keep the copies in step.
+
+Besides page views it records, as events: clicks on email links
+(`email/…`) and on links to other sites (`outbound/…`), and in the course apps
+`window.ableTrack(...)` calls (quizzes passed or failed, calculators used,
+courses completed, certificates made, downloaded or printed; SAT sessions
+finished). Visits from localhost are not counted.
