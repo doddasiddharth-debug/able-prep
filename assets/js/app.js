@@ -488,7 +488,7 @@
       <section class="card"><h2>Data</h2><p class="fine">${Auth.user() ? `Your progress is saved to your account (${esc(Auth.user().email)}) and to this browser.` : Auth.enabled ? `Your progress is stored in this browser. <a href="#/account">Create an account</a> to keep it across devices.` : "Your progress is stored in this browser only."}</p><button class="btn btn-outline btn-sm" id="reset-all">Reset progress</button></section>
       <section class="card"><h2>About</h2><p class="fine">Built by <a href="https://ableinitiatives.com">ABLE Initiatives</a>. Report a question issue at <a href="mailto:ableinitiativespchs@gmail.com">ableinitiativespchs@gmail.com</a>.</p><p class="fine">SAT is a registered trademark of College Board, which is not affiliated with this site.</p></section>`;
     $("settings-form").addEventListener("submit", (e) => { e.preventDefault(); const fd = new FormData(e.target); Store.setSettings({ name: fd.get("name").trim(), testDate: fd.get("testDate"), target: +fd.get("target") || 1300 }); render(); });
-    $("reset-all").addEventListener("click", () => { if (confirm(Auth.user() ? "Clear every answer, session, plan, and setting on this account and this browser?" : "Clear every answer, session, plan, and setting in this browser?")) { Store.reset(); render(); } });
+    $("reset-all").addEventListener("click", () => { if (confirm(Auth.user() ? "Clear every answer, session, plan, setting and College tool entry on this account and this browser?" : "Clear every answer, session, plan, setting and College tool entry in this browser?")) { Store.reset(); render(); } });
   };
 
   // ---- Account -----------------------------------------------------------
@@ -577,6 +577,7 @@
     .then(([q, v]) => {
       bank = q; vocab = v;
       Practice.init();
+      College.register({ PAGES, ROUTES, ICON, pageHead, esc, $, render });
       document.querySelectorAll(".nav-item[data-route]").forEach((a) => { a.insertAdjacentHTML("afterbegin", icon(a.dataset.route)); });
       $("menu-toggle").addEventListener("click", () => $("sidebar").classList.toggle("open"));
       window.addEventListener("hashchange", render);

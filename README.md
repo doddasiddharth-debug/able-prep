@@ -23,6 +23,11 @@ devices through Supabase.
 | **Score calculator** | Raw module scores → estimated scaled score |
 | **Settings** | Name (shown on the test screen), test date, target, reset |
 | **Account** | Sign in / create account (email + password), password reset, sync status, delete server data |
+| **College list** | Colleges you're considering with plan, deadline and status; each tagged reach / target / likely from your SAT score against the college's middle-50% range (admit rate under 20% is always a reach) |
+| **Scholarships** | Tracker with amount, deadline, what each needs and status; totals applied for and won, the next deadline, where to look, scam red flags |
+| **Application timeline** | Junior fall to senior spring checklist (no year-specific dates), checkable |
+| **Aid offers** | Up to three offers side by side: cost of attendance, net price (cost minus grants), still to cover after work-study and loans, four-year net price |
+| **Essay checker** | Word count against your limit, characters, paragraphs, sentences, most repeated words and filler words; the draft saves with your progress |
 
 The **practice screen** copies the real testing app's layout: passage left /
 question right (Math centres the question alone), Mark for Review, answer
@@ -42,10 +47,21 @@ supabase/schema.sql    the one table and its row-level-security policies
 assets/js/scoring.js   raw→scaled curves and the running prediction
 assets/js/practice.js  the session engine: bank / test / diagnostic / rush / review
 assets/js/app.js       router and every page
+assets/js/college.js   the College tools (college list, scholarships, timeline, aid, essay); registered into app.js's router
 data/questions.json    the question bank
 data/vocab.json        the word list
 assets/images/         ABLE Preps mark, favicon
 ```
+
+## College tools
+
+`college.js` adds five pages under **College** in the sidebar. Its data lives
+in `Store` under `college` and syncs with an account like everything else.
+List items carry an `updated` time so a merge keeps the newer copy, and a
+removed item leaves a tombstone in `college.removed` so a merge can't bring it
+back. Nothing states a year-specific date, price or rate: students enter their
+own numbers, and the guidance points to official sources (College Scorecard,
+StudentAid.gov, the FTC, CareerOneStop).
 
 ## Scoring
 

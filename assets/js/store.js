@@ -7,12 +7,18 @@
                correct, seconds, stars }
      settings  { name, testDate, target, daysPerWeek, sessionMinutes }
      plan      { createdAt, weeks: [{ start, sessions: [...] }] } | null
-     vocab     { word: { seen, right } }                                      */
+     vocab     { word: { seen, right } }
+     college   the College tools: { myScore, colleges: [...], scholarships: [...],
+               removed: { id: ts }, checklist: { id: { done, ts } },
+               aid: [3 offers], essay: { text, limit, updated } }. List items
+               carry `updated` so a merge keeps the newer copy, and deletions
+               leave a tombstone in `removed` so they don't come back.        */
 window.Store = (() => {
   "use strict";
   const KEY = "ablePrep.v2";
   const LEGACY = "ablePrep.history.v1";
-  const blank = () => ({ history: [], attempts: [], settings: { name: "", testDate: "", target: 1300, daysPerWeek: 4, sessionMinutes: 30 }, plan: null, vocab: {} });
+  const blankCollege = () => ({ myScore: "", colleges: [], scholarships: [], removed: {}, checklist: {}, aid: [{}, {}, {}], essay: { text: "", limit: 650, updated: 0 } });
+  const blank = () => ({ history: [], attempts: [], settings: { name: "", testDate: "", target: 1300, daysPerWeek: 4, sessionMinutes: 30 }, plan: null, vocab: {}, college: blankCollege() });
 
   let state = null;
   const load = () => {
@@ -24,6 +30,7 @@ window.Store = (() => {
       try { const old = JSON.parse(localStorage.getItem(LEGACY)); if (Array.isArray(old)) state.history = old.map((h) => ({ ...h, mode: h.mode || "bank", seconds: h.seconds || 0 })); } catch (e) { /* none */ }
     }
     state.settings = { ...blank().settings, ...(state.settings || {}) };
+    state.college = { ...blankCollege(), ...(state.college || {}) };
     return state;
   };
   const listeners = [];
@@ -34,7 +41,7 @@ window.Store = (() => {
   };
   const reset = () => { state = blank(); save(); };
   // Swap in a state built elsewhere (the merge after sign-in).
-  const replace = (next) => { state = { ...blank(), ...next }; state.settings = { ...blank().settings, ...(next.settings || {}) }; save(); };
+  const replace = (next) => { state = { ...blank(), ...next }; state.settings = { ...blank().settings, ...(next.settings || {}) }; state.college = { ...blankCollege(), ...(next.college || {}) }; save(); };
 
   // Union of two states, for a device that has practised offline and an
   // account that has practised elsewhere. Answers and sessions are keyed so
@@ -54,8 +61,31 @@ window.Store = (() => {
     out.plan = pa && pb ? (pa.createdAt >= pb.createdAt ? pa : pb) : (pa || pb || null);
     const words = new Set([...Object.keys(a.vocab || {}), ...Object.keys(b.vocab || {})]);
     words.forEach((w) => { const x = (a.vocab || {})[w] || { seen: 0, right: 0 }, y = (b.vocab || {})[w] || { seen: 0, right: 0 }; out.vocab[w] = { seen: Math.max(x.seen, y.seen), right: Math.max(x.right, y.right) }; });
+    out.college = mergeCollege({ ...blankCollege(), ...(a.college || {}) }, { ...blankCollege(), ...(b.college || {}) });
     return out;
   };
+
+  const mergeCollege = (a, b) => {
+    const out = blankCollege();
+    out.myScore = a.myScore || b.myScore || "";
+    out.removed = { ...b.removed, ...a.removed };
+    const newer = (x, y) => (!x ? y : !y ? x : ((y.updated || 0) > (x.updated || 0) ? y : x));
+    ["colleges", "scholarships"].forEach((k) => {
+      const m = {};
+      [...a[k], ...b[k]].forEach((r) => { m[r.id] = newer(m[r.id], r); });
+      out[k] = Object.values(m).filter((r) => !(out.removed[r.id] >= (r.updated || 0)));
+    });
+    new Set([...Object.keys(a.checklist), ...Object.keys(b.checklist)]).forEach((id) => { out.checklist[id] = newer(a.checklist[id] && { ...a.checklist[id], updated: a.checklist[id].ts }, b.checklist[id] && { ...b.checklist[id], updated: b.checklist[id].ts }); });
+    out.aid = [0, 1, 2].map((i) => newer(a.aid[i] || {}, b.aid[i] || {}) || {});
+    out.essay = newer(a.essay, b.essay);
+    return out;
+  };
+  const college = () => load().college;
+  const setCollege = (patch) => { Object.assign(college(), patch); save(); };
+  const upsert = (kind, rec) => { const list = college()[kind]; const i = list.findIndex((r) => r.id === rec.id); if (i >= 0) list[i] = rec; else list.push(rec); save(); };
+  const remove = (kind, id) => { const c = college(); c[kind] = c[kind].filter((r) => r.id !== id); c.removed[id] = Date.now(); save(); };
+  const setCheck = (id, done) => { college().checklist[id] = { done, ts: Date.now() }; save(); };
+  const setAid = (i, k, v) => { const o = college().aid[i] || (college().aid[i] = {}); o[k] = v; o.updated = Date.now(); save(); };
 
   const addHistory = (entries) => { load().history.push(...entries); save(); };
   const addAttempt = (a) => { load().attempts.push({ id: "a" + Date.now().toString(36), ...a }); save(); };
@@ -98,5 +128,5 @@ window.Store = (() => {
     return n;
   };
 
-  return { load, save, reset, replace, merge, subscribe, addHistory, addAttempt, setSettings, setPlan, markSession, vocabResult, latestByQuestion, accuracy, activityByDay, streak, dayKey };
+  return { load, save, reset, replace, merge, subscribe, college, setCollege, upsert, remove, setCheck, setAid, addHistory, addAttempt, setSettings, setPlan, markSession, vocabResult, latestByQuestion, accuracy, activityByDay, streak, dayKey };
 })();
