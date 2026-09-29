@@ -42,5 +42,13 @@ window.Scoring = (() => {
     return { rw: per.rw, math: per.math, total: per.rw.score + per.math.score };
   };
 
-  return { scaled, predict, MIN_PER_SECTION };
+  // Adaptive practice tests: a student routed to the easier Module 2 can't
+  // reach the top of the scale, as on the real test. The easier route keeps
+  // the same curve's shape but tops out at 650 (200 + 600 × 0.75).
+  const scaledRoute = (section, fraction, level) => {
+    const s = scaled(section, fraction);
+    return level === "easier" ? round10(200 + (s - 200) * 0.75) : s;
+  };
+
+  return { scaled, scaledRoute, predict, MIN_PER_SECTION };
 })();

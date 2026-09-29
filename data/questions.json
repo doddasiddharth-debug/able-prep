@@ -3578,6 +3578,312 @@
    "explanation": "A contrast needs both systems, and only choice A sets elected representatives against direct decision-making. Choice D describes only the representative system, and B and C describe only town meetings."
   },
   {
+   "id": "rw-207",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "easy",
+   "passage": "Obsidian, a natural volcanic glass, forms when lava cools too quickly for crystals to grow. Because the glass breaks ______, leaving smooth, curved surfaces and edges sharper than those of a steel blade, early toolmakers in many parts of the world prized it for knives and arrowheads.",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "unpredictably",
+    "cleanly",
+    "rarely",
+    "slowly"
+   ],
+   "answer": 1,
+   "explanation": "Smooth surfaces and razor-sharp edges are the marks of a clean break, which is what made obsidian useful for blades. 'Unpredictably' would make the stone hard to shape into tools rather than prized for them; 'rarely' and 'slowly' say nothing about the smooth, sharp result."
+  },
+  {
+   "id": "rw-208",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "easy",
+   "passage": "When the pianoforte was developed in Italy around 1700, its name announced what set it apart from the harpsichord. A harpsichord plucks its strings with nearly the same force no matter how a key is pressed, but the new instrument let players make notes soft ('piano') or loud ('forte') by ______ how firmly they struck the keys.",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "ignoring",
+    "concealing",
+    "repeating",
+    "varying"
+   ],
+   "answer": 3,
+   "explanation": "Players made notes soft or loud by changing the force of their touch, which is the contrast with the harpsichord; 'varying' says exactly that. 'Ignoring' how firmly the keys are struck describes the harpsichord, not the new instrument, and 'concealing' and 'repeating' do not fit."
+  },
+  {
+   "id": "rw-209",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Central Ideas and Details",
+   "difficulty": "easy",
+   "passage": "Many meteor showers return at about the same time every year. As comets travel around the Sun, they shed trails of dust and small rocky particles. When Earth's orbit carries the planet through one of these trails, the particles strike the atmosphere at high speed and burn up, producing streaks of light. Because Earth crosses the same trails at the same point in its orbit each year, these showers can be predicted well in advance.",
+   "stem": "Which choice best states the main idea of the text?",
+   "choices": [
+    "Many meteor showers recur on a predictable schedule because Earth passes through the same comet debris at the same point in its yearly orbit.",
+    "Comets shed more dust the closer they travel to the Sun.",
+    "Meteor showers are best viewed from places far from city lights.",
+    "Most particles shed by comets are too small to be seen from Earth."
+   ],
+   "answer": 0,
+   "explanation": "The text explains what causes meteor showers and why many of them return each year, ending on their predictability. Choices B and D add claims the text does not make, and C is not discussed."
+  },
+  {
+   "id": "rw-210",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "easy",
+   "passage": "The rock at the summit of Mount Everest is limestone that formed from sediment on the floor of an ancient ______ over millions of years, the collision of the Indian and Eurasian plates lifted that rock more than eight kilometers above sea level.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "sea,",
+    "sea",
+    "sea;",
+    "sea, then"
+   ],
+   "answer": 2,
+   "explanation": "The text contains two independent clauses ('The rock... ancient sea' and 'over millions of years, the collision... lifted that rock'), so a semicolon can join them. A comma alone (A) creates a comma splice, as does a comma followed by 'then' (D), and no punctuation (B) creates a run-on sentence."
+  },
+  {
+   "id": "rw-211",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "easy",
+   "passage": "The theremin, an electronic instrument invented in the ______ is played without being touched at all: the performer moves one hand near an upright antenna to control pitch and the other near a looped antenna to control volume.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "1920s,",
+    "1920s;",
+    "1920s",
+    "1920s:"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'an electronic instrument invented in the 1920s' is a nonessential appositive that opens with a comma, so a second comma must close it before the verb 'is played.' A semicolon (B) or colon (D) would separate the subject from its verb, and no punctuation (C) leaves the appositive unclosed."
+  },
+  {
+   "id": "rw-212",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Transitions",
+   "difficulty": "easy",
+   "passage": "Light travels fast, but not instantly: sunlight takes about eight minutes to cross the roughly 150 million kilometers between the Sun and Earth. ______ the Sun that appears in our sky is not the Sun as it is at that moment but the Sun as it was about eight minutes earlier.",
+   "stem": "Which choice completes the text with the most logical transition?",
+   "choices": [
+    "However,",
+    "For example,",
+    "Thus,",
+    "Meanwhile,"
+   ],
+   "answer": 2,
+   "explanation": "The second sentence states a consequence of the delay described in the first, and 'Thus' signals that result. 'However' (A) would wrongly signal a contrast, and 'For example' and 'Meanwhile' do not fit the relationship."
+  },
+  {
+   "id": "rw-213",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "easy",
+   "passage": "Before digital cameras, photographers could not see a picture until the film had been developed, so each shot had to be ______: a careless frame wasted film and money, and there was no way to check the result on the spot.",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "spontaneous",
+    "deliberate",
+    "colorful",
+    "enlarged"
+   ],
+   "answer": 1,
+   "explanation": "Because a careless frame was costly and could not be checked, each shot had to be planned, or deliberate. 'Spontaneous' is the opposite of what the situation demanded; 'colorful' and 'enlarged' have nothing to do with the care the text describes."
+  },
+  {
+   "id": "rw-214",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Central Ideas and Details",
+   "difficulty": "easy",
+   "passage": "The following text is from a story.\n\nThe new calf would not stand. Priya had watched the vet's hands, had heard the word 'weak' said twice, and had understood what it meant when her uncle looked away. So she stayed in the barn after the others went in for supper, kneeling in the straw with a bottle of warm milk, coaxing and waiting. It was nearly midnight when the calf lurched up onto its thin legs, and Priya, who had not cried all day, finally did.",
+   "stem": "Which choice best states the main idea of the text?",
+   "choices": [
+    "Priya keeps caring for a weak calf despite the adults' doubts and is overcome with emotion when it finally stands.",
+    "Priya's uncle blames the vet for the calf's poor health.",
+    "Priya dislikes working in the barn and wishes she could join the others at supper.",
+    "The vet teaches Priya how to feed a newborn calf with a bottle."
+   ],
+   "answer": 0,
+   "explanation": "The text follows Priya's long vigil after the adults seem to give up, ending with her tears when the calf stands. B and D invent details about the uncle and the vet; C contradicts her choice to stay."
+  },
+  {
+   "id": "rw-215",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Command of Evidence",
+   "difficulty": "easy",
+   "passage": "In a story, the narrator describes her grandmother, who runs a small dairy farm, as someone who rarely says anything tender but shows her affection through practical acts of care.",
+   "stem": "Which quotation from the story most effectively illustrates the claim?",
+   "choices": [
+    "\"Grandmother was up before the cows, and she expected the rest of us to be up before her.\"",
+    "\"The farm had belonged to her father, and to his mother before him.\"",
+    "\"When I asked if she was lonely out there, she laughed and said the cows were better company than most people.\"",
+    "\"She never once told me she was glad I had come, but every morning there was a pair of dry wool socks warming by the stove, and they were always my size.\""
+   ],
+   "answer": 3,
+   "explanation": "The claim has two parts, no tender words and affection shown through practical care; choice D shows both, the unspoken welcome and the socks set out each morning. A shows a practical, demanding side but no affection; B and C say nothing about how she treats the narrator."
+  },
+  {
+   "id": "rw-216",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "easy",
+   "passage": "The club-like limbs that some mantis shrimp keep folded beneath their ______ out with enough force to crack the shell of a snail or crab in a single blow.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "bodies, snap",
+    "bodies; snap",
+    "bodies snap",
+    "bodies: snap"
+   ],
+   "answer": 2,
+   "explanation": "The subject 'The club-like limbs that some mantis shrimp keep folded beneath their bodies' is followed directly by its verb 'snap,' and no punctuation belongs between a subject and its verb. A comma, semicolon, or colon would wrongly split them."
+  },
+  {
+   "id": "rw-217",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Form, Structure, and Sense",
+   "difficulty": "easy",
+   "passage": "Sea cucumbers have unusual defenses: when threatened, some species expel sticky white threads from ______ bodies, entangling predators long enough for the sea cucumber to crawl away.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "its",
+    "it's",
+    "their",
+    "they're"
+   ],
+   "answer": 2,
+   "explanation": "The pronoun refers to the plural 'some species' of sea cucumbers, so the plural possessive 'their' is needed. 'Its' is singular, and 'it's' and 'they're' are contractions, not possessives."
+  },
+  {
+   "id": "rw-218",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Transitions",
+   "difficulty": "easy",
+   "passage": "Most fish breathe by pumping water over their gills, which lets them rest in place without suffocating. Some sharks, ______ must keep swimming to force water through their mouths and across their gills; if they stop moving, they cannot breathe properly.",
+   "stem": "Which choice completes the text with the most logical transition?",
+   "choices": [
+    "similarly,",
+    "however,",
+    "for instance,",
+    "therefore,"
+   ],
+   "answer": 1,
+   "explanation": "The sharks contrast with 'most fish,' which can breathe while resting, so 'however' fits. 'For instance' and 'similarly' would present the sharks as matching the general pattern, and 'therefore' implies a cause the text does not give."
+  },
+  {
+   "id": "rw-219",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "easy",
+   "passage": "Meteorologist Tomás Arriaga explains that the fog that fills the Olmeda Valley on autumn mornings is usually ______: it forms in the cold hours before dawn and disappears within a few hours once the sun warms the ground.",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "persistent",
+    "short-lived",
+    "dense",
+    "harmful"
+   ],
+   "answer": 1,
+   "explanation": "The fog forms before dawn and is gone within a few hours, so it is short-lived. 'Persistent' is the opposite, and 'dense' describes thickness, which the text after the colon says nothing about."
+  },
+  {
+   "id": "rw-220",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "easy",
+   "passage": "Stage manager Imani Okafor runs rehearsals on a strict schedule, but she can be ______ when actors are struggling with a difficult scene, often rearranging the rest of the day's plan so they can run the scene again.",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "impatient",
+    "secretive",
+    "doubtful",
+    "flexible"
+   ],
+   "answer": 3,
+   "explanation": "'But' contrasts her strict schedule with her willingness to rearrange the day's plan, so she is flexible. 'Impatient' fits the strictness, not the contrast, and the other words are unrelated to changing plans."
+  },
+  {
+   "id": "rw-221",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Central Ideas and Details",
+   "difficulty": "easy",
+   "passage": "The following text is from a story.\n\nEvery evening at six, the man in apartment 4C practiced the trumpet, and every evening at six, Rosa turned up her radio to drown him out. It had gone on this way for a year. Then, one week, the trumpet stopped. On the third silent evening, Rosa found herself standing at her open door with the radio off, listening down the hallway, unsure what she was waiting for.",
+   "stem": "Which choice best states the main idea of the text?",
+   "choices": [
+    "Rosa is surprised to find herself missing a sound she once tried to block out.",
+    "Rosa complains to her neighbor about his trumpet practice.",
+    "Rosa's neighbor has moved out of the building.",
+    "Rosa prefers listening to the radio over listening to live music."
+   ],
+   "answer": 0,
+   "explanation": "Rosa once drowned out the trumpet, but when it stops she turns off the radio and listens for it, so she misses it. The text never says why the trumpet stopped, so choice C is unsupported, and Rosa never complains (B)."
+  },
+  {
+   "id": "rw-222",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "easy",
+   "passage": "The thunderstorm reached Carver Street just after ______ within minutes, rainwater was running from curb to curb and the storm drains on every corner had begun to overflow.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "noon,",
+    "noon",
+    "noon;",
+    "noon, then"
+   ],
+   "answer": 2,
+   "explanation": "Two independent clauses ('The thunderstorm reached... noon' and 'within minutes, rainwater was running...') need a semicolon or period between them. A comma alone (A) or with 'then' (D) is a comma splice, and no punctuation (B) creates a run-on."
+  },
+  {
+   "id": "rw-223",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "easy",
+   "passage": "The stage manager, who had worked on the production since its first read-through three years ______ knew every lighting and sound cue by heart and could call the entire show without once looking at her script.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "ago,",
+    "ago",
+    "ago;",
+    "ago—"
+   ],
+   "answer": 0,
+   "explanation": "The clause 'who had worked... three years ago' interrupts the subject and its verb 'knew'; it opened with a comma, so it must close with one. A dash (D) mismatches the opening comma, and a semicolon (C) cuts the subject off from its verb."
+  },
+  {
+   "id": "rw-224",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Transitions",
+   "difficulty": "easy",
+   "passage": "Many people picture a falling raindrop as having a teardrop shape, pointed at the top and round at the bottom. ______ small raindrops are nearly spherical, and larger ones are flattened on the bottom, somewhat like a hamburger bun, by the air pushing up against them as they fall.",
+   "stem": "Which choice completes the text with the most logical transition?",
+   "choices": [
+    "Similarly,",
+    "Therefore,",
+    "In reality,",
+    "For example,"
+   ],
+   "answer": 2,
+   "explanation": "The second sentence corrects the common picture described in the first, so 'in reality' fits. 'For example' would treat the true shapes as an instance of the teardrop picture, and the others signal likeness or cause."
+  },
+  {
    "id": "m-001",
    "section": "math",
    "domain": "Algebra",
@@ -6466,6 +6772,188 @@
    ],
    "answer": 2,
    "explanation": "Arc length equals radius times the central angle in radians: s = rθ. So 5π = 12θ, and θ = 5π/12 radians."
+  },
+  {
+   "id": "m-194",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Linear equations in two variables",
+   "difficulty": "easy",
+   "stem": "4x − 3y = 18\n\nWhich of the following points (x, y) is a solution to the given equation?",
+   "choices": [
+    "(3, −2)",
+    "(3, 2)",
+    "(2, −3)",
+    "(0, 6)"
+   ],
+   "answer": 0,
+   "explanation": "Substitute each point. For (3, −2): 4(3) − 3(−2) = 12 + 6 = 18, so it is a solution. For (3, 2): 12 − 6 = 6. For (2, −3): 8 + 9 = 17. For (0, 6): 0 − 18 = −18."
+  },
+  {
+   "id": "m-195",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Equivalent expressions",
+   "difficulty": "easy",
+   "stem": "Which expression is equivalent to 6x³ + 9x²?",
+   "choices": [
+    "3x²(2x + 9)",
+    "3x³(2 + 3x)",
+    "x²(6x + 3)",
+    "3x²(2x + 3)"
+   ],
+   "answer": 3,
+   "explanation": "The greatest common factor of 6x³ and 9x² is 3x². Dividing each term by 3x² gives 2x and 3, so 6x³ + 9x² = 3x²(2x + 3)."
+  },
+  {
+   "id": "m-196",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Ratios, rates, proportional relationships, and units",
+   "difficulty": "easy",
+   "stem": "A bus carrying a school's soccer team to a tournament travels 186 miles in 3 hours. At this rate, how many miles will the bus travel in 5 hours?",
+   "type": "spr",
+   "answer": "310",
+   "explanation": "The bus travels 186 ÷ 3 = 62 miles per hour, so in 5 hours it travels 62 × 5 = 310 miles."
+  },
+  {
+   "id": "m-197",
+   "section": "math",
+   "domain": "Geometry and Trigonometry",
+   "skill": "Right triangles and trigonometry",
+   "difficulty": "easy",
+   "stem": "A rectangular soccer practice field is 60 yards wide and 80 yards long. What is the length, in yards, of a diagonal of the field?",
+   "choices": [
+    "20",
+    "100",
+    "140",
+    "280"
+   ],
+   "answer": 1,
+   "explanation": "A diagonal is the hypotenuse of a right triangle whose legs are the sides of the field: √(60² + 80²) = √(3,600 + 6,400) = √10,000 = 100."
+  },
+  {
+   "id": "m-198",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Linear equations in two variables",
+   "difficulty": "easy",
+   "stem": "4x − 3y = 24\n\nWhat is the x-intercept of the graph of the given equation in the xy-plane?",
+   "choices": [
+    "(6, 0)",
+    "(0, −8)",
+    "(−6, 0)",
+    "(24, 0)"
+   ],
+   "answer": 0,
+   "explanation": "The x-intercept is the point where y = 0: 4x − 3(0) = 24, so x = 6. The x-intercept is (6, 0)."
+  },
+  {
+   "id": "m-199",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Nonlinear equations in one variable",
+   "difficulty": "easy",
+   "stem": "3x² = 75\n\nWhat is the positive solution to the given equation?",
+   "choices": [
+    "5",
+    "15",
+    "25",
+    "225"
+   ],
+   "answer": 0,
+   "explanation": "Divide both sides by 3: x² = 25. The solutions are 5 and −5, so the positive solution is 5."
+  },
+  {
+   "id": "m-200",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Percentages",
+   "difficulty": "easy",
+   "stem": "A school's recycling drive set a goal of collecting 1,000 pounds of paper. The drive collected 1,250 pounds. The amount collected was what percent of the goal?",
+   "choices": [
+    "25",
+    "80",
+    "125",
+    "250"
+   ],
+   "answer": 2,
+   "explanation": "Divide the amount collected by the goal: 1,250/1,000 = 1.25, which is 125% of the goal."
+  },
+  {
+   "id": "m-201",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Linear inequalities",
+   "difficulty": "easy",
+   "stem": "Lena is saving to buy a bike that costs $540. She has already saved $180 and plans to save $40 each week. Which inequality represents all numbers of weeks, w, after which Lena will have saved at least enough money to buy the bike?",
+   "choices": [
+    "180 + 40w ≥ 540",
+    "180 + 40w ≤ 540",
+    "40 + 180w ≥ 540",
+    "40w ≥ 540 + 180"
+   ],
+   "answer": 0,
+   "explanation": "After w weeks Lena has 180 + 40w dollars. Having at least enough for the $540 bike means 180 + 40w ≥ 540."
+  },
+  {
+   "id": "m-202",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Linear equations in two variables",
+   "difficulty": "easy",
+   "stem": "y = 3x − 7\n\nThe graph of the given equation in the xy-plane passes through the point (4, k). What is the value of k?",
+   "choices": [
+    "−5",
+    "5",
+    "12",
+    "19"
+   ],
+   "answer": 1,
+   "explanation": "Substitute x = 4 and y = k: k = 3(4) − 7 = 12 − 7 = 5."
+  },
+  {
+   "id": "m-203",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Percentages",
+   "difficulty": "easy",
+   "stem": "Last month, Dev streamed 1,250 minutes of video. This month, he streamed 18% more minutes of video than he did last month. How many minutes of video did Dev stream this month?",
+   "type": "spr",
+   "answer": "1475",
+   "explanation": "An increase of 18% multiplies the amount by 1.18: 1.18 × 1,250 = 1,475 minutes."
+  },
+  {
+   "id": "m-204",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Equivalent expressions",
+   "difficulty": "easy",
+   "stem": "Which expression is equivalent to (5x² − 2x + 7) − (3x² − 6x + 1)?",
+   "choices": [
+    "2x² − 8x + 6",
+    "2x² + 4x + 8",
+    "2x² + 4x + 6",
+    "8x² − 8x + 8"
+   ],
+   "answer": 2,
+   "explanation": "Distribute the subtraction to every term of the second polynomial: 5x² − 2x + 7 − 3x² + 6x − 1. Combining like terms gives 2x² + 4x + 6."
+  },
+  {
+   "id": "m-205",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Linear inequalities",
+   "difficulty": "easy",
+   "stem": "A crane at a construction site can safely lift at most 2,400 pounds at one time. Each steel beam the crane lifts weighs 175 pounds. Which inequality represents the possible numbers of beams, b, the crane can safely lift at one time?",
+   "choices": [
+    "175b ≥ 2,400",
+    "2,400b ≤ 175",
+    "b + 175 ≤ 2,400",
+    "175b ≤ 2,400"
+   ],
+   "answer": 3,
+   "explanation": "The total weight of b beams is 175b pounds. \"At most 2,400\" means the total weight must be less than or equal to 2,400, so 175b ≤ 2,400."
   }
  ]
 }

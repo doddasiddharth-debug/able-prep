@@ -225,16 +225,25 @@
     launch({ mode: "test", section, questions: qs, label: secName(section), seconds: moduleSeconds(section, qs.length) });
   };
 
-  // Numbered full-length tests (data/tests.json): Reading and Writing in two
-  // 27-question modules of 32 minutes, a 10-minute break, then Math in two
-  // 22-question modules of 35 minutes, scored together at the end. Their
-  // questions are kept out of the bank so a test is unseen the first time.
-  // The forms are fixed rather than adaptive; the report says so.
+  // Numbered full-length tests (data/tests.json), adaptive like the real
+  // Digital SAT: in each section, Module 1 decides whether the student gets
+  // the harder or the easier Module 2 (the screen doesn't say which until
+  // the report). Reading and Writing is 27 questions a module in 32 minutes,
+  // Math 22 in 35, with a 10-minute break between sections, and the score
+  // depends on the route (see Scoring.scaledRoute). Test questions are kept
+  // out of the bank so a test is unseen the first time.
   const MODULE_MIN = { rw: 32, math: 35 };
   const BREAK_SECONDS = 600;
+  const ROUTE_CUTOFF = 0.55; // share right in Module 1 that earns the harder Module 2
   const PARTS = { full: "Full test", rw: "Reading and Writing only", math: "Math only" };
-  const testMinutes = (mods) => mods.reduce((t, m) => t + MODULE_MIN[m.section], 0);
+  const sectionsOf = (part) => (part === "full" ? ["rw", "math"] : [part]);
+  const firstModule = (t, s) => t.modules.find((m) => m.section === s && m.module === 1);
+  const secondModule = (t, s, level) => t.modules.find((m) => m.section === s && m.module === 2 && (m.level || "harder") === level) || t.modules.find((m) => m.section === s && m.module === 2);
+  // What a sitting looks like: each section's Module 1 plus one Module 2.
+  const sittingQuestions = (t, part) => sectionsOf(part).reduce((n, s) => n + firstModule(t, s).questions.length + secondModule(t, s, "harder").questions.length, 0);
+  const sittingMinutes = (part) => sectionsOf(part).reduce((n, s) => n + 2 * MODULE_MIN[s], 0);
   const fmtLong = (min) => `${Math.floor(min / 60) ? Math.floor(min / 60) + " hr " : ""}${min % 60 ? (min % 60) + " min" : ""}`.trim();
+  const levelName = (m) => (m.module === 2 && m.level ? ` (${m.level})` : "");
   const showApp = (html) => {
     document.querySelectorAll(".view").forEach((v) => { v.hidden = v.id !== "app"; });
     $("page").innerHTML = html;
@@ -242,40 +251,44 @@
   };
 
   const runTest = (t, part) => {
-    const mods = t.modules.filter((m) => part === "full" || m.section === part);
+    const secs = sectionsOf(part);
     const done = [];
-    const runModule = (i) => {
-      const m = mods[i];
-      launch({
-        mode: "test", section: m.section, questions: m.questions, seconds: MODULE_MIN[m.section] * 60,
-        label: `${t.name} · ${secName(m.section)}, Module ${m.module}`,
-        onModuleDone: (res) => { done.push({ ...m, ...res }); after(i); }
+    const runModule = (m, then) => launch({
+      mode: "test", section: m.section, questions: m.questions, seconds: MODULE_MIN[m.section] * 60,
+      label: `${t.name} · ${secName(m.section)}, Module ${m.module}`,
+      onModuleDone: (res) => { done.push({ ...m, ...res }); then(res); }
+    });
+    const runSection = (i) => {
+      const s = secs[i];
+      runModule(firstModule(t, s), (r1) => {
+        const level = r1.correct / r1.questions.length >= ROUTE_CUTOFF ? "harder" : "easier";
+        const m2 = secondModule(t, s, level);
+        showApp(`${pageHead("tests", "Module 1 complete", "")}
+          <section class="card break-card"><p>Up next: ${secName(s)}, Module 2: ${m2.questions.length} questions, ${MODULE_MIN[s]} minutes.</p><button class="btn btn-primary" id="next-go">Start Module 2</button></section>`);
+        $("next-go").addEventListener("click", () => runModule(m2, () => (i + 1 < secs.length ? breakThen(i + 1) : finishTest())));
       });
     };
-    const after = (i) => {
-      if (i + 1 >= mods.length) return finishTest();
-      const n = mods[i + 1];
-      const nextLine = `${secName(n.section)}, Module ${n.module}: ${n.questions.length} questions, ${MODULE_MIN[n.section]} minutes.`;
-      if (n.section !== mods[i].section) {
-        // The real test's 10-minute break between sections; resume any time.
-        let left = BREAK_SECONDS;
-        showApp(`${pageHead("tests", "Take a break", `${secName(mods[i].section)} is done. The next section starts when you're ready, or when the break ends.`)}
-          <section class="card break-card" id="break-card"><div class="break-clock" id="break-clock">10:00</div><p>Up next: ${nextLine}</p><button class="btn btn-primary" id="break-go">Resume testing</button></section>`);
-        const go = () => { clearInterval(timer); if ($("break-card")) runModule(i + 1); };
-        const timer = setInterval(() => {
-          if (!$("break-card")) return clearInterval(timer); // left the page
-          left--; $("break-clock").textContent = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`;
-          if (left <= 0) go();
-        }, 1000);
-        $("break-go").addEventListener("click", go);
-      } else {
-        showApp(`${pageHead("tests", `Module ${mods[i].module} complete`, "")}
-          <section class="card break-card"><p>Up next: ${nextLine}</p><button class="btn btn-primary" id="next-go">Start Module ${n.module}</button></section>`);
-        $("next-go").addEventListener("click", () => runModule(i + 1));
-      }
+    // The real test's 10-minute break between sections; resume any time.
+    const breakThen = (i) => {
+      const s = secs[i], m1 = firstModule(t, s);
+      let left = BREAK_SECONDS;
+      showApp(`${pageHead("tests", "Take a break", `${secName(secs[i - 1])} is done. The next section starts when you're ready, or when the break ends.`)}
+        <section class="card break-card" id="break-card"><div class="break-clock" id="break-clock">10:00</div><p>Up next: ${secName(s)}, Module 1: ${m1.questions.length} questions, ${MODULE_MIN[s]} minutes.</p><button class="btn btn-primary" id="break-go">Resume testing</button></section>`);
+      const go = () => { clearInterval(timer); if ($("break-card")) runSection(i); };
+      const timer = setInterval(() => {
+        if (!$("break-card")) return clearInterval(timer); // left the page
+        left--; $("break-clock").textContent = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`;
+        if (left <= 0) go();
+      }, 1000);
+      $("break-go").addEventListener("click", go);
     };
     const finishTest = () => {
-      const sec = (s) => { const ms = done.filter((d) => d.section === s); if (!ms.length) return null; const n = ms.reduce((x, d) => x + d.questions.length, 0), c = ms.reduce((x, d) => x + d.correct, 0); return { n, correct: c, score: Scoring.scaled(s, c / n) }; };
+      const sec = (s) => {
+        const ms = done.filter((d) => d.section === s); if (!ms.length) return null;
+        const n = ms.reduce((x, d) => x + d.questions.length, 0), c = ms.reduce((x, d) => x + d.correct, 0);
+        const level = (ms.find((d) => d.module === 2) || {}).level || "harder";
+        return { n, correct: c, level, score: Scoring.scaledRoute(s, c / n, level) };
+      };
       const rw = sec("rw"), math = sec("math");
       const a = Store.addAttempt({
         mode: "fulltest", testId: t.id, part, section: part === "full" ? "all" : part, ts: Date.now(),
@@ -283,13 +296,14 @@
         n: done.reduce((x, d) => x + d.questions.length, 0), correct: done.reduce((x, d) => x + d.correct, 0),
         seconds: done.reduce((x, d) => x + (d.elapsed || 0), 0),
         scores: { rw: rw && rw.score, math: math && math.score, total: rw && math ? rw.score + math.score : null },
-        modules: done.map((d) => ({ key: d.key, section: d.section, module: d.module, n: d.questions.length, correct: d.correct, elapsed: d.elapsed, answers: d.answers, times: Object.fromEntries(Object.entries(d.times || {}).map(([k, v]) => [k, Math.round(v)])) }))
+        routes: { rw: rw && rw.level, math: math && math.level },
+        modules: done.map((d) => ({ key: d.key, section: d.section, module: d.module, level: d.level, n: d.questions.length, correct: d.correct, elapsed: d.elapsed, answers: d.answers, times: Object.fromEntries(Object.entries(d.times || {}).map(([k, v]) => [k, Math.round(v)])) }))
       });
       window.ableTrack?.(`test-finished/${t.id}-${part}`);
       location.hash = `#/tests?report=${a.id}`;
       render();
     };
-    runModule(0);
+    runSection(0);
   };
 
   const testReport = (a) => {
@@ -306,10 +320,11 @@
         <section class="card calc-out"><h2>Estimated score</h2>
           <div class="pred-total">${big}<small>${a.scores.total != null ? "400 to 1600" : "200 to 800"}</small></div>
           ${a.scores.total != null ? `<div class="pred-split"><div><span>Reading &amp; Writing</span><strong>${a.scores.rw}</strong></div><div><span>Math</span><strong>${a.scores.math}</strong></div></div>` : ""}
-          <p class="fine" style="margin-top:14px">An estimate from your raw score. The real SAT is adaptive and each form has its own curve; these forms are fixed.</p>
+          ${a.routes ? `<p class="fine" style="margin-top:14px">${["rw", "math"].filter((x) => a.routes[x]).map((x) => `${secName(x)}: you ${a.routes[x] === "harder" ? "reached the harder Module 2" : "were routed to the easier Module 2, which caps the section score at 650"}.`).join(" ")}</p>` : ""}
+          <p class="fine" style="margin-top:8px">An estimate from your raw score and route. On the real SAT each question is weighted and every form has its own curve.</p>
         </section>
         <section class="card"><h2>By module</h2>
-          <table class="table"><tbody>${a.modules.map((m) => `<tr><td>${secName(m.section)}, Module ${m.module}</td><td>${m.correct}/${m.n}</td><td>${Math.round((m.elapsed || 0) / 60)} min</td><td><button class="btn-text" data-review="${m.key}">Review</button></td></tr>`).join("")}</tbody></table>
+          <table class="table"><tbody>${a.modules.map((m) => `<tr><td>${secName(m.section)}, Module ${m.module}${levelName(m)}</td><td>${m.correct}/${m.n}</td><td>${Math.round((m.elapsed || 0) / 60)} min</td><td><button class="btn-text" data-review="${m.key}">Review</button></td></tr>`).join("")}</tbody></table>
           <h2 style="margin-top:20px">By domain</h2>
           ${["rw", "math"].flatMap((sc) => bank.meta.sections[sc].domains).filter((d) => by[d]).map((d) => pctBar(d, by[d].ok, by[d].n)).join("")}
         </section>
@@ -318,7 +333,7 @@
     document.querySelectorAll("[data-review]").forEach((b) => b.addEventListener("click", () => {
       const m = a.modules.find((x) => x.key === b.dataset.review), src = mod(m.key);
       if (!src) return;
-      Practice.start({ mode: "review", section: m.section, label: `${t.name} · ${secName(m.section)}, Module ${m.module}`, questions: src.questions, answers: m.answers, checked: src.questions.map((q) => q.id), times: m.times || {}, elapsed: m.elapsed, seconds: MODULE_MIN[m.section] * 60, onExit: () => render(), onReviewExit: () => render() });
+      Practice.start({ mode: "review", section: m.section, label: `${t.name} · ${secName(m.section)}, Module ${m.module}${levelName(m)}`, questions: src.questions, answers: m.answers, checked: src.questions.map((q) => q.id), times: m.times || {}, elapsed: m.elapsed, seconds: MODULE_MIN[m.section] * 60, onExit: () => render(), onReviewExit: () => render() });
     }));
   };
 
@@ -331,14 +346,14 @@
     const hist = all.filter((a) => a.mode === "test" || a.mode === "fulltest").slice().reverse();
     const lastFull = (id) => all.filter((a) => a.mode === "fulltest" && a.testId === id).slice(-1)[0];
     $("page").innerHTML = `
-      ${pageHead("tests", "Practice tests", `Full-length, timed practice tests in the Digital SAT format: Reading and Writing in two modules, a 10-minute break, then Math in two modules, with a score report at the end.`)}
+      ${pageHead("tests", "Practice tests", `Full-length, timed, adaptive practice tests in the Digital SAT format: in each section, how you do on Module 1 decides whether Module 2 is easier or harder, just like the real test. Reading and Writing, a 10-minute break, then Math, with a score report at the end.`)}
       <div class="test-grid">
-        ${list.map((t) => { const L = lastFull(t.id); const n = t.modules.reduce((x, m) => x + m.questions.length, 0); return `
+        ${list.map((t) => { const L = lastFull(t.id); const n = sittingQuestions(t, "full"); return `
         <section class="card test-card">
           <div class="test-num">${t.number}</div>
           <div class="test-body-text">
             <h2>${esc(t.name)}</h2>
-            <p class="fine">${n} questions · ${fmtLong(testMinutes(t.modules))} + a 10-minute break</p>
+            <p class="fine">${n} questions · ${fmtLong(sittingMinutes("full"))} + a 10-minute break · adaptive</p>
             <p class="test-last">${L ? `Last: <strong>${L.scores.total ?? L.scores.rw ?? L.scores.math}</strong>${L.part === "full" ? "" : ` (${secName(L.part)})`} · ${fmtDate(L.ts)} · <a href="#/tests?report=${L.id}">Report</a>` : "Not taken yet"}</p>
             <div class="test-actions"><button class="btn btn-primary" data-test="${t.id}" data-part="full">Start full test</button><button class="btn-text" data-test="${t.id}" data-part="rw">Reading and Writing only</button><button class="btn-text" data-test="${t.id}" data-part="math">Math only</button></div>
           </div>
@@ -353,8 +368,7 @@
     document.querySelectorAll("[data-module]").forEach((b) => b.addEventListener("click", () => startModule(b.dataset.module)));
     document.querySelectorAll("[data-test]").forEach((b) => b.addEventListener("click", () => {
       const t = list.find((x) => x.id === b.dataset.test), part = b.dataset.part;
-      const mods = t.modules.filter((m) => part === "full" || m.section === part);
-      if (confirm(`${t.name}, ${PARTS[part].toLowerCase()}: ${mods.reduce((x, m) => x + m.questions.length, 0)} questions in ${fmtLong(testMinutes(mods))}${part === "full" ? ", with a 10-minute break between sections" : ""}. Each module is timed, and leaving part-way won't be scored. Start now?`)) runTest(t, part);
+      if (confirm(`${t.name}, ${PARTS[part].toLowerCase()}: ${sittingQuestions(t, part)} questions in ${fmtLong(sittingMinutes(part))}${part === "full" ? ", with a 10-minute break between sections" : ""}. Each module is timed, and leaving part-way won't be scored. Start now?`)) runTest(t, part);
     }));
   };
 
@@ -690,7 +704,7 @@
 
   // ---------------------------------------------------------------- boot
   Promise.all([fetch("data/questions.json?v=5").then((r) => r.json()), fetch("data/vocab.json?v=3").then((r) => r.json()),
-    fetch("data/tests.json?v=1").then((r) => (r.ok ? r.json() : { tests: [] })).catch(() => ({ tests: [] }))])
+    fetch("data/tests.json?v=2").then((r) => (r.ok ? r.json() : { tests: [] })).catch(() => ({ tests: [] }))])
     .then(([q, v, t]) => {
       bank = q; vocab = v; tests = t;
       Practice.init();

@@ -7,7 +7,9 @@ grid, or a different method) with an assert. A failed assert stops the run
 before anything is written.
 
 Usage: python3 tools/draft_math_pt3.py
-Writes data/draft/pt3-m1.json, data/draft/pt3-m2.json, data/draft/bank-m-3.json.
+Writes data/draft/pt3-m1.json (Module 1), pt3-m2.json (harder Module 2),
+pt3-m2e.json (easier Module 2), bank-m-3.json (bank extras) and
+bank-m-pt3-moved.json (the easy items taken out of the harder Module 2).
 Audit:  python3 tools/audit_math.py < data/draft/pt3-m1.json   (and the others)
 """
 import json, os, re, math, itertools, statistics
@@ -75,7 +77,7 @@ OUT = {"m1": [], "m2": [], "bank": []}
 
 def _item(dest, domain, skill, diff, stem, expl, passage):
     it = {"id": None, "section": "math", "domain": domain, "skill": skill, "difficulty": diff, "stem": stem}
-    OUT[dest].append(it)
+    OUT.setdefault(dest, []).append(it)
     return it
 
 def mc(dest, domain, skill, diff, stem, correct, distractors, expl, pos, passage=None, dec=False):
@@ -498,11 +500,13 @@ spr(D, ALG, "Linear functions", "hard",
     f"The rate of change is ({commas(str(c2_))} − {commas(str(c1))})/({a2} − {a1}) = 1,600/250 = 6.4 dollars per square foot. Then {commas(str(c1))} = 6.4({a1}) + b = 2,560 + b, so b = {b_}. The price for 520 square feet is 6.4(520) + 600 = 3,328 + 600 = 3,928 dollars.")
 
 # 20 Advanced Math · Nonlinear equations in one variable · hard · grid-in
-cs = [c_ for c_ in range(-50, 51) if len(real_roots(1, -10, c_)) == 2 and abs(real_roots(1, -10, c_)[1] - real_roots(1, -10, c_)[0]) == 4]
-assert cs == [21] and 3 * 7 == 21 and 3 + 7 == 10
-spr(D, ADV, "Nonlinear equations in one variable", "hard",
-    "x² − 10x + c = 0\n\nIn the given equation, c is a constant. The equation has two real solutions, and the positive difference between the two solutions is 4. What is the value of c?", 21,
-    "The sum of the solutions is 10 (the opposite of the x-coefficient), and their difference is 4. Two numbers with sum 10 and difference 4 are 7 and 3. The product of the solutions equals the constant term, so c = 7 × 3 = 21. Check: x² − 10x + 21 = (x − 3)(x − 7).")
+# (replaces an x² − 10x + c item that turned out to match another writer's pt1-m2-17)
+eq = "9^(x + 1) = 27^(x − 1)"
+xs = [g for g in range(-30, 31) if F(9) ** (g + 1) == F(27) ** (g - 1)]  # exact, integers
+assert [g for g in GRID if abs(math.log(9) * (g + 1) - math.log(27) * (g - 1)) < 1e-12] == xs
+assert xs == [5] and 9 ** 6 == 27 ** 4 == 3 ** 12 and ev(eq.split("=")[0], x=5) == ev(eq.split("=")[1], x=5)
+spr(D, ADV, "Nonlinear equations in one variable", "hard", f"{eq}\n\nWhat is the value of x?", 5,
+    "Write both sides as powers of 3: 9^(x + 1) = (3²)^(x + 1) = 3^(2x + 2) and 27^(x − 1) = (3³)^(x − 1) = 3^(3x − 3). The exponents must be equal, so 2x + 2 = 3x − 3, and x = 5. Check: 9⁶ and 27⁴ both equal 3¹², which is 531,441.")
 
 # 21 Geometry · Right triangles and trigonometry · hard
 xs = [x0 for x0 in range(-50, 100) if 0 < 3 * x0 + 10 < 90 and 0 < 2 * x0 + 15 < 90
@@ -698,15 +702,254 @@ mct(D, GEO, "Circles", "medium",
     "A theater's circular revolving stage has a radius of 12 feet. During one scene, the stage rotates so that a point on its outer edge travels 5π feet along the edge. Through what angle, in radians, does the stage rotate?",
     ch, 2, "Arc length equals radius times the central angle in radians: s = rθ. So 5π = 12θ, and θ = 5π/12 radians.")
 
+# ================================================================ HARDER MODULE 2: replace the easy items
+# The 4 easy items written above move to the bank unchanged (ids m-202 to m-205); each is replaced
+# by a new medium or hard item of the same skill, keyed in the same answer position.
+D = "m2x"
+
+# Algebra · Linear equations in two variables · medium (replaces the easy "(4, k)" item)
+a_int = [g for g in GRID if ev("5x − 2y", x=g, y=0) == 30]
+b_int = [g for g in GRID if ev("5x − 2y", x=0, y=g) == 30]
+assert a_int == [6] and b_int == [-15]
+R1 = mc(D, ALG, "Linear equations in two variables", "medium",
+   "5x − 2y = 30\n\nIn the xy-plane, the graph of the given equation intersects the x-axis at the point (a, 0) and the y-axis at the point (0, b). What is the value of a + b?", a_int[0] + b_int[0],
+   [6 + 15, -6 - 15, -6 + 15],
+   "At the x-intercept, y = 0, so 5x = 30 and a = 6. At the y-intercept, x = 0, so −2y = 30 and b = −15. Therefore a + b = 6 + (−15) = −9.", pos=1)
+
+# PSDA · Percentages · hard · grid-in (replaces the easy streaming-minutes item)
+ps_ = [p_ for p_ in range(0, 101) if F(125, 100) * (1 - F(p_, 100)) == F(110, 100)]
+assert ps_ == [12] and abs(10 * 1.25 * 0.88 - 11) < 1e-9
+R2 = spr(D, PSDA, "Percentages", "hard",
+    "A food truck raised the price of its tacos by 25%. A month later, it lowered the new price by p%. The final price was 10% greater than the original price. What is the value of p?", ps_[0],
+    "Call the original price 1. After the 25% increase, the price is 1.25. Lowering it by p% multiplies it by 1 − p/100, and the result is 10% more than the original, or 1.10. So 1.25(1 − p/100) = 1.10, which gives 1 − p/100 = 0.88 and p = 12.")
+
+# Advanced Math · Equivalent expressions · hard (replaces the easy polynomial-subtraction item)
+orig = "4/(x − 2) − 3/(x + 1)"
+ch = ["1/(2x − 1)", "(x + 2)/((x − 2)(x + 1))", "(x + 10)/((x − 2)(x + 1))", "(7x − 2)/((x − 2)(x + 1))"]
+pts_ = (3, 4, 5, 7, 10)
+assert same_poly(ch[2], orig, pts=pts_) and not any(same_poly(c_, orig, pts=pts_) for i, c_ in enumerate(ch) if i != 2)
+R3 = mct(D, ADV, "Equivalent expressions", "hard", f"Which expression is equivalent to {orig}, for x > 2?", ch, 2,
+    "Rewrite both fractions over the common denominator (x − 2)(x + 1): 4(x + 1)/((x − 2)(x + 1)) − 3(x − 2)/((x − 2)(x + 1)). The numerator is 4x + 4 − 3x + 6 = x + 10, so the expression is equivalent to (x + 10)/((x − 2)(x + 1)).")
+
+# Algebra · Linear inequalities · medium (replaces the easy crane item)
+ch = ["12x + 18y ≤ 540", "18x + 12y ≥ 540", "x + y ≥ 540", "12x + 18y ≥ 540"]
+enough = lambda x0, y0: 12 * x0 + 18 * y0 >= 540
+box = [(x0, y0) for x0 in range(0, 60, 3) for y0 in range(0, 40, 2)]
+assert all(ev(ch[3], x=x0, y=y0) == enough(x0, y0) for x0, y0 in box)
+assert all(any(ev(c_, x=x0, y=y0) != enough(x0, y0) for x0, y0 in box) for c_ in ch[:3])
+R4 = mct(D, ALG, "Linear inequalities", "medium",
+    "A construction crew must haul at least 540 cubic yards of dirt away from a site. A small truck carries 12 cubic yards of dirt per trip, and a large truck carries 18 cubic yards of dirt per trip. Which inequality represents the numbers of small-truck trips, x, and large-truck trips, y, that will haul away the required amount of dirt?",
+    ch, 3, "In x small-truck trips the crew hauls 12x cubic yards, and in y large-truck trips it hauls 18y cubic yards. The total, 12x + 18y, must be at least 540, so 12x + 18y ≥ 540.")
+
+OUT["moved"] = [it for it in OUT["m2"] if it["difficulty"] == "easy"]
+assert [it.get("type", "mc") for it in OUT["moved"]] == ["mc", "spr", "mc", "mc"]
+assert [it["skill"] for it in OUT["moved"]] == [R1["skill"], R2["skill"], R3["skill"], R4["skill"]]
+assert [it.get("answer") for it in OUT["moved"] if "choices" in it] == [R1["answer"], R3["answer"], R4["answer"]]
+med = [it for it in OUT["m2"] if it["difficulty"] == "medium"]
+hrd = [it for it in OUT["m2"] if it["difficulty"] == "hard"]
+assert len(med) == 9 and len(hrd) == 9
+# interleave: no two Algebra items in a row where avoidable
+OUT["m2"] = [R1] + med[:5] + [R4] + med[5:] + [R2] + hrd[:2] + [R3] + hrd[2:]
+del OUT["m2x"]
+
+# ================================================================ EASIER MODULE 2 (pt3-m2e)
+D = "m2e"
+
+# 01 Algebra · Linear equations in one variable · easy
+x = F(37 - 9, 4)
+assert x == 7 and ev("4x + 9", x=x) == 37 and [g for g in GRID if ev("4x + 9", x=g) == 37] == [7]
+mc(D, ALG, "Linear equations in one variable", "easy", "4x + 9 = 37\n\nWhat is the solution to the given equation?", x,
+   [F(37 + 9, 4), 37 - 9 - 4, 37 - 9],
+   "Subtract 9 from both sides to get 4x = 28. Then divide both sides by 4: x = 7.", pos=0)
+
+# 02 PSDA · Ratios, rates · easy · grid-in
+rice = F(3, 8) * 56
+assert rice == 21 and 56 // 8 * 3 == 21
+spr(D, PSDA, "Ratios, rates, proportional relationships, and units", "easy",
+    "A food truck uses 3 pounds of rice for every 8 burritos it makes. At this rate, how many pounds of rice does the truck use to make 56 burritos?", rice,
+    "56 burritos is 56 ÷ 8 = 7 times as many as 8 burritos, so the truck uses 7 × 3 = 21 pounds of rice.")
+
+# 03 Advanced Math · Equivalent expressions · easy
+orig = "7x² + 4x − 3x² + 2x"
+ch = ["4x² + 6x", "10x² + 6x", "4x² + 2x", "10x²"]
+assert same_poly(ch[0], orig) and not any(same_poly(c_, orig) for c_ in ch[1:])
+mct(D, ADV, "Equivalent expressions", "easy", f"Which expression is equivalent to {orig}?", ch, 0,
+    "Combine like terms: 7x² − 3x² = 4x² and 4x + 2x = 6x. The expression is equivalent to 4x² + 6x.")
+
+# 04 Algebra · Linear functions · easy
+cost = ev("6h + 15", h=9)
+assert cost == 69 == 6 * 9 + 15
+mc(D, ALG, "Linear functions", "easy",
+   "A hiking club charges a $15 membership fee plus $6 for each guided hike a member goes on. The function C(h) = 6h + 15 gives the total cost, in dollars, for a member who goes on h guided hikes. What is the total cost, in dollars, for a member who goes on 9 guided hikes?", cost,
+   [6 * 9, 15 * 9 + 6, (6 + 15) * 9],
+   "Substitute h = 9: C(9) = 6(9) + 15 = 54 + 15 = 69.", pos=1)
+
+# 05 Geometry · Area and volume · easy
+area = 40 * 25
+assert area == 1000 and sum(1 for _ in itertools.product(range(40), range(25))) == area
+mc(D, GEO, "Area and volume", "easy",
+   "A theater's stage is a rectangle that is 40 feet wide and 25 feet deep. What is the area of the stage, in square feet?", area,
+   [40 + 25, 2 * (40 + 25), F(40 * 25, 2)],
+   "The area of a rectangle is its length times its width: 40 × 25 = 1,000 square feet.", pos=3)
+
+# 06 Advanced Math · Nonlinear functions · easy
+f = "x² − 5x"
+k = ev(f, x=-3)
+assert k == 24 and 9 + 15 == 24
+mc(D, ADV, "Nonlinear functions", "easy", f"The function f is defined by f(x) = {f}. What is the value of f(−3)?", k,
+   [-k, ev(f, x=3), -9 + 15],
+   "Substitute x = −3: f(−3) = (−3)² − 5(−3) = 9 + 15 = 24.", pos=3)
+
+# 07 Algebra · Linear inequalities · easy
+ch = ["x ≥ 5", "x ≤ 5", "x ≤ 7/3", "x ≤ 15"]
+assert all(ev(ch[1], x=g) == (ev("3x − 4", x=g) <= 11) for g in GRID)
+assert all(any(ev(c_, x=g) != (ev("3x − 4", x=g) <= 11) for g in GRID) for i, c_ in enumerate(ch) if i != 1)
+mct(D, ALG, "Linear inequalities", "easy", "3x − 4 ≤ 11\n\nWhich of the following is the solution to the given inequality?", ch, 1,
+    "Add 4 to both sides: 3x ≤ 15. Divide both sides by 3 (a positive number, so the inequality does not reverse): x ≤ 5.")
+
+# 08 PSDA · Percentages · easy · grid-in
+pct = F(28 * 100, 80)
+assert pct == 35 and 0.35 * 80 == 28
+spr(D, PSDA, "Percentages", "easy",
+    "A greenhouse has 80 plants, and 28 of them are ferns. What percent of the plants in the greenhouse are ferns?", pct,
+    "28/80 = 0.35, which is 35%.")
+
+# 09 Advanced Math · Nonlinear equations in one variable · easy · grid-in
+roots = [g for g in GRID if 5 * g * g == 180]
+assert roots == [-6, 6]
+spr(D, ADV, "Nonlinear equations in one variable", "easy", "5x² = 180\n\nWhat is the positive solution to the given equation?", 6,
+    "Divide both sides by 5: x² = 36. So x = 6 or x = −6, and the positive solution is 6.")
+
+# 10 Algebra · Systems of two linear equations · medium
+y0 = F(11 - 3, 2); x0 = 2 * y0 + 1
+sols = [(g, h_) for g in GRID for h_ in GRID if g == 2 * h_ + 1 and 3 * g - 4 * h_ == 11]
+assert sols == [(9, 4)] == [(x0, y0)]
+cands = [(-3, -2), (4, 9), (5, 2), (9, 4)]
+assert [c_[0] == 2 * c_[1] + 1 and 3 * c_[0] - 4 * c_[1] == 11 for c_ in cands] == [False, False, False, True]
+mct(D, ALG, "Systems of two linear equations", "medium",
+    "x = 2y + 1\n3x − 4y = 11\n\nWhat is the solution (x, y) to the given system of equations?",
+    [f"({neg(a_)}, {neg(b_)})" for a_, b_ in cands], 3,
+    "Substitute x = 2y + 1 into the second equation: 3(2y + 1) − 4y = 11, so 6y + 3 − 4y = 11, 2y = 8, and y = 4. Then x = 2(4) + 1 = 9. The solution is (9, 4).")
+
+# 11 Advanced Math · Equivalent expressions · medium
+orig = "3x² + 10x − 8"
+ch = ["(3x − 2)(x + 4)", "(3x + 2)(x − 4)", "(3x − 4)(x + 2)", "(3x + 4)(x − 2)"]
+assert same_poly(ch[0], orig) and not any(same_poly(c_, orig) for c_ in ch[1:])
+mct(D, ADV, "Equivalent expressions", "medium", f"Which expression is equivalent to {orig}?", ch, 0,
+    "Check by expanding: (3x − 2)(x + 4) = 3x² + 12x − 2x − 8 = 3x² + 10x − 8. The other products give middle terms of −10x, 2x, and −2x.")
+
+# 12 PSDA · One-variable data · medium
+mins = [40, 25, 90, 65, 25, 70, 50]
+med_ = statistics.median(mins)
+assert med_ == 50 == sorted(mins)[3] and mins[3] == 65 and statistics.mode(mins) == 25
+mc(D, PSDA, "One-variable data: distributions and measures of center and spread", "medium",
+   f"Leo recorded the number of minutes he spent streaming music on each of 7 days: {', '.join(map(str, mins))}. What is the median number of minutes Leo spent streaming music on these days?", med_,
+   [25, 65, 90],
+   "Listed in order, the values are 25, 25, 40, 50, 65, 70, 90. The median is the middle (fourth) value, 50.", pos=1)
+
+# 13 Algebra · Linear equations in two variables · medium · grid-in
+m = F(17 - 5, 6 - 2)
+assert m == 3 and 5 - 3 * 2 == 17 - 3 * 6
+spr(D, ALG, "Linear equations in two variables", "medium",
+    "In the xy-plane, a line passes through the points (2, 5) and (6, 17). What is the slope of the line?", m,
+    "Slope = (change in y)/(change in x) = (17 − 5)/(6 − 2) = 12/4 = 3.")
+
+# 14 Advanced Math · Nonlinear functions · medium
+f = "−2(x − 3)² + 11"
+mx = max(ev(f, x=g) for g in GRID)
+assert mx == 11 and ev(f, x=3) == 11 and ev(f, x=0) == -7
+mc(D, ADV, "Nonlinear functions", "medium", f"f(x) = {f}\n\nThe function f is defined by the given equation. What is the maximum value of f(x)?", mx,
+   [ev(f, x=0), -2, 3],
+   "Because (x − 3)² ≥ 0, the term −2(x − 3)² is at most 0, and it equals 0 when x = 3. So the maximum value of f(x) is 0 + 11 = 11.", pos=3)
+
+# 15 Geometry · Right triangles and trigonometry · medium
+A = math.atan2(7, 24)
+assert abs(math.cos(A) - 24 / 25) < 1e-12 and 24 ** 2 + 7 ** 2 == 25 ** 2
+mc(D, GEO, "Right triangles and trigonometry", "medium",
+   "In right triangle ABC, angle C is the right angle, AC = 24, and BC = 7. What is the value of cos A?", F(24, 25),
+   [F(7, 25), F(7, 24), F(24, 7)],
+   "The hypotenuse is AB = √(24² + 7²) = √625 = 25. For angle A, the adjacent leg is AC = 24, so cos A = AC/AB = 24/25.", pos=2)
+
+# 16 Algebra · Linear functions · medium
+ch = ["T(t) = 0.4t + 58", "T(t) = 0.4t + 52", "T(t) = 2.5t + 52", "T(t) = 10t + 52"]
+fit = [abs(ev(rhs(c_), t=15) - 58) < 1e-9 and abs(ev(rhs(c_), t=40) - 68) < 1e-9 for c_ in ch]
+assert fit == [False, True, False, False] and F(68 - 58, 40 - 15) == F(2, 5)
+mct(D, ALG, "Linear functions", "medium",
+    "After a heater is switched on, the temperature inside a greenhouse rises at a constant rate. The temperature is 58°F 15 minutes after the heater is switched on and 68°F 40 minutes after the heater is switched on. Which function T gives the temperature, in °F, t minutes after the heater is switched on?",
+    ch, 1, "The rate of change is (68 − 58)/(40 − 15) = 10/25 = 0.4 degree per minute. Then 58 = 0.4(15) + b = 6 + b, so b = 52 and T(t) = 0.4t + 52.")
+
+# 17 Advanced Math · Systems of equations in two variables · medium · grid-in
+sols = [g for g in GRID if g * g - 6 == g]
+assert sols == [-2, 3]
+spr(D, ADV, "Systems of equations in two variables", "medium",
+    "y = x² − 6\ny = x\n\nIf (x, y) is a solution to the given system of equations and x > 0, what is the value of x?", max(sols),
+    "Substituting y = x into the first equation gives x = x² − 6, or x² − x − 6 = 0, which factors as (x − 3)(x + 2) = 0. Since x > 0, x = 3.")
+
+# 18 Algebra · Systems of two linear equations · medium · grid-in
+lg = [l_ for l_ in range(56) if 4 * (55 - l_) + 10 * l_ == 370]
+assert lg == [25] == [solve2(1, 1, 55, 4, 10, 370)[1]]
+spr(D, ALG, "Systems of two linear equations", "medium",
+    "A greenhouse sells small plants for $4 each and large plants for $10 each. On one day, the greenhouse sold 55 plants for a total of $370. How many large plants did the greenhouse sell that day?", lg[0],
+    "Let s and g be the numbers of small and large plants. Then s + g = 55 and 4s + 10g = 370. Substituting s = 55 − g gives 220 − 4g + 10g = 370, so 6g = 150 and g = 25.")
+
+# 19 PSDA · Probability · medium
+drinks = ["L"] * 48 + ["T"] * 57 + ["W"] * 45
+pr = F(sum(d_ != "T" for d_ in drinks), len(drinks))
+assert len(drinks) == 150 and pr == F(31, 50)
+mc(D, PSDA, "Probability and conditional probability", "medium",
+   "On Saturday, a food truck sold 150 drinks: 48 lemonades, 57 iced teas, and 45 bottles of water. If one of these drinks is selected at random, what is the probability that it is not an iced tea?", pr,
+   [F(45, 150), F(57, 150), F(2, 3)],
+   "150 − 57 = 93 of the drinks are not iced teas, so the probability is 93/150 = 31/50.", pos=2)
+
+# 20 Algebra · Linear equations in one variable · hard
+xs = [g for g in GRID if F(3, 4) * g - 5 == 13]
+assert xs == [24] and 3 * xs[0] - 20 == 52 == 4 * 13
+mc(D, ALG, "Linear equations in one variable", "hard",
+   "(3/4)x − 5 = 13\n\nIf x satisfies the given equation, what is the value of 3x − 20?", 52,
+   [13, 24, 72],
+   "Multiply both sides of the equation by 4: 3x − 20 = 52. (Alternatively, solving gives x = 24, and 3(24) − 20 = 52.)", pos=2)
+
+# 21 Advanced Math · Nonlinear equations in one variable · hard
+nroots = {kk: len(real_roots(1, -8, kk)) for kk in (12, 16, 20, 64)}
+assert nroots == {12: 2, 16: 1, 20: 0, 64: 0}
+mc(D, ADV, "Nonlinear equations in one variable", "hard",
+   "x² − 8x + k = 0\n\nIn the given equation, k is a constant. The equation has exactly two real solutions. Which of the following could be the value of k?", 12,
+   [16, 20, 64],
+   "A quadratic equation has exactly two real solutions when its discriminant is positive: (−8)² − 4(1)(k) > 0, so 64 − 4k > 0 and k < 16. Of the choices, only 12 is less than 16. (When k = 16 there is exactly one solution, and when k = 20 or 64 there are none.)", pos=0)
+
+# 22 Geometry · Circles · hard
+ch = ["(x − 1)² + (y + 4)² = 100", "(x + 1)² + (y − 4)² = 10", "(x + 1)² + (y − 4)² = 100", "(x − 5)² + (y − 12)² = 100"]
+def circ_ok(c_):
+    lhs, r_ = c_.split("=")
+    return ev(lhs, x=5, y=12) == ev(r_) and ev(lhs, x=-1, y=4) == 0
+assert [circ_ok(c_) for c_ in ch] == [False, False, True, False] and (5 + 1) ** 2 + (12 - 4) ** 2 == 100
+mct(D, GEO, "Circles", "hard",
+    "In the xy-plane, a circle has center (−1, 4) and passes through the point (5, 12). Which equation represents the circle?", ch, 2,
+    "The radius is the distance from the center to (5, 12): √((5 − (−1))² + (12 − 4)²) = √(36 + 64) = 10. A circle with center (h, k) and radius r has equation (x − h)² + (y − k)² = r², so the circle is (x + 1)² + (y − 4)² = 100.")
+
 # ================================================================ ids, validation, output
-for k_, pre in (("m1", "pt3-m1-"), ("m2", "pt3-m2-")):
+for k_, pre in (("m1", "pt3-m1-"), ("m2", "pt3-m2-"), ("m2e", "pt3-m2e-")):
     for i, it in enumerate(OUT[k_], 1): it["id"] = f"{pre}{i:02d}"
 for i, it in enumerate(OUT["bank"], 174): it["id"] = f"m-{i:03d}"
+for i, it in enumerate(OUT["moved"], 202): it["id"] = f"m-{i:03d}"
 
 META = json.load(open(os.path.join(HERE, "..", "data", "questions.json")))
 SK = META["meta"]["skills"]["math"]
-BANK_IDS = {q["id"] for q in META["questions"]}
-BANK_STEMS = {q["stem"] for q in META["questions"]}
+MINE = {"pt3-m1.json", "pt3-m2.json", "pt3-m2e.json", "bank-m-3.json", "bank-m-pt3-moved.json"}
+MY_BANK = {f"m-{i:03d}" for i in range(174, 194)}  # already merged into questions.json
+OTHERS = [q for q in META["questions"] if q["id"] not in MY_BANK]
+for t_ in json.load(open(os.path.join(HERE, "..", "data", "tests.json"), encoding="utf-8"))["tests"]:
+    for mod in t_["modules"]:
+        OTHERS += [q for q in mod["questions"] if not q["id"].startswith("pt3-m")]
+for fn in sorted(os.listdir(DRAFT)):
+    if fn.endswith(".json") and fn not in MINE:
+        OTHERS += json.load(open(os.path.join(DRAFT, fn), encoding="utf-8"))
+OTHER_IDS = {q["id"] for q in OTHERS}
+OTHER_STEMS = {q["stem"] for q in OTHERS}
+def math_lines(q):  # displayed equations / function definitions, to catch reused items with a new wording
+    t = q["stem"]
+    return {l.strip() for l in t.split("\n") if "=" in l and len(l) < 60} | set(re.findall(r"[a-zA-Z]\([a-z]\) = [^.?]+", t))
+OTHER_MATH = set().union(*(math_lines(q) for q in OTHERS if q.get("section") == "math"))
 
 def norm_spr(s):  # Python port of normalizeSpr in assets/js/practice.js
     t = re.sub(r"\s+", "", str(s).strip())
@@ -718,11 +961,17 @@ def norm_spr(s):  # Python port of normalizeSpr in assets/js/practice.js
 
 ORDER = ["id", "section", "domain", "skill", "difficulty", "stem", "choices", "type", "answer", "explanation", "passage"]
 DOM_ORDER = {"easy": 0, "medium": 1, "hard": 2}
+MIX = {"m1": {"easy": 7, "medium": 9, "hard": 6}, "m2": {"medium": 11, "hard": 11}, "m2e": {"easy": 9, "medium": 10, "hard": 3}}
+all_stems = [it["stem"] for items in OUT.values() for it in items]
+assert len(all_stems) == len(set(all_stems)), "duplicate stem within my own files"
 for k_, items in OUT.items():
     for it in items:
         assert it["domain"] in SK and it["skill"] in SK[it["domain"]], it["id"]
-        assert it["id"] not in BANK_IDS and it["stem"] not in BANK_STEMS
-        assert "figure" not in it["stem"] and "shown" not in it["stem"] and "graph shown" not in it["stem"]
+        assert it["id"] not in OTHER_IDS, it["id"]  # bank ids, other drafts and built tests
+        assert it["stem"] not in OTHER_STEMS, it["id"]
+        shared = math_lines(it) & OTHER_MATH
+        if shared: print("note: math line also used elsewhere:", it["id"], shared)
+        assert "figure" not in it["stem"] and "shown" not in it["stem"]
         # displayed math uses U+2212; an ASCII hyphen may only join words ("400-square-foot")
         assert not re.search(r"(?<![A-Za-z0-9])-|-(?![A-Za-z])", it["stem"] + it.get("passage", "") + it["explanation"] + "".join(it.get("choices", []))), it["id"]
         if it.get("type") == "spr":
@@ -741,28 +990,34 @@ for k_, items in OUT.items():
             nums = [val(c_) for c_ in ch]
             if all(n_ is not None for n_ in nums):
                 assert nums == sorted(nums) and len(set(nums)) == 4, (it["id"], ch)
-    if k_ != "bank":
+    if k_ in MIX:
         assert len(items) == 22
         assert [DOM_ORDER[it["difficulty"]] for it in items] == sorted(DOM_ORDER[it["difficulty"]] for it in items)
         dom = Counter(it["domain"] for it in items)
         assert dom == {ALG: 8, ADV: 7, PSDA: 4, GEO: 3}, dom
         diff = Counter(it["difficulty"] for it in items)
-        assert diff == ({"easy": 7, "medium": 9, "hard": 6} if k_ == "m1" else {"easy": 4, "medium": 9, "hard": 9}), diff
+        assert diff == MIX[k_], (k_, diff)
         assert 5 <= sum(it.get("type") == "spr" for it in items) <= 6
         pos = Counter(it["answer"] for it in items if "choices" in it)
         assert max(pos.values()) - min(pos.values()) <= 1 and len(pos) == 4, pos
-    else:
+        assert all(items[i]["domain"] != items[i + 1]["domain"] for i in range(len(items) - 1)), k_
+    elif k_ == "bank":
         assert len(items) == 20
         pos = Counter(it["answer"] for it in items if "choices" in it)
         assert max(pos.values()) - min(pos.values()) <= 1 and len(pos) == 4, pos
-alg = {it["skill"] for k_ in ("m1", "m2") for it in OUT[k_] if it["domain"] == ALG}
-assert alg == set(SK[ALG])
+    else:
+        assert k_ == "moved" and len(items) == 4 and all(it["difficulty"] == "easy" for it in items)
+for pair in (("m1", "m2"), ("m1", "m2e")):
+    alg = {it["skill"] for k_ in pair for it in OUT[k_] if it["domain"] == ALG}
+    assert alg == set(SK[ALG]), pair
 
 os.makedirs(DRAFT, exist_ok=True)
-for k_, name in (("m1", "pt3-m1.json"), ("m2", "pt3-m2.json"), ("bank", "bank-m-3.json")):
+for k_, name in (("m1", "pt3-m1.json"), ("m2", "pt3-m2.json"), ("m2e", "pt3-m2e.json"),
+                 ("bank", "bank-m-3.json"), ("moved", "bank-m-pt3-moved.json")):
     items = [{f_: it[f_] for f_ in ORDER if f_ in it} for it in OUT[k_]]
     with open(os.path.join(DRAFT, name), "w", encoding="utf-8") as fh:
         json.dump(items, fh, ensure_ascii=False, indent=1)
         fh.write("\n")
     print(f"{name}: {len(items)} items, {sum(i.get('type') == 'spr' for i in items)} grid-ins, "
+          f"{dict(Counter(i['domain'].split()[0] for i in items))}, "
           f"{dict(Counter(i['difficulty'] for i in items))}, keys {dict(sorted(Counter(i['answer'] for i in items if 'choices' in i).items()))}")

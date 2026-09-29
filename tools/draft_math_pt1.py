@@ -8,8 +8,10 @@ is written. The run stops on the first failed assertion.
 
 Writes:
   data/draft/pt1-m1.json    Module 1, 22 items (pt1-m1-01 .. -22)
-  data/draft/pt1-m2.json    Module 2, 22 items (pt1-m2-01 .. -22)
+  data/draft/pt1-m2.json    harder Module 2, 22 items (pt1-m2-01 .. -22), 11 medium / 11 hard
+  data/draft/pt1-m2e.json   easier Module 2, 22 items (pt1-m2e-01 .. -22), 9 easy / 10 medium / 3 hard
   data/draft/bank-m-1.json  20 bank items (m-134 .. m-153)
+  data/draft/bank-m-pt1-moved.json  the 4 easy items taken out of Module 2 (m-194 .. m-197)
 Usage: python3 tools/draft_math_pt1.py
 """
 import json, os, re
@@ -451,15 +453,15 @@ MC(M2, ADV, "Nonlinear functions", "medium",
     6],      # used −b/a
    "For a quadratic function ax² + bx + c with a > 0, the minimum occurs at x = −b/(2a) = 12/(2 · 2) = 3. (The minimum value itself is h(3) = 18 − 36 + 7 = −11.)")
 
-yfit = lambda t: F(12, 5) * t + 15
+yfit = lambda t: F(9, 5) * t + 22
 inc = yfit(9) - yfit(4)
-assert inc == 12 and yfit(10) - yfit(5) == inc
+assert inc == 9 and yfit(10) - yfit(5) == inc
 MC(M2, PSDA, "Two-variable data: models and scatterplots", "medium",
-   "A garden club recorded, for each of several tomato plants, the average number of hours of sunlight the plant received per day, x, and the plant's height after 6 weeks, y, in centimeters. The line of best fit for the data is y = 2.4x + 15. Based on the line of best fit, how many more centimeters tall is a plant predicted to be for each increase of 5 hours of sunlight per day?", inc,
-   [F(12, 5),       # the slope: increase for 1 hour
-    15,             # the y-intercept
+   "A garden club recorded, for each of several tomato plants, the average number of hours of sunlight the plant received per day, x, and the plant's height after 6 weeks, y, in centimeters. The line of best fit for the data is y = 1.8x + 22. Based on the line of best fit, how many more centimeters tall is a plant predicted to be for each increase of 5 hours of sunlight per day?", inc,
+   [F(9, 5),        # the slope: increase for 1 hour
+    22,             # the y-intercept
     yfit(5)],       # predicted height at x = 5
-   "The slope, 2.4, is the predicted increase in height for each additional hour of sunlight per day. For 5 additional hours, the predicted increase is 5 × 2.4 = 12 centimeters.", dec=True)
+   "The slope, 1.8, is the predicted increase in height for each additional hour of sunlight per day. For 5 additional hours, the predicted increase is 5 × 1.8 = 9 centimeters.", dec=True)
 
 CD, DA, DE = 6, 4, 9
 AB = F(DE) * (CD + DA) / CD
@@ -518,11 +520,11 @@ assert not any(equivalent(d, fn, P3) for d in dis)
 TXT(M2, ADV, "Equivalent expressions", "hard", "Which expression is equivalent to 1/(x − 3) + 2/(x + 3), for x > 3?", key, dis,
     "Use the common denominator (x − 3)(x + 3) = x² − 9: (x + 3)/(x² − 9) + 2(x − 3)/(x² − 9) = (x + 3 + 2x − 6)/(x² − 9) = (3x − 3)/(x² − 9).")
 
-cands = [cc for cc in range(-50, 51) if (lambda r_: len(r_) == 2 and r_[1] - r_[0] == 4)(roots(lambda t: t * t - 10 * t + cc))]
-assert cands == [21]
+cands = [cc for cc in range(-60, 61) if (lambda r_: len(r_) == 2 and r_[1] - r_[0] == 6)(roots(lambda t: t * t - 14 * t + cc))]
+assert cands == [40]
 SPR(M2, ADV, "Nonlinear equations in one variable", "hard",
-    "x² − 10x + c = 0\n\nIn the given equation, c is a constant. The equation has two solutions, and one solution is 4 greater than the other. What is the value of c?", 21,
-    "Completing the square, x² − 10x + c = 0 becomes (x − 5)² = 25 − c, so x = 5 ± √(25 − c). The two solutions differ by 2√(25 − c) = 4, so √(25 − c) = 2, 25 − c = 4, and c = 21. Check: x² − 10x + 21 = (x − 3)(x − 7), and 7 is 4 greater than 3.")
+    "x² − 14x + c = 0\n\nIn the given equation, c is a constant. The equation has two solutions, and one solution is 6 greater than the other. What is the value of c?", cands[0],
+    "Completing the square, x² − 14x + c = 0 becomes (x − 7)² = 49 − c, so x = 7 ± √(49 − c). The two solutions differ by 2√(49 − c) = 6, so √(49 − c) = 3, 49 − c = 9, and c = 40. Check: x² − 14x + 40 = (x − 4)(x − 10), and 10 is 6 greater than 4.")
 
 key = "m(d) = 200(9)^d"
 truth = lambda d: 200 * 3 ** (2 * d)          # triples every half day
@@ -809,6 +811,263 @@ SPR(BANK, PSDA, "Percentages", "easy",
     f"A school's sports club has {members} members. Of the members, 60% play soccer, and 25% of the members who play soccer are goalkeepers. How many of the club's members are soccer goalkeepers?", gk,
     "The number of soccer players is 0.60 × 80 = 48. The number of goalkeepers is 0.25 × 48 = 12.")
 
+
+# =====================================================================================
+# ADAPTIVE MODULE 2
+#   harder Module 2 (pt1-m2.json): the Module 2 above with its 4 easy items replaced by
+#     new medium/hard items of the same skills; the 4 easy items move to the bank.
+#   easier Module 2 (pt1-m2e.json): 22 new items, 9 easy / 10 medium / 3 hard.
+# =====================================================================================
+HARD_NEW = {}
+
+# replaces "4x − 3y = 18 ... which point" (Linear equations in two variables, easy)
+def intercepts(e):
+    lhs, rhs = e.split(" = ")
+    a_, b_, c0 = ev(lhs, x=1, y=0), ev(lhs, x=0, y=1), F(rhs.replace("−", "-"))
+    return (c0 / a_, c0 / b_)
+key = "2x − 3y = 12"
+dis = ["3x − 2y = 12",     # intercepts swapped
+       "2x + 3y = 12",     # y-intercept sign error
+       "4x − 6y = 12"]     # intercepts halved
+assert intercepts(key) == (6, -4) and all(intercepts(d) != (6, -4) for d in dis)
+assert 2 * 6 - 3 * 0 == 12 and 2 * 0 - 3 * (-4) == 12
+HARD_NEW["le2v"] = TXT([], ALG, "Linear equations in two variables", "medium",
+    "In the xy-plane, the graph of which of the following equations has an x-intercept at (6, 0) and a y-intercept at (0, −4)?", key, dis,
+    "Check the intercepts. For 2x − 3y = 12, setting y = 0 gives 2x = 12, so x = 6, and setting x = 0 gives −3y = 12, so y = −4. The other graphs have intercepts (4, 0) and (0, −6) for 3x − 2y = 12, (6, 0) and (0, 4) for 2x + 3y = 12, and (3, 0) and (0, −2) for 4x − 6y = 12.")
+
+# replaces "6x³ + 9x²" (Equivalent expressions, easy)
+poly_ = lambda t: 4 * t * t - 20 * t + 31
+assert equivalent("4(x − 5/2)² + 6", poly_) and min(poly_(t) for t in GRID) == 6
+k_ = F(6)
+HARD_NEW["equiv"] = MC([], ADV, "Equivalent expressions", "hard",
+   "4x² − 20x + 31\n\nThe given expression can be written in the form a(x − h)² + k, where a, h, and k are constants. What is the value of k?", k_,
+   [31 - 100,             # completed the square on x² − 20x without factoring out the 4
+    31 - F(25, 4),        # did not multiply 25/4 by 4
+    31],                  # took the constant term
+   "Factor 4 out of the x-terms: 4(x² − 5x) + 31. Complete the square: x² − 5x = (x − 5/2)² − 25/4. So the expression equals 4(x − 5/2)² − 4(25/4) + 31 = 4(x − 5/2)² − 25 + 31 = 4(x − 5/2)² + 6, and k = 6.", dec=True)
+
+# replaces "bus travels 186 miles" (Ratios, rates, proportional relationships, and units, easy grid-in)
+mpg, price, dist = 32, F(18, 5), 280
+cost = F(dist, mpg) * price
+assert cost == F(63, 2) and price / mpg * dist == cost          # gallons first, then cost per mile
+HARD_NEW["ratio"] = SPR([], PSDA, "Ratios, rates, proportional relationships, and units", "medium",
+    f"On a road trip, Priya's car travels {mpg} miles per gallon of gasoline, and gasoline costs $3.60 per gallon. What is the cost, in dollars, of the gasoline the car uses to travel {dist} miles?", cost,
+    f"The car uses {dist} ÷ {mpg} = {fmt(F(dist, mpg), True)} gallons of gasoline. At $3.60 per gallon, that costs {fmt(F(dist, mpg), True)} × 3.60 = {fmt(cost, True)} dollars.")
+
+# replaces "60 by 80 field diagonal" (Right triangles and trigonometry, easy)
+AB_, cosA = 26, F(5, 13)
+AC_ = AB_ * cosA; BC_ = isqrt(AB_ ** 2 - int(AC_) ** 2)
+assert AC_ == 10 and BC_ ** 2 + AC_ ** 2 == AB_ ** 2 and F(AC_, AB_) == cosA
+area = F(AC_ * BC_, 2)
+assert area == 120
+HARD_NEW["trig"] = MC([], GEO, "Right triangles and trigonometry", "hard",
+   f"In right triangle ABC, angle C is the right angle, AB = {AB_}, and cos A = 5/13. What is the area of triangle ABC?", area,
+   [F(AC_ * AB_, 2),      # used the hypotenuse as a leg with AC
+    AC_ * BC_,            # forgot the 1/2
+    F(BC_ * AB_, 2)],     # used the hypotenuse as a leg with BC
+   f"cos A = AC/AB, so AC = {AB_} × 5/13 = {AC_}. By the Pythagorean theorem, BC = √({AB_}² − {AC_}²) = √{AB_ ** 2 - AC_ ** 2} = {BC_}. The legs are AC and BC, so the area is (1/2)({AC_})({BC_}) = {area}.")
+
+# ---------------------------------------------------------------- easier Module 2
+M2E = []
+# easy
+r = roots(lambda t: 8 * t - 5 - (3 * t + 20))
+assert r == [5]
+MC(M2E, ALG, "Linear equations in one variable", "easy",
+   "8x − 5 = 3x + 20\n\nWhat is the solution to the given equation?", r[0],
+   [F(15, 11),     # moved both terms across without changing signs: 11x = 15
+    3,             # subtracted 5 instead of adding: 5x = 15
+    25],           # did not divide by 5
+   "Subtract 3x from both sides: 5x − 5 = 20. Add 5 to both sides: 5x = 25. Divide by 5: x = 5.")
+
+key = "5x² − 2x + 4"
+fn = lambda t: (4 * t * t + 3 * t - 2) + (t * t - 5 * t + 6)
+dis = ["5x² + 8x + 4",     # dropped the sign of −5x
+       "5x² − 2x − 8",     # subtracted the constants
+       "4x² − 2x + 4"]     # left out the second x² term
+assert equivalent(key, fn) and not any(equivalent(d, fn) for d in dis)
+TXT(M2E, ADV, "Equivalent expressions", "easy", "Which expression is equivalent to (4x² + 3x − 2) + (x² − 5x + 6)?", key, dis,
+    "Combine like terms: (4x² + x²) + (3x − 5x) + (−2 + 6) = 5x² − 2x + 4.")
+
+rye = F(250 * 18, 100)
+assert rye == 45 and rye / 250 == F(9, 50)
+SPR(M2E, PSDA, "Percentages", "easy",
+    "Rosa's Bakery sold 250 loaves of bread on Saturday, and 18% of the loaves sold were rye bread. How many loaves of rye bread did the bakery sell on Saturday?", rye,
+    "18% of 250 is 0.18 × 250 = 45.")
+
+d_ = 14
+circ = F(d_)                            # coefficient of π
+assert circ == 2 * F(d_, 2)             # πd = 2πr
+dis = ["7π",      # used the radius in C = πd
+       "28π",     # used C = 2πd
+       "49π"]     # area, πr²
+assert all(F(d.rstrip("π")) != circ for d in dis)
+TXT(M2E, GEO, "Circles", "easy", f"A circular garden has a diameter of {d_} feet. What is the circumference of the garden, in feet?", f"{d_}π", dis,
+    f"Circumference = π × diameter = π({d_}) = {d_}π feet. (Equivalently, 2πr with radius r = 7.)")
+
+key = "C(t) = 0.25t + 15"
+truth = lambda t: 15 + F(1, 4) * t
+dis = ["C(t) = 15t + 0.25", "C(t) = 15.25t", "C(t) = 0.25t − 15"]   # swapped rate and fee; combined them; subtracted the fee
+same = lambda e: all(close(ev(e.split("= ")[1], t=t), truth(t)) for t in (0, 4, 30))
+assert same(key) and not any(same(d) for d in dis)
+TXT(M2E, ALG, "Linear functions", "easy",
+    "Nia's phone plan costs $15 per month plus $0.25 for each text message she sends. Which function gives the total monthly cost C(t), in dollars, if Nia sends t text messages in a month?", key, dis,
+    "The $15 is charged once each month, and each text message adds $0.25, so t messages add 0.25t dollars. The total is C(t) = 0.25t + 15.")
+
+p3 = 5 * 2 ** 3
+assert p3 == 40 and close(ev("5(2)^x", x=3), 40)
+MC(M2E, ADV, "Nonlinear functions", "easy",
+   "The function p is defined by p(x) = 5(2)^x. What is the value of p(3)?", p3,
+   [5 + 2 ** 3,    # added 5 instead of multiplying
+    5 * 3,         # ignored the base 2
+    5 * 2 * 3],    # multiplied by the exponent
+   "Substitute x = 3: p(3) = 5(2)³ = 5(8) = 40.")
+
+runs = [4, 9, 2, 7, 4, 11, 5]
+srt = sorted(runs); med = srt[3]
+assert med == 5 and sum(1 for v in runs if v < med) == sum(1 for v in runs if v > med) == 3
+MC(M2E, PSDA, "One-variable data: distributions and measures of center and spread", "easy",
+   ", ".join(map(str, runs)) + "\n\nThe list gives the numbers of runs a softball team scored in its first 7 games of the season. What is the median of the data?", med,
+   [Counter(runs).most_common(1)[0][0],    # the mode
+    F(sum(runs), len(runs)),               # the mean
+    runs[3]],                              # middle of the unsorted list
+   "In order, the values are 2, 4, 4, 5, 7, 9, 11. The median is the middle (fourth) value, 5.")
+
+sx, sy = 5, 9
+assert sy == sx + 4 and 3 * sx + sy == 24 and roots(lambda t: 3 * t + (t + 4) - 24) == [5]
+dis = ["(9, 5)", "(4, 12)", "(2, 6)"]     # swapped; fits only the second equation; fits only the first
+for d in dis:
+    px, py_ = map(int, d.strip("()").split(", "))
+    assert not (py_ == px + 4 and 3 * px + py_ == 24)
+TXT(M2E, ALG, "Systems of two linear equations", "easy",
+    "y = x + 4\n3x + y = 24\n\nWhat is the solution (x, y) to the given system of equations?", f"({sx}, {sy})", dis,
+    "Substitute y = x + 4 into the second equation: 3x + x + 4 = 24, so 4x = 20 and x = 5. Then y = 5 + 4 = 9.")
+
+big = [a_ + 36 for a_ in range(0, 181) if a_ + (a_ + 36) == 180]
+assert big == [108]
+SPR(M2E, GEO, "Lines, angles, and triangles", "easy",
+    "Two angles are supplementary. The measure of one angle is 36° greater than the measure of the other angle. What is the measure, in degrees, of the larger angle?", big[0],
+    "Let the smaller angle measure a degrees. Then a + (a + 36) = 180, so 2a = 144 and a = 72. The larger angle measures 72 + 36 = 108°.")
+
+# medium
+slope = F(7 - (-3), 5 - 1)
+assert slope == F(5, 2) and -3 + slope * 4 == 7
+MC(M2E, ALG, "Linear equations in two variables", "medium",
+   "In the xy-plane, a line passes through the points (1, −3) and (5, 7). What is the slope of the line?", slope,
+   [-slope,            # sign error
+    1 / slope,         # run over rise
+    F(7 - 3, 5 - 1)],  # dropped the sign of −3
+   "Slope = (change in y)/(change in x) = (7 − (−3))/(5 − 1) = 10/4 = 5/2.")
+
+r = roots(lambda t: t * t - (6 * t + 16))
+assert r == [-2, 8]
+SPR(M2E, ADV, "Nonlinear equations in one variable", "medium",
+    "x² = 6x + 16\n\nWhat is the positive solution to the given equation?", max(r),
+    "Subtract 6x and 16 from both sides: x² − 6x − 16 = 0, which factors as (x − 8)(x + 2) = 0. The solutions are 8 and −2, so the positive solution is 8.")
+
+mins = F(3000, F(400, 80)) / 60
+assert mins == 10 and F(3000, 400) * 80 / 60 == mins
+MC(M2E, PSDA, "Ratios, rates, proportional relationships, and units", "medium",
+   "A runner on a school's track team runs 400 meters in 80 seconds. At this rate, how many minutes will it take the runner to run 3,000 meters?", mins,
+   [F(3000, 400),     # number of 400-meter laps
+    F(3000, 80),      # divided the distance by the time for one lap
+    600],             # seconds, not minutes
+   "The runner's rate is 400 ÷ 80 = 5 meters per second. Running 3,000 meters takes 3,000 ÷ 5 = 600 seconds, which is 600 ÷ 60 = 10 minutes.", dec=True)
+
+sol = lambda pred: [t for t in GRID if pred(t)]
+truth = sol(lambda t: -3 * (t - 2) > 15)
+opts = {"x < −3": lambda t: t < -3, "x > −3": lambda t: t > -3, "x < −7": lambda t: t < -7, "x > −7": lambda t: t > -7}
+match = [o for o, f in opts.items() if sol(f) == truth]
+assert match == ["x < −3"]
+TXT(M2E, ALG, "Linear inequalities", "medium",
+    "−3(x − 2) > 15\n\nWhich of the following is the solution to the given inequality?", "x < −3",
+    ["x > −3",      # did not reverse the inequality
+     "x < −7",      # distributed −3(x − 2) as −3x − 6
+     "x > −7"],     # both errors
+    "Distribute: −3x + 6 > 15. Subtract 6 from both sides: −3x > 9. Dividing both sides by −3 reverses the inequality: x < −3.")
+
+key = "(2x − 7)(2x + 7)"
+fn = lambda t: 4 * t * t - 49
+dis = ["(2x − 7)²", "(2x + 7)²", "(4x − 7)(x + 7)"]    # square of a difference; square of a sum; split 4x² as 4x · x
+assert equivalent(key, fn) and not any(equivalent(d, fn) for d in dis)
+TXT(M2E, ADV, "Equivalent expressions", "medium", "Which expression is equivalent to 4x² − 49?", key, dis,
+    "4x² − 49 is a difference of two squares: (2x)² − 7². So it factors as (2x − 7)(2x + 7).")
+
+L_, P_ = 15, 48
+W_ = F(P_ - 2 * L_, 2)
+assert W_ == 9 and 2 * (L_ + W_) == P_
+MC(M2E, GEO, "Area and volume", "medium",
+   f"A rectangular garden plot has a length of {L_} feet and a perimeter of {P_} feet. What is the area of the plot, in square feet?", L_ * W_,
+   [L_ * (P_ - 2 * L_),     # did not halve 48 − 30
+    L_ * (P_ - L_),         # subtracted only one length
+    L_ * P_],               # multiplied the length by the perimeter
+   f"The perimeter is 2({L_}) + 2w = {P_}, so 2w = {P_ - 2 * L_} and w = {W_}. The area is {L_} × {W_} = {L_ * W_} square feet.")
+
+R_ = lambda t: 12400 + 55 * t
+hrs = roots(lambda t: R_(t) - 12730)
+assert hrs == [6]
+SPR(M2E, ALG, "Linear functions", "medium",
+    "At the start of a road trip, the odometer of the Reyes family's van read 12,400 miles. The odometer reading R, in miles, t hours after the start of the trip is modeled by the function R(t) = 12,400 + 55t. According to the model, how many hours after the start of the trip will the odometer read 12,730 miles?", hrs[0],
+    "Set 12,400 + 55t = 12,730. Subtract 12,400 from both sides: 55t = 330. Divide by 55: t = 6.")
+
+f_ = lambda t: t * t - 8 * t + 12
+assert roots(f_) == [2, 6]
+opts = {"(2, 0) and (6, 0)": [(2, 0), (6, 0)], "(−2, 0) and (−6, 0)": [(-2, 0), (-6, 0)],
+        "(1, 0) and (12, 0)": [(1, 0), (12, 0)], "(0, 2) and (0, 6)": [(0, 2), (0, 6)]}
+good = [o for o, pts in opts.items() if all(f_(px) == py_ and py_ == 0 for px, py_ in pts)]
+assert good == ["(2, 0) and (6, 0)"]
+TXT(M2E, ADV, "Nonlinear functions", "medium",
+    "The function f is defined by f(x) = x² − 8x + 12. At which points does the graph of y = f(x) cross the x-axis in the xy-plane?", good[0],
+    ["(−2, 0) and (−6, 0)",    # sign error in the factors
+     "(1, 0) and (12, 0)",     # a factor pair of 12 that does not add to 8
+     "(0, 2) and (0, 6)"],     # coordinates reversed
+    "The graph crosses the x-axis where f(x) = 0. The equation x² − 8x + 12 = 0 factors as (x − 2)(x − 6) = 0, so x = 2 or x = 6. The points are (2, 0) and (6, 0).")
+
+fl = {("Tulip", "White"): 24, ("Tulip", "Yellow"): 16, ("Daffodil", "White"): 6, ("Daffodil", "Yellow"): 34}
+yellow = fl[("Tulip", "Yellow")] + fl[("Daffodil", "Yellow")]; totf = sum(fl.values())
+p = F(fl[("Daffodil", "Yellow")], yellow)
+assert p == F(17, 25) and totf == 80
+MC(M2E, PSDA, "Probability and conditional probability", "medium",
+   "If one of the yellow flowers is selected at random, what is the probability that it is a daffodil?", p,
+   [F(34, totf),        # yellow daffodils out of all flowers
+    F(yellow, totf),    # probability a flower is yellow
+    F(34, 40)],         # yellow given daffodil (reversed condition)
+   "There are 16 + 34 = 50 yellow flowers, and 34 of them are daffodils. The probability is 34/50 = 17/25.",
+   passage="           White   Yellow\nTulip      24      16\nDaffodil   6       34\n\nThe table shows the types and colors of the 80 flowers a school's garden club planted this spring.")
+
+sols = [(t, 6 * t) for t in GRID if 3 * t * t == 6 * t]
+assert sols == [(0, 0), (2, 12)]
+dis = ["(−2, 12)", "(1, 3)", "(4, 24)"]
+for d in dis:
+    px, py_ = (int(v.replace("−", "-")) for v in d.strip("()").split(", "))
+    assert not (py_ == 3 * px * px and py_ == 6 * px)
+TXT(M2E, ADV, "Systems of equations in two variables", "medium",
+    "y = 3x²\ny = 6x\n\nWhich of the following is a solution (x, y) to the given system of equations?", "(2, 12)", dis,
+    "Set 3x² = 6x: 3x² − 6x = 0, so 3x(x − 2) = 0 and x = 0 or x = 2. When x = 2, y = 6(2) = 12, so (2, 12) is a solution. The other choices each fail an equation: for (−2, 12), 6(−2) = −12; for (1, 3), 6(1) = 6; for (4, 24), 3(4)² = 48.")
+
+# hard
+ks = [kk for kk in GRID if all(F(3, 4) * (8 * t - 12) == 2 * (3 * t + kk) for t in (0, 1, 5))]
+assert ks == [F(-9, 2)]
+SPR(M2E, ALG, "Linear equations in one variable", "hard",
+    "(3/4)(8x − 12) = 2(3x + k)\n\nIn the given equation, k is a constant. The equation has infinitely many solutions. What is the value of k?", ks[0],
+    "Distribute on both sides: (3/4)(8x − 12) = 6x − 9, and 2(3x + k) = 6x + 2k. The equation 6x − 9 = 6x + 2k is true for every value of x exactly when −9 = 2k, so k = −9/2, or −4.5.")
+
+B_ = lambda t: 100 * F(4, 5) ** (F(t) / 2) if F(t) / 2 == int(F(t) / 2) else None
+assert B_(4) == 64 and 100 * F(4, 5) * F(4, 5) == 64
+MC(M2E, ADV, "Nonlinear functions", "hard",
+   "The charge remaining in a phone's battery, as a percent of full charge, t hours after the phone is unplugged is modeled by the function B(t) = 100(0.8)^(t/2). According to the model, what percent of full charge remains 4 hours after the phone is unplugged?", B_(4),
+   [100 * F(4, 5) ** 4,     # used t instead of t/2
+    100 - 20 * 2,           # took off 20 percentage points every 2 hours
+    100 * F(4, 5)],         # applied only one 2-hour period
+   "Substitute t = 4: B(4) = 100(0.8)^(4/2) = 100(0.8)² = 100(0.64) = 64.", dec=True)
+
+boxes = [(s6, 40 - s6) for s6 in range(41) if 6 * s6 + 4 * (40 - s6) == 196]
+assert boxes == [(18, 22)]
+rev = 15 * boxes[0][0] + 11 * boxes[0][1]
+assert rev == 512
+SPR(M2E, ALG, "Systems of two linear equations", "hard",
+    "A bakery sells muffins only in boxes of 4 and boxes of 6. On Friday, the bakery sold 40 boxes containing a total of 196 muffins. Each box of 4 muffins sells for $11, and each box of 6 muffins sells for $15. What was the bakery's total revenue, in dollars, from these 40 boxes?", rev,
+    "Let s be the number of boxes of 6 and f the number of boxes of 4. Then s + f = 40 and 6s + 4f = 196. Substituting f = 40 − s: 6s + 160 − 4s = 196, so 2s = 36, s = 18, and f = 22. The revenue is 18 × 15 + 22 × 11 = 270 + 242 = 512 dollars.")
+
 # =====================================================================================
 # finish: key positions, ids, validation, output
 # =====================================================================================
@@ -858,7 +1117,7 @@ def validate(items, n, mix=None, spr_range=None, module=False):
         text = " ".join([it["stem"], it["explanation"], it.get("passage", "")] + it.get("choices", []))
         assert not re.search(r"(^|[\s(=\d])-\s?[\dx(]", text), (it["id"], "ASCII minus in displayed math")
         assert not re.search(r"\b(figure|graph shown|shown in the|shown below|shown above)\b", text, re.I), it["id"]
-        assert not any(q["stem"] == it["stem"] for q in BANK_Q), it["id"]
+        assert not any(q["stem"] == it["stem"] and q["id"] != it["id"] for q in BANK_Q), it["id"]   # (bank-m-1 has since been merged into the bank)
     if module:
         doms = Counter(it["domain"] for it in items)
         assert doms == Counter({ALG: 8, ADV: 7, PSDA: 4, GEO: 3}), doms
@@ -870,28 +1129,94 @@ def validate(items, n, mix=None, spr_range=None, module=False):
     assert max(pos.values()) - min(pos[i] for i in range(4)) <= 1, pos
     return pos
 
-# interleave domains within each difficulty band of Module 2 (items were written grouped by domain)
+
+# ---------------------------------------------------------------- assemble
+# interleave domains within each difficulty band of the original Module 2 (written grouped by domain)
 M2[:] = [M2[i] for i in [0, 1, 2, 3, 4, 7, 5, 9, 12, 8, 6, 10, 11, 13, 15, 19, 16, 14, 21, 17, 20, 18]]
 assert len({id(it) for it in M2}) == 22
 
 m1pos = place_text_keys(M1); m2pos = place_text_keys(M2); bpos = place_text_keys(BANK)
 m1 = finish(M1, [f"pt1-m1-{i:02d}" for i in range(1, 23)])
-m2 = finish(M2, [f"pt1-m2-{i:02d}" for i in range(1, 23)])
+m2_orig = finish(M2, [f"pt1-m2-{i:02d}" for i in range(1, 23)])
 bk = finish(BANK, [f"m-{i:03d}" for i in range(134, 154)])
+
+# the original Module 2's easy items move to the bank unchanged except for their ids
+easy_items = [it for it in m2_orig if it["difficulty"] == "easy"]
+assert len(easy_items) == 4
+moved = finish([dict(it) for it in easy_items], [f"m-{i:03d}" for i in range(194, 198)])
+
+# harder Module 2: the rest of the original, plus the replacements, in easy-to-hard order
+old = [it for it in m2_orig if it["difficulty"] != "easy"]          # 9 medium then 9 hard, as ordered above
+med, hard = old[:9], old[9:]
+assert all(it["difficulty"] == "medium" for it in med) and all(it["difficulty"] == "hard" for it in hard)
+# medium band: m1 A, ratio P, m2 A, m4 D, le2v A, m6 P, m9 A, m5 D, m3 A, m7 G, m8 A
+by = lambda lst, skill: next(it for it in lst if it["skill"] == skill and it not in used)
+used = []
+def take(lst, skill):
+    it = by(lst, skill); used.append(it); return it
+med_order = [take(med, "Linear equations in one variable"), HARD_NEW["ratio"], take(med, "Linear functions"),
+             take(med, "Nonlinear equations in one variable"), HARD_NEW["le2v"], take(med, "Two-variable data: models and scatterplots"),
+             take(med, "Linear equations in two variables"), take(med, "Nonlinear functions"), take(med, "Systems of two linear equations"),
+             take(med, "Lines, angles, and triangles"), take(med, "Linear inequalities")]
+hard_order = [take(hard, "Linear functions"), take(hard, "Equivalent expressions"), take(hard, "Probability and conditional probability"),
+              HARD_NEW["trig"], take(hard, "Nonlinear equations in one variable"), take(hard, "Systems of two linear equations"),
+              HARD_NEW["equiv"], take(hard, "Right triangles and trigonometry"), take(hard, "Nonlinear functions"),
+              take(hard, "One-variable data: distributions and measures of center and spread"), take(hard, "Systems of equations in two variables")]
+M2H = med_order + hard_order
+assert len(M2H) == 22 and len(used) == 18
+for it in M2H: it.pop("id", None)
+m2hpos = place_text_keys(M2H)
+m2 = finish(M2H, [f"pt1-m2-{i:02d}" for i in range(1, 23)])
+
+m2epos = place_text_keys(M2E)
+m2e = finish(M2E, [f"pt1-m2e-{i:02d}" for i in range(1, 23)])
+
 validate(m1, 22, {"easy": 7, "medium": 9, "hard": 6}, (5, 6), module=True)
-validate(m2, 22, {"easy": 4, "medium": 9, "hard": 9}, (5, 6), module=True)
+validate(m2, 22, {"medium": 11, "hard": 11}, (5, 6), module=True)
+validate(m2e, 22, {"easy": 9, "medium": 10, "hard": 3}, (5, 6), module=True)
 validate(bk, 20)
-alg = {it["skill"] for it in m1 + m2 if it["domain"] == ALG}
-assert alg == set(SKILLS[ALG]), alg
-assert not {it["id"] for it in bk} & {q["id"] for q in BANK_Q}
+assert [{k: v for k, v in a.items() if k != "id"} for a in moved] == [{k: v for k, v in b.items() if k != "id"} for b in easy_items]
+for it in moved:
+    assert it["skill"] in SKILLS[it["domain"]] and it["difficulty"] == "easy"
+for mod in (m1 + m2, m1 + m2e):
+    assert {it["skill"] for it in mod if it["domain"] == ALG} == set(SKILLS[ALG])
+# every skill of a replaced easy item is kept in the harder module by its replacement
+assert sorted(it["skill"] for it in moved) == sorted(HARD_NEW[k]["skill"] for k in HARD_NEW)
+assert all(HARD_NEW[k]["difficulty"] in ("medium", "hard") for k in HARD_NEW)
+assert not {it["id"] for it in moved} & {q["id"] for q in BANK_Q}
+
+# no duplicates across all drafts and the bank: same stem, or same displayed equation line
+MINE = {"pt1-m1.json", "pt1-m2.json", "pt1-m2e.json", "bank-m-1.json", "bank-m-pt1-moved.json"}
+others = [q for q in BANK_Q if q.get("section") == "math" and q["id"] not in {it["id"] for it in bk}]
+for fn_ in sorted(os.listdir(OUTDIR)):
+    if fn_.endswith(".json") and fn_ not in MINE:
+        d = json.load(open(os.path.join(OUTDIR, fn_)))
+        others += [q for q in (d if isinstance(d, list) else d.get("questions", [])) if q.get("section") == "math"]
+EQ = re.compile(r"[\s0-9a-z+\-−*/().²³√^=<>≤≥]+")
+eqlines = lambda q: {l.strip() for l in q["stem"].split("\n") if "=" in l and EQ.fullmatch(l)}
+def dupes(items, pool):
+    stems = {q["stem"]: q["id"] for q in pool}; lines = {}
+    for q in pool:
+        for l in eqlines(q): lines[l] = q["id"]
+    return [(it["id"], stems.get(it["stem"]) or next(lines[l] for l in eqlines(it) if l in lines))
+            for it in items if it["stem"] in stems or eqlines(it) & set(lines)]
+new_items = m2 + m2e + moved
+assert not dupes(new_items, others), dupes(new_items, others)
+mine_all = m1 + m2 + m2e + bk + moved
+assert len({it["stem"] for it in mine_all}) == len(mine_all)
+for i, it in enumerate(mine_all):
+    assert not dupes([it], mine_all[:i] + mine_all[i + 1:]), it["id"]
+OLD_OVERLAP = dupes(m1 + bk, others)      # reported, not fixed: those two files are frozen
 
 os.makedirs(OUTDIR, exist_ok=True)
-for name, data in (("pt1-m1.json", m1), ("pt1-m2.json", m2), ("bank-m-1.json", bk)):
+for name, data in (("pt1-m1.json", m1), ("pt1-m2.json", m2), ("pt1-m2e.json", m2e),
+                   ("bank-m-1.json", bk), ("bank-m-pt1-moved.json", moved)):
     with open(os.path.join(OUTDIR, name), "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1); f.write("\n")
 
 if __name__ == "__main__":
-    for label, data in (("Module 1", m1), ("Module 2", m2), ("Bank", bk)):
+    for label, data in (("Module 1", m1), ("Module 2 (harder)", m2), ("Module 2 (easier)", m2e), ("Bank", bk), ("Moved to bank", moved)):
         print(label, len(data), "items |", dict(Counter(it["domain"] for it in data)), "|",
               dict(Counter(it["difficulty"] for it in data)), "| grid-ins:", sum(it.get("type") == "spr" for it in data),
               "| key slots:", dict(sorted(Counter(it["answer"] for it in data if it.get("type") != "spr").items())))
+    if OLD_OVERLAP: print("equation/stem overlap in frozen files:", OLD_OVERLAP)

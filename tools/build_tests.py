@@ -1,6 +1,10 @@
 """Assemble the numbered practice tests and new bank items from data/draft/.
 
-  data/draft/ptN-rw1.json, ptN-rw2.json, ptN-m1.json, ptN-m2.json  -> data/tests.json
+  data/draft/ptN-rw1.json, ptN-rw2.json, ptN-rw2e.json,
+             ptN-m1.json,  ptN-m2.json,  ptN-m2e.json                -> data/tests.json
+  (Module 2 comes in two versions, as on the adaptive real test: `rw2`/`m2`
+  is the harder one, `rw2e`/`m2e` the easier; Module 1 decides which a
+  student gets.)
   data/draft/bank-*.json                                            -> appended to data/questions.json
 
 Checks every item against the bank's schema and taxonomy, module sizes, and
@@ -38,9 +42,10 @@ def check(q, where):
 tests = {}
 for f in sorted(glob.glob(D("draft", "pt*-*.json"))):
     key = os.path.basename(f)[:-5]                     # pt1-rw1
-    m = re.fullmatch(r"pt(\d+)-(rw|m)([12])", key)
+    m = re.fullmatch(r"pt(\d+)-(rw|m)(1|2|2e)", key)
     if not m: errors.append(f"unexpected draft {key}"); continue
-    n, sec, mod = int(m.group(1)), ("rw" if m.group(2) == "rw" else "math"), int(m.group(3))
+    n, sec = int(m.group(1)), ("rw" if m.group(2) == "rw" else "math")
+    mod, level = (1, None) if m.group(3) == "1" else (2, "easier" if m.group(3) == "2e" else "harder")
     qs = json.load(open(f))
     if len(qs) != SIZE[sec]: errors.append(f"{key}: {len(qs)} items, expected {SIZE[sec]}")
     for i, q in enumerate(qs, 1):
@@ -48,13 +53,15 @@ for f in sorted(glob.glob(D("draft", "pt*-*.json"))):
         want = f"{key}-{i:02d}"
         if q.get("id") != want: errors.append(f"{key}: item {i} id {q.get('id')} != {want}")
         if q.get("section") != sec: errors.append(f"{key}: {q.get('id')} section {q.get('section')}")
-    tests.setdefault(n, []).append({"key": key, "section": sec, "module": mod, "questions": qs})
+    entry = {"key": key, "section": sec, "module": mod, "questions": qs}
+    if level: entry["level"] = level
+    tests.setdefault(n, []).append(entry)
 
-order = {("rw", 1): 0, ("rw", 2): 1, ("math", 1): 2, ("math", 2): 3}
-out = {"note": "Numbered full-length practice tests. Their questions are kept out of the question bank so each test is unseen the first time. Built by tools/build_tests.py from data/draft/.", "tests": []}
+order = {("rw", 1, None): 0, ("rw", 2, "harder"): 1, ("rw", 2, "easier"): 2, ("math", 1, None): 3, ("math", 2, "harder"): 4, ("math", 2, "easier"): 5}
+out = {"note": "Numbered full-length adaptive practice tests: per section, Module 1 then a harder or easier Module 2 depending on Module 1. Their questions are kept out of the question bank so each test is unseen the first time. Built by tools/build_tests.py from data/draft/.", "tests": []}
 for n in sorted(tests):
-    mods = sorted(tests[n], key=lambda m: order[(m["section"], m["module"])])
-    if len(mods) != 4: errors.append(f"test {n}: {len(mods)} modules, expected 4")
+    mods = sorted(tests[n], key=lambda m: order[(m["section"], m["module"], m.get("level"))])
+    if len(mods) != 6: errors.append(f"test {n}: {len(mods)} modules, expected 6 (Module 1, harder and easier Module 2, per section)")
     out["tests"].append({"id": f"pt{n}", "number": n, "name": f"Practice Test {n}", "modules": mods})
 
 new_bank = []

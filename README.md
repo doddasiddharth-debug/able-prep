@@ -12,7 +12,7 @@ devices through Supabase.
 |---|---|
 | **Dashboard** | Predicted score (from recent answers), "Focus next" weakest domains, streak, days to test day, the next study-plan session, activity heatmap |
 | **Question bank** | Every College Board skill (10 R&W, 19 Math) with question counts, solved counts, and your accuracy; drill by skill, domain, or difficulty; untimed with explanations |
-| **Practice tests** | Numbered full-length tests (`data/tests.json`): Reading and Writing Module 1 and 2 (27 questions, 32 min each), a 10-minute break, Math Module 1 and 2 (22 questions, 35 min each), then a score report (estimated 400–1600, section scores, by module and by domain, each module reviewable). Take a whole test or one section. Plus a quick module of random bank questions; attempt history |
+| **Practice tests** | Numbered full-length adaptive tests (`data/tests.json`): Reading and Writing Module 1 then an easier or harder Module 2 depending on Module 1 (27 questions, 32 min each), a 10-minute break, Math the same way (22 questions, 35 min each), then a score report (estimated 400–1600, section scores, by module and by domain, each module reviewable). Take a whole test or one section. Plus a quick module of random bank questions; attempt history |
 | **Question Rush** | One question at a time against a per-question clock; stars for speed and accuracy |
 | **Challenge questions** | Hard-tier only, per section |
 | **Vocabulary** | Flashcards and a definition quiz; words count as mastered after two correct answers |
@@ -73,16 +73,23 @@ and every form has its own curve; every screen that shows an estimate says so.
 
 ## Practice tests
 
-`data/tests.json` holds each numbered test as four modules in order
-(`rw1`, `rw2`, `m1`, `m2`), each a list of full question objects in the bank's
-schema, with ids like `pt2-rw1-07`. Test questions are deliberately **not** in
+`data/tests.json` holds each numbered test as six modules in order: `rw1`,
+`rw2` (harder), `rw2e` (easier), `m1`, `m2` (harder), `m2e` (easier), each a
+list of full question objects in the bank's schema, with ids like
+`pt2-rw1-07`. The tests are **adaptive like the real Digital SAT**: after
+Module 1 of a section, 55% right or better (`ROUTE_CUTOFF` in `app.js`)
+routes the student to the harder Module 2, anything less to the easier one,
+and the screen doesn't say which until the report. The easier route caps the
+section at 650 (`Scoring.scaledRoute`), as the real easier route does; the
+report says which route each section took. Harder Module 2s have no easy
+items; easier ones are mostly easy and medium. Test questions are deliberately **not** in
 `questions.json`, so the bank, Rush, the diagnostic and Mistakes never show
 them and a test is unseen the first time. Modules follow the real test's
 layout: Reading and Writing grouped by domain in the official order (Craft
 and Structure, Information and Ideas, Standard English Conventions,
 Expression of Ideas), easy to hard within each group; Math easy to hard with
-the domains interleaved and about a quarter grid-ins. The forms are fixed,
-not adaptive, and the report says the score is an estimate.
+the domains interleaved and about a quarter grid-ins. The report says the
+score is an estimate.
 
 `tools/build_tests.py` rebuilds `tests.json` from per-module drafts in
 `data/draft/` (not committed) and appends bank drafts to `questions.json`,
