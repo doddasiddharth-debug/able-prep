@@ -455,6 +455,21 @@ img { max-width: 100%; display: block; }
 .calc-panel.max .calc-resize { display: none; }
 
 /* ==========================================================================
+   PRACTICE TESTS: numbered full tests, the break screen, the score report
+   ========================================================================== */
+.test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 16px; }
+.test-grid > .card { margin: 0; }
+.test-card { display: flex; gap: 20px; align-items: flex-start; }
+.test-num { flex: none; width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; font-family: var(--font-head); font-size: 34px; font-weight: 700; color: var(--ink); background: linear-gradient(135deg, var(--preps-gold), var(--preps-gold-deep)); }
+.test-body-text { flex: 1; min-width: 0; }
+.test-body-text h2 { margin-bottom: 4px; }
+.test-last { font-size: 14px; color: var(--ink-soft); margin: 10px 0 14px; }
+.test-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+.break-card { text-align: center; padding: 40px 26px; }
+.break-clock { font-family: var(--font-head); font-size: 64px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; margin-bottom: 14px; font-variant-numeric: tabular-nums; }
+.break-card p { color: var(--ink-soft); }
+
+/* ==========================================================================
    COLLEGE TOOLS (college.js): college list, scholarships, timeline, aid, essay
    ========================================================================== */
 .row-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }

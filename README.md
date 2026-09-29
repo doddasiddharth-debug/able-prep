@@ -12,7 +12,7 @@ devices through Supabase.
 |---|---|
 | **Dashboard** | Predicted score (from recent answers), "Focus next" weakest domains, streak, days to test day, the next study-plan session, activity heatmap |
 | **Question bank** | Every College Board skill (10 R&W, 19 Math) with question counts, solved counts, and your accuracy; drill by skill, domain, or difficulty; untimed with explanations |
-| **Practice tests** | Full-length timed modules (27 R&W / 22 Math) at the real test's pace, Bluebook-style screen, score report by domain plus an estimated 200–800 section score; attempt history |
+| **Practice tests** | Numbered full-length tests (`data/tests.json`): Reading and Writing Module 1 and 2 (27 questions, 32 min each), a 10-minute break, Math Module 1 and 2 (22 questions, 35 min each), then a score report (estimated 400–1600, section scores, by module and by domain, each module reviewable). Take a whole test or one section. Plus a quick module of random bank questions; attempt history |
 | **Question Rush** | One question at a time against a per-question clock; stars for speed and accuracy |
 | **Challenge questions** | Hard-tier only, per section |
 | **Vocabulary** | Flashcards and a definition quiz; words count as mastered after two correct answers |
@@ -49,6 +49,7 @@ assets/js/practice.js  the session engine: bank / test / diagnostic / rush / rev
 assets/js/app.js       router and every page
 assets/js/college.js   the College tools (college list, scholarships, timeline, aid, essay); registered into app.js's router
 data/questions.json    the question bank
+data/tests.json        the numbered practice tests (their questions are not in the bank)
 data/vocab.json        the word list
 assets/images/         ABLE Preps mark, favicon
 ```
@@ -69,6 +70,29 @@ StudentAid.gov, the FTC, CareerOneStop).
 published Digital SAT score calculator and interpolated by fraction correct,
 so they apply to a 12-question module the same way. The real test is adaptive
 and every form has its own curve; every screen that shows an estimate says so.
+
+## Practice tests
+
+`data/tests.json` holds each numbered test as four modules in order
+(`rw1`, `rw2`, `m1`, `m2`), each a list of full question objects in the bank's
+schema, with ids like `pt2-rw1-07`. Test questions are deliberately **not** in
+`questions.json`, so the bank, Rush, the diagnostic and Mistakes never show
+them and a test is unseen the first time. Modules follow the real test's
+layout: Reading and Writing grouped by domain in the official order (Craft
+and Structure, Information and Ideas, Standard English Conventions,
+Expression of Ideas), easy to hard within each group; Math easy to hard with
+the domains interleaved and about a quarter grid-ins. The forms are fixed,
+not adaptive, and the report says the score is an estimate.
+
+`tools/build_tests.py` rebuilds `tests.json` from per-module drafts in
+`data/draft/` (not committed) and appends bank drafts to `questions.json`,
+checking schema, taxonomy, module sizes and id collisions. The Math items
+for each test come from `tools/draft_math_ptN.py`, which computes and
+re-checks every key like `gen_math.py`. The full-test flow is in `app.js`
+(`runTest`): `Practice.start` takes `onModuleDone` to hand back a finished
+module instead of showing results, and `onReviewExit` to return from
+reviewing a module to the report. A finished test is saved as a `fulltest`
+attempt with each module's answers, so its report can be reopened.
 
 ## Adding questions
 

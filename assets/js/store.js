@@ -88,7 +88,7 @@ window.Store = (() => {
   const setAid = (i, k, v) => { const o = college().aid[i] || (college().aid[i] = {}); o[k] = v; o.updated = Date.now(); save(); };
 
   const addHistory = (entries) => { load().history.push(...entries); save(); };
-  const addAttempt = (a) => { load().attempts.push({ id: "a" + Date.now().toString(36), ...a }); save(); };
+  const addAttempt = (a) => { const rec = { id: "a" + Date.now().toString(36), ...a }; load().attempts.push(rec); save(); return rec; };
   const setSettings = (patch) => { Object.assign(load().settings, patch); save(); };
   const setPlan = (plan) => { load().plan = plan; save(); };
   const markSession = (id, done) => {

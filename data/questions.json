@@ -2558,6 +2558,1026 @@
    "explanation": "The subject is the singular 'daughter' (Ida Lewis is an appositive), and the sentence needs a finite verb: 'is credited.' 'Being' leaves the sentence without a main verb."
   },
   {
+   "id": "rw-147",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Cross-Text Connections",
+   "difficulty": "medium",
+   "passage": "Text 1\nMany gardeners hang nest boxes to help songbirds, and in some suburbs the boxes have clearly increased the number of birds nesting nearby. Nature writer Helen Ostrowski calls nest boxes one of the simplest and most effective ways for ordinary people to support bird populations.\n\nText 2\nEcologist Dev Raghunathan found that in areas where nest boxes were plentiful but insects were scarce, birds nested in large numbers yet raised fewer chicks per nest than birds in areas with fewer boxes and more insects. A nest box, he argues, can draw breeding birds to a place without providing what they need to raise their young.",
+   "stem": "Based on the texts, how would Raghunathan (Text 2) most likely respond to Ostrowski's claim in Text 1?",
+   "choices": [
+    "By cautioning that increasing the number of birds nesting in an area does not necessarily help bird populations if food is scarce.",
+    "By agreeing that nest boxes are the most effective way to support birds in every setting.",
+    "By arguing that songbirds rarely nest in boxes put up by gardeners.",
+    "By claiming that insects are more plentiful in suburbs than in other areas."
+   ],
+   "answer": 0,
+   "explanation": "Raghunathan grants that boxes attract nesting birds but shows that, where insects are scarce, those birds raise fewer young, so more nests need not mean healthier populations. Choice C contradicts his finding that birds nested 'in large numbers.'"
+  },
+  {
+   "id": "rw-148",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Command of Evidence",
+   "difficulty": "hard",
+   "passage": "Urban designer Adaeze Collins argues that how often a public plaza is used depends less on how attractive it looks than on whether it offers places to sit. In her view, plazas that are widely admired in photographs often go largely unused if they lack seating.",
+   "stem": "Which finding, if true, would most directly support Collins's argument?",
+   "choices": [
+    "Plazas with fountains attracted more visitors in summer than in winter.",
+    "In surveys, people rated plazas with plenty of seating as more attractive than plazas with little seating.",
+    "Among twelve plazas in one city, two that had won design awards but offered no benches drew the fewest visitors, while a plain plaza lined with movable chairs drew the most.",
+    "Plazas that had won design awards were photographed more often than plazas that had not."
+   ],
+   "answer": 2,
+   "explanation": "Collins claims that seating matters more than looks, and choice C sets admired but seatless plazas against a plain plaza with chairs and finds that the plain one draws more visitors. Choice B links seating to how attractive a plaza looks rather than to how much it is used, so it does not separate the two factors."
+  },
+  {
+   "id": "rw-149",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Text Structure and Purpose",
+   "difficulty": "easy",
+   "passage": "Before steel frames came into use, the height of a masonry building was limited by its walls. Because the walls had to carry the entire weight of the floors above them, a taller building needed thicker walls at its base, and those thick walls took up space that could otherwise have been used inside. Steel frames changed this by carrying the building's weight themselves, which allowed walls to be thin and buildings to rise much higher.",
+   "stem": "Which choice best states the main purpose of the text?",
+   "choices": [
+    "To argue that masonry buildings are more durable than steel-framed buildings.",
+    "To describe the interiors of the first tall buildings.",
+    "To compare the costs of masonry and steel as building materials.",
+    "To explain how a structural innovation removed a limit on the height of buildings."
+   ],
+   "answer": 3,
+   "explanation": "The text sets out the limit that load-bearing walls placed on height and then shows how steel frames removed it. It makes no claim about durability (A) or cost (C)."
+  },
+  {
+   "id": "rw-150",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "hard",
+   "passage": "The following text is from a story.\n\nOdile had run the bait shop at the end of the wharf for thirty years, and she was as ______ with praise as she was with credit. The fishermen could count on one hand the times she had called a catch a good one, and not one of them had ever walked out of her shop owing her money.",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "lavish",
+    "sparing",
+    "candid",
+    "impulsive"
+   ],
+   "answer": 1,
+   "explanation": "Odile rarely praises a catch and never lets anyone buy on credit, so she is sparing with both. 'Candid' might describe how she judges a catch, but it makes no sense with 'credit'; 'lavish' is the opposite."
+  },
+  {
+   "id": "rw-151",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Inferences",
+   "difficulty": "medium",
+   "passage": "Engineers designing buildings for earthquake-prone regions once aimed to make structures as rigid as possible, reasoning that a stiff building would resist shaking. Experience showed, however, that rigid buildings often cracked, because they could not absorb the energy of the ground's motion. Many modern designs therefore place flexible bearings between a building and its foundation, allowing the ground to shift beneath the building while the structure above moves much less. This approach suggests that ______",
+   "stem": "Which choice most logically completes the text?",
+   "choices": [
+    "buildings in earthquake-prone regions should be built only on soft ground.",
+    "rigid buildings are no longer constructed anywhere in the world.",
+    "in earthquake design, allowing some movement can protect a building better than trying to resist all movement.",
+    "flexible bearings make buildings less expensive to construct."
+   ],
+   "answer": 2,
+   "explanation": "Rigid buildings cracked, while bearings that let the ground move beneath the building protect it, so permitting movement works better than resisting it. Choice B overstates the text, which describes a shift in 'many modern designs,' not the end of rigid buildings."
+  },
+  {
+   "id": "rw-152",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Central Ideas and Details",
+   "difficulty": "hard",
+   "passage": "The following text is from a story. Emrys's father has fished from the same harbor all his life.\n\nEmrys's father never spoke of the sea as beautiful. He spoke of it the way other men spoke of their employers: its moods, its unreasonable demands, the days it paid and the days it did not. Yet every morning, long before the boats went out, he stood at the kitchen window with his coffee and watched the water turn from black to gray to silver, and on the mornings Emrys joined him, neither of them said a word until the light was full.",
+   "stem": "Which choice best states the main idea of the text?",
+   "choices": [
+    "Although Emrys's father speaks of the sea only in practical terms, his daily habit suggests a deeper attachment to it.",
+    "Emrys's father resents the sea because it has made his livelihood unpredictable.",
+    "Emrys and his father rarely speak because they disagree about the fishing trade.",
+    "Emrys's father would rather watch the sea than fish on it."
+   ],
+   "answer": 0,
+   "explanation": "The text contrasts the father's businesslike talk about the sea ('Yet') with his silent daily ritual of watching it, which reveals feeling he does not express. Choice B takes the first half of that contrast for the whole; nothing in the text suggests resentment or disagreement."
+  },
+  {
+   "id": "rw-153",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "medium",
+   "passage": "When a predator approaches, the eastern hognose snake may flatten its neck, hiss loudly, and, if that ______ roll onto its back and lie still with its mouth hanging open.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "fails",
+    "fails;",
+    "fails:",
+    "fails,"
+   ],
+   "answer": 3,
+   "explanation": "The clause 'if that fails' interrupts the list and is set off by a comma on each side; the first comma already appears after 'and,' so a second is needed after 'fails.' A semicolon or colon cannot separate the verb 'roll' from the rest of the series."
+  },
+  {
+   "id": "rw-154",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Form, Structure, and Sense",
+   "difficulty": "easy",
+   "passage": "The owners of the small hardware store on Linden Avenue ______ offered free repair workshops for local residents every Saturday since the store first opened in 1998.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "has",
+    "have",
+    "having",
+    "was"
+   ],
+   "answer": 1,
+   "explanation": "The subject is the plural 'owners,' so the verb is 'have offered.' 'Has' agrees with the singular 'store,' which is part of a prepositional phrase, and 'having' does not produce a complete sentence."
+  },
+  {
+   "id": "rw-155",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Transitions",
+   "difficulty": "medium",
+   "passage": "In many traditional Japanese houses, rooms are separated by sliding panels rather than by fixed walls. ______ a single large space can be divided into several smaller rooms at night and opened up again during the day.",
+   "stem": "Which choice completes the text with the most logical transition?",
+   "choices": [
+    "Because of this,",
+    "Nevertheless,",
+    "By contrast,",
+    "Previously,"
+   ],
+   "answer": 0,
+   "explanation": "Being able to divide and reopen a space follows from using sliding panels instead of fixed walls, so a cause-and-effect transition is needed. 'Nevertheless' and 'by contrast' signal a contrast that is not there, and 'previously' misplaces the sequence in time."
+  },
+  {
+   "id": "rw-156",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Rhetorical Synthesis",
+   "difficulty": "easy",
+   "passage": "While researching a topic, a student has taken the following notes:\n\n• Entomologist Yusuf Adebayo studied a colony of harvester ants in a desert grassland.\n• Each morning, a few 'patroller' ants left the nest before any of the foragers.\n• When the patrollers returned safely, the foragers began leaving the nest to collect seeds.\n• When the patrollers did not return, the foragers stayed inside.\n• Adebayo concluded that patrollers help the colony judge whether conditions outside are safe.",
+   "stem": "The student wants to describe what the foragers did when the patrollers failed to return. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+   "choices": [
+    "Each morning, a few patroller ants left the nest before any of the foragers.",
+    "Yusuf Adebayo studied a colony of harvester ants in a desert grassland.",
+    "When the patrollers did not return, the foragers stayed inside the nest.",
+    "When the patrollers returned safely, the foragers left the nest to collect seeds."
+   ],
+   "answer": 2,
+   "explanation": "The goal concerns the foragers' behavior when patrollers failed to return, which only choice C describes. Choice D describes the opposite case, when the patrollers came back."
+  },
+  {
+   "id": "rw-157",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "hard",
+   "passage": "Music historian Adaeze Montrose-Kiel finds early reviews of the player piano, a piano that plays itself from rolls of punched paper, strikingly ______: many critics praised the machine's flawless accuracy in one sentence and, in the next, complained that the same accuracy made its music sound lifeless, without ever acknowledging the tension between the two judgments.",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "self-contradictory",
+    "effusive",
+    "perfunctory",
+    "prescient"
+   ],
+   "answer": 0,
+   "explanation": "Critics who praise and condemn the same quality without noticing the conflict are self-contradictory. 'Effusive' (gushing with praise) fits only the first half of their reviews; 'perfunctory' (done with little care) and 'prescient' (showing foresight) do not describe the conflict the text emphasizes."
+  },
+  {
+   "id": "rw-158",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Central Ideas and Details",
+   "difficulty": "easy",
+   "passage": "When lava erupts underwater, as it does along ridges on the ocean floor, cold seawater chills its outer surface almost instantly, forming a thin crust. Pressure from the molten rock inside soon breaks through the crust, and a new blob of lava squeezes out and is chilled in turn. Repeated many times, this process builds heaps of rounded, pillow-shaped lumps. Geologists who find such 'pillow lava' on dry land can therefore conclude that the rock there formed beneath water.",
+   "stem": "Which choice best states the main idea of the text?",
+   "choices": [
+    "Lava cools more slowly underwater than it does on land.",
+    "Most of the ocean floor is covered by pillow lava.",
+    "Pillow lava forms through a distinctive underwater process, so its presence reveals where rock once formed beneath water.",
+    "Geologists disagree about how pillow lava came to be found on dry land."
+   ],
+   "answer": 2,
+   "explanation": "The text explains how pillow lava forms underwater and why that makes it evidence of an underwater origin. Choice A contradicts the statement that seawater chills the lava 'almost instantly'; B and D are not discussed."
+  },
+  {
+   "id": "rw-159",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Cross-Text Connections",
+   "difficulty": "medium",
+   "passage": "Text 1\nMusic historian Rafael Duvenage-Oyelowo argues that sound recording, invented in the late nineteenth century, reduced musical variety. Once listeners could hear a celebrated performance again and again, he contends, local musicians began imitating it, and regional ways of playing the same tunes gradually disappeared.\n\nText 2\nRecording also preserved regional styles that would otherwise have vanished. In the early twentieth century, folklorists carried portable recording machines into the countryside and captured fiddlers and singers whose ways of playing were already fading as younger people moved to cities. Many musicians today learn those older styles directly from the recordings.",
+   "stem": "Based on the texts, how would the author of Text 2 most likely respond to Duvenage-Oyelowo's argument?",
+   "choices": [
+    "By arguing that local musicians rarely imitated the celebrated performances they heard on recordings.",
+    "By noting that recording also helped preserve some of the regional styles that were disappearing.",
+    "By claiming that regional styles faded mainly because rural musicians could not afford recording machines.",
+    "By agreeing that recording has had only harmful effects on musical variety."
+   ],
+   "answer": 1,
+   "explanation": "Text 2 does not deny that recording affected regional styles; it adds that recording also 'preserved regional styles that would otherwise have vanished.' Choice A disputes a claim Text 2 never challenges, D ignores Text 2's point, and C is not supported."
+  },
+  {
+   "id": "rw-160",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Command of Evidence",
+   "difficulty": "hard",
+   "passage": "A cluster of about a dozen craters lies on the Kessen Plain, the largest of them roughly 300 meters across. Many geologists have assumed that the craters formed at the same moment, when a single meteorite broke apart in the atmosphere and its fragments struck the ground together. Geologist Maren Achterberg-Osei argues instead that the craters record several separate impacts spread over thousands of years.",
+   "stem": "Which finding, if true, would most directly support Achterberg-Osei's argument?",
+   "choices": [
+    "The craters range widely in size, from a few meters to about 300 meters across.",
+    "Fragments of meteoritic iron recovered from the craters all share the same unusual chemical composition.",
+    "The craters are arranged in a narrow oval pattern that points in a single direction.",
+    "The oldest sediment layers filling the craters differ in age from crater to crater by several thousand years."
+   ],
+   "answer": 3,
+   "explanation": "If the craters formed at different times, the sediment that began filling each one should date from different times, which is what choice D describes. Choice A fits either account, since a meteorite that breaks apart makes fragments of many sizes; B and C point toward a single meteorite, the view Achterberg-Osei rejects."
+  },
+  {
+   "id": "rw-161",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Inferences",
+   "difficulty": "medium",
+   "passage": "When speakers of several different languages must communicate regularly, as in trade, they often develop a pidgin: a simplified language with a small vocabulary and few grammatical rules, used only in limited situations. No one speaks a pidgin as a first language. When children grow up hearing a pidgin as their main language, however, they tend to expand it, adding vocabulary and grammatical rules until it can express anything their parents' languages could. Linguists call the result a creole. It follows that a creole, unlike a pidgin, ______",
+   "stem": "Which choice most logically completes the text?",
+   "choices": [
+    "has a smaller vocabulary than the languages from which it developed.",
+    "is used mainly for trade between speakers of different languages.",
+    "is the first language of at least some of its speakers.",
+    "has no grammatical rules of its own."
+   ],
+   "answer": 2,
+   "explanation": "A pidgin has no first-language speakers, but a creole arises when children grow up speaking it as their main language, so a creole has native speakers. Choice A contradicts the description of children expanding the language, B describes the pidgin's limited use, and D contradicts the added grammatical rules."
+  },
+  {
+   "id": "rw-162",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Text Structure and Purpose",
+   "difficulty": "easy",
+   "passage": "On a clear night, most stars look like tiny white points. A closer look, especially through binoculars, shows that stars actually come in a range of colors, from reddish orange to bluish white. These colors are not random: they reveal how hot each star's surface is. The coolest stars glow red, somewhat like the embers of a campfire, while the hottest shine a brilliant blue-white.",
+   "stem": "Which choice best states the main purpose of the text?",
+   "choices": [
+    "To explain what the colors of stars reveal about them.",
+    "To argue that binoculars are necessary for observing stars.",
+    "To describe how a star's color changes as it ages.",
+    "To compare the sizes of red stars and blue stars."
+   ],
+   "answer": 0,
+   "explanation": "The text notes that stars differ in color and then explains that color indicates surface temperature. Binoculars are mentioned only as one way to see the colors (B), and the text says nothing about aging (C) or size (D)."
+  },
+  {
+   "id": "rw-163",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "medium",
+   "passage": "In some lakes that freeze over every winter, sediment settles in distinct bands called varves. Each varve consists of two layers deposited over the course of a single ______ a light, coarse layer laid down in summer, when streams carry sand and silt into the lake, and a dark, fine layer laid down in winter, when only clay drifts slowly to the bottom.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "year;",
+    "year",
+    "year, they are",
+    "year:"
+   ],
+   "answer": 3,
+   "explanation": "What follows the blank is a list that spells out the 'two layers,' not an independent clause, so a colon introduces it. A semicolon (A) must join two independent clauses, no punctuation (B) runs the list into the sentence, and ', they are' (C) creates a comma splice."
+  },
+  {
+   "id": "rw-164",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Form, Structure, and Sense",
+   "difficulty": "easy",
+   "passage": "Every Sunday afternoon, my grandmother and her three sisters ______ around the kitchen table to play cards, trade family news, and argue cheerfully about whose turn it is to deal.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "gathers",
+    "gather",
+    "is gathering",
+    "has gathered"
+   ],
+   "answer": 1,
+   "explanation": "The subject, 'my grandmother and her three sisters,' is plural because its parts are joined by 'and,' so it takes the plural verb 'gather.' 'Gathers,' 'is gathering,' and 'has gathered' are all singular forms."
+  },
+  {
+   "id": "rw-165",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Transitions",
+   "difficulty": "hard",
+   "passage": "When Harrowgate Instruments introduced an inexpensive electronic keyboard, the company advertised it as an affordable substitute for the piano and the organ, able to imitate their sounds at a fraction of the cost. ______ some musicians soon came to value the keyboard for the very qualities that made it a poor imitation: its thin, reedy tones and a faint buzz that no acoustic instrument could produce.",
+   "stem": "Which choice completes the text with the most logical transition?",
+   "choices": [
+    "Ironically,",
+    "Accordingly,",
+    "Likewise,",
+    "In short,"
+   ],
+   "answer": 0,
+   "explanation": "The keyboard was sold as a convincing imitation, yet musicians prized it for failing to be one, an unexpected reversal that 'Ironically' captures. 'Accordingly' (B) would make the musicians' taste a logical result of the advertising; 'Likewise' (C) signals similarity and 'In short' (D) a summary."
+  },
+  {
+   "id": "rw-166",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Rhetorical Synthesis",
+   "difficulty": "medium",
+   "passage": "While researching a topic, a student has taken the following notes:\n\n• Sequoyah was a Cherokee silversmith.\n• He created a written form of the Cherokee language called a syllabary.\n• In a syllabary, each character represents a syllable rather than a single sound.\n• Sequoyah completed the syllabary in 1821.\n• Within a few years, thousands of Cherokee people had learned to read and write with it.",
+   "stem": "The student wants to emphasize how quickly the syllabary was adopted. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+   "choices": [
+    "Sequoyah's syllabary, completed in 1821, is a writing system in which each character represents a syllable.",
+    "Sequoyah, a Cherokee silversmith, created a written form of the Cherokee language.",
+    "Within a few years of Sequoyah's completing it in 1821, thousands of Cherokee people had learned to read and write with the syllabary.",
+    "In the Cherokee syllabary, each character represents a syllable rather than a single sound."
+   ],
+   "answer": 2,
+   "explanation": "Only choice C conveys speed, pairing the completion date with the thousands who learned the system 'within a few years.' Choice A gives the date but not the adoption, and B and D describe Sequoyah and the writing system."
+  },
+  {
+   "id": "rw-167",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Cross-Text Connections",
+   "difficulty": "medium",
+   "passage": "Text 1\nSeveral cities have experimented with making buses free to ride. Transportation analyst Soraya Mbeki-Hart argues that eliminating fares is the most effective way to persuade drivers to switch to public transit, since cost is the reason people most often give for not riding.\n\nText 2\nWhen the city of Wexley eliminated bus fares, ridership rose by about 20 percent in the first year. But surveys found that most new riders had previously walked or cycled, and the share of trips made by car barely changed. Residents who continued to drive mostly cited infrequent service, not cost, as their reason.",
+   "stem": "Based on the texts, how would the author of Text 2 most likely respond to Mbeki-Hart's argument in Text 1?",
+   "choices": [
+    "By agreeing that eliminating fares both increases ridership and reduces car trips.",
+    "By arguing that bus fares should be raised to pay for more frequent service.",
+    "By noting that eliminating fares in Wexley increased ridership but did little to draw drivers out of their cars.",
+    "By questioning whether surveys of transit riders can be trusted."
+   ],
+   "answer": 2,
+   "explanation": "Text 2 grants that ridership rose but shows that new riders came mainly from walking and cycling while car trips barely changed, so free buses did little to win over drivers. Choice A ignores that evidence; D contradicts Text 2's own reliance on surveys; B is a proposal Text 2 never makes."
+  },
+  {
+   "id": "rw-168",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Command of Evidence",
+   "difficulty": "hard",
+   "passage": "Pottery Fragments from Three Layers at the Port of Nemara\n\nLayer (approx. date)  Total sherds  Imported sherds  Share imported\nLayer 3 (700 BCE)     1,200         96               8%\nLayer 2 (600 BCE)     800           120              15%\nLayer 1 (500 BCE)     2,000         160              8%\n\nArchaeologist Yetunde Carrasco argues that Nemara's overseas trade peaked around 600 BCE. She cautions that raw counts of imported pottery can mislead, because far more pottery was recovered from some layers than from others, and she notes that ______",
+   "stem": "Which choice most effectively uses data from the table to complete the statement?",
+   "choices": [
+    "although Layer 1 contained the most imported sherds, imported pottery made up a larger share of the sherds in Layer 2 than in either other layer.",
+    "Layer 1 contained 160 imported sherds, more than either of the other layers.",
+    "Layer 3 and Layer 1 had the same share of imported sherds, 8%.",
+    "Layer 2 yielded fewer total sherds than either of the other layers."
+   ],
+   "answer": 0,
+   "explanation": "Carrasco warns that raw counts mislead, so the relevant measure is the share of imported sherds. Choice A shows that Layer 2 (600 BCE) has the highest share even though Layer 1 has the most imported sherds. Choice B relies on the raw count she warns against; C and D do not point to a peak at 600 BCE."
+  },
+  {
+   "id": "rw-169",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Text Structure and Purpose",
+   "difficulty": "easy",
+   "passage": "Why does a cut apple turn brown? When the fruit's cells are damaged, an enzyme inside them comes into contact with oxygen from the air and triggers reactions that produce brown pigments. A squeeze of lemon juice slows the browning, in part because the juice's acidity interferes with the enzyme's activity.",
+   "stem": "Which choice best states the main purpose of the text?",
+   "choices": [
+    "To argue that lemon juice is the best way to keep fruit fresh.",
+    "To compare the browning of apples with that of other fruits.",
+    "To warn readers that browned apples are unsafe to eat.",
+    "To explain the chemical cause of a familiar change and why one remedy works."
+   ],
+   "answer": 3,
+   "explanation": "The text asks why cut apples brown, answers with the enzyme-oxygen reaction, and explains why lemon juice slows it. It does not claim lemon juice is best (A), discuss other fruits (B), or say that browned apples are unsafe (C)."
+  },
+  {
+   "id": "rw-170",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "hard",
+   "passage": "The following text is from a story.\n\nWhen the class election results were posted, Mateo congratulated Rin with a grin so wide and a handshake so vigorous that everyone agreed he was taking the loss well. Only Rin, who had known him since kindergarten, noticed that his enthusiasm was a little too ______, the performance of a good sport rather than the feeling of one.",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "sincere",
+    "studied",
+    "subdued",
+    "spontaneous"
+   ],
+   "answer": 1,
+   "explanation": "'Studied' means deliberate or carefully practiced, which fits Rin's sense that the enthusiasm is 'the performance of a good sport rather than the feeling of one.' 'Sincere' and 'spontaneous' are the opposite of a performance, and 'subdued' contradicts the wide grin and vigorous handshake."
+  },
+  {
+   "id": "rw-171",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Central Ideas and Details",
+   "difficulty": "medium",
+   "passage": "Archaeologists long assumed that the stone weights found at the ancient market town of Qaredh were made for local use, since they were cut from limestone, a common stone found throughout the region. But when researcher Wanjiru Holmberg measured the weights, she found that their masses matched a standard unit used at ports far to the south, not the unit recorded in Qaredh's own inscriptions. Holmberg suggests that merchants from those ports carried their own weights with them, measuring goods by the standards of their home markets.",
+   "stem": "Which choice best states the main idea of the text?",
+   "choices": [
+    "Evidence from the weights' masses suggests that some weights at Qaredh belonged to merchants from distant ports rather than to the town's own traders.",
+    "The limestone used for Qaredh's weights could only have come from quarries far to the south.",
+    "Qaredh's inscriptions record the prices of goods sold at its market.",
+    "Merchants at Qaredh were required to use the town's official unit of weight."
+   ],
+   "answer": 0,
+   "explanation": "The text overturns an assumption about the weights: their masses match a southern standard, so Holmberg concludes they belonged to visiting merchants. Choice B contradicts the statement that limestone is common throughout the region, and it confuses the stone with the unit of weight; D contradicts Holmberg's conclusion; C is not stated."
+  },
+  {
+   "id": "rw-172",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Inferences",
+   "difficulty": "medium",
+   "passage": "When the city of Hollin replaced several parking lots near its central train station with apartment buildings, some downtown business owners warned that shoppers would stop coming downtown. A study two years later found that downtown sales had risen slightly and that most shoppers surveyed had arrived by train or on foot rather than by car. These results suggest that ______",
+   "stem": "Which choice most logically completes the text?",
+   "choices": [
+    "the new apartment buildings were built mainly for people who work at the train station.",
+    "Hollin should remove every remaining parking lot in the city.",
+    "shoppers who drive downtown spend more per visit than shoppers who arrive by train.",
+    "removing the parking lots did not drive shoppers away from downtown, as some business owners had feared."
+   ],
+   "answer": 3,
+   "explanation": "Sales rose after the lots were removed, and most shoppers arrived without cars, so the feared loss of shoppers did not happen. Choice B is a sweeping recommendation the text does not support, and A and C introduce claims the study does not address."
+  },
+  {
+   "id": "rw-173",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "hard",
+   "passage": "Bronze—an alloy of copper and ______ is considerably harder than pure copper, a property that made it valuable to ancient metalworkers who produced tools, weapons, and fittings for ships.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "tin,",
+    "tin",
+    "tin—",
+    "tin;"
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'an alloy of copper and tin' interrupts the sentence and is opened with a dash, so it must be closed with a matching dash before the verb 'is.' A comma (A) cannot close a dash-opened phrase; no punctuation (B) leaves it open; a semicolon (D) would cut the subject off from its verb."
+  },
+  {
+   "id": "rw-174",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Form, Structure, and Sense",
+   "difficulty": "easy",
+   "passage": "Every afternoon during the school year, Soledad and her friend Joaquin ______ younger students with their math homework at the long tables in the back of the school library.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "helps",
+    "help",
+    "has helped",
+    "is helping"
+   ],
+   "answer": 1,
+   "explanation": "The compound subject 'Soledad and her friend Joaquin' is plural, so it takes the plural verb 'help.' 'Helps,' 'has helped,' and 'is helping' are all singular forms."
+  },
+  {
+   "id": "rw-175",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Transitions",
+   "difficulty": "medium",
+   "passage": "Vulcanized rubber is far more durable than natural rubber: heating rubber with sulfur links its long molecules together, so the material no longer turns sticky in heat or brittle in cold. ______ those same links make vulcanized rubber hard to recycle, since it cannot simply be melted down and reshaped.",
+   "stem": "Which choice completes the text with the most logical transition?",
+   "choices": [
+    "That said,",
+    "In other words,",
+    "Specifically,",
+    "Likewise,"
+   ],
+   "answer": 0,
+   "explanation": "The first sentence praises vulcanized rubber's durability; the second names a drawback caused by the same molecular links, so a concessive transition, 'that said,' fits. 'In other words' and 'specifically' would introduce a restatement or detail of the praise, and 'likewise' would add a similar advantage."
+  },
+  {
+   "id": "rw-176",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Rhetorical Synthesis",
+   "difficulty": "easy",
+   "passage": "While researching a topic, a student has taken the following notes:\n\n• The city of Quennell opened a bike-share program in 2018.\n• The program began with 40 stations and 300 bicycles.\n• By 2023 it had grown to 120 stations and 1,100 bicycles.\n• Riders can unlock a bicycle with their transit card.\n• Most trips last less than 20 minutes.",
+   "stem": "The student wants to emphasize how much Quennell's bike-share program grew. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+   "choices": [
+    "Riders in Quennell can unlock a share bicycle with their transit card.",
+    "Most trips in Quennell's bike-share program last less than 20 minutes.",
+    "Quennell's bike-share program opened in 2018 with 40 stations.",
+    "Quennell's bike-share program grew from 40 stations and 300 bicycles in 2018 to 120 stations and 1,100 bicycles by 2023."
+   ],
+   "answer": 3,
+   "explanation": "Growth requires a before-and-after comparison, and choice D gives both the starting and later numbers. Choice C gives only the starting size, and A and B describe how the program is used."
+  },
+  {
+   "id": "rw-177",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Cross-Text Connections",
+   "difficulty": "medium",
+   "passage": "Text 1\nFilm archivist Beatriz Onwuachi-Holm argues that the goal of restoring an old film should be to let modern audiences see it as its first audiences did. Scratches, dust, and flicker, she notes, are damage that built up over decades of projection and storage; removing them returns the film to its original state.\n\nText 2\nDigital tools can now erase almost any blemish from an old film, and restorers are tempted to use them freely. But the grain of the original film stock was never damage: it was part of how the picture looked on opening night. Restorers who smooth it away along with the scratches produce an image cleaner than any the first audiences ever saw.",
+   "stem": "Based on the texts, how would the author of Text 2 most likely respond to Onwuachi-Holm's argument in Text 1?",
+   "choices": [
+    "By accepting her goal but warning that pursuing it carelessly can remove features that were part of the original film.",
+    "By arguing that scratches and flicker should be preserved because they record a film's history.",
+    "By rejecting the idea that a restored film should look the way it did for its first audiences.",
+    "By claiming that digital tools cannot reliably remove scratches and dust."
+   ],
+   "answer": 0,
+   "explanation": "Text 2 judges over-cleaned films by Onwuachi-Holm's own standard (what 'first audiences' saw), so it shares her goal while warning that grain is not damage and should not be removed. It does not defend scratches (B), reject the goal (C), or doubt the tools' power (D)."
+  },
+  {
+   "id": "rw-178",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Command of Evidence",
+   "difficulty": "hard",
+   "passage": "Algae Cover on Three Types of Reef Plots, Tessaly Reef\n\nPlot type                  Month 0  Month 6\nFull cage (fish kept out)  12%      58%\nPartial cage (fish enter)  11%      15%\nOpen plot                  13%      14%\n\nTo test whether grazing fish keep algae in check, marine ecologist Njeri Castellanos covered some reef plots with cages that kept fish out, left others open, and covered a third set with partial cages, which had a roof but open sides. Partial cages shade a plot much as full cages do but let fish in. Castellanos concluded that the loss of grazing fish, not the cage structure itself, explained the change in the fully caged plots, noting that ______",
+   "stem": "Which choice most effectively uses data from the table to complete the statement?",
+   "choices": [
+    "algae cover in the fully caged plots rose from 12% to 58% over six months.",
+    "algae cover in the open plots changed by only one percentage point over six months.",
+    "algae cover rose sharply in the fully caged plots but barely changed in the partially caged plots, which also had cage structures but let fish in.",
+    "all three types of plots began the study with similar algae cover, between 11% and 13%."
+   ],
+   "answer": 2,
+   "explanation": "To separate the effect of losing fish from the effect of the cage, the full cages must be compared with the partial cages, which share the structure but admit fish; choice C makes that comparison. A and B each describe one plot type, and D gives only the similar starting values."
+  },
+  {
+   "id": "rw-179",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Text Structure and Purpose",
+   "difficulty": "easy",
+   "passage": "The following text is from a story.\n\nThe old tractor had not started on the first try in eleven years. It coughed, it shuddered, it released a cloud of black smoke that sent the hens running, and then, just when anyone else would have given up, it caught. Mr. Haddad always patted the hood afterward, the way a person might thank a stubborn old friend for coming through one more time.",
+   "stem": "Which choice best states the main purpose of the text?",
+   "choices": [
+    "To explain why Mr. Haddad cannot afford to replace his tractor.",
+    "To portray Mr. Haddad's affectionate relationship with an unreliable old tractor.",
+    "To describe the effect of the tractor's smoke on the farm's animals.",
+    "To show that Mr. Haddad is frustrated by the time the tractor wastes each morning."
+   ],
+   "answer": 1,
+   "explanation": "The text describes the tractor's struggles and ends with Mr. Haddad patting it like 'a stubborn old friend,' conveying fondness. D contradicts that fondness; A is never mentioned, and C is a passing detail."
+  },
+  {
+   "id": "rw-180",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "medium",
+   "passage": "Psychologist Yusra Kallström found that a person's confidence in a memory is a ______ guide to its accuracy: participants who described a memory as 'crystal clear' were wrong about its details nearly as often as those who described it as 'hazy.'",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "dependable",
+    "revealing",
+    "deliberate",
+    "fallible"
+   ],
+   "answer": 3,
+   "explanation": "Confident and unconfident participants were wrong about equally often, so confidence is a fallible, or unreliable, guide. 'Dependable' and 'revealing' say the opposite; 'deliberate' does not describe a guide's accuracy."
+  },
+  {
+   "id": "rw-181",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Central Ideas and Details",
+   "difficulty": "hard",
+   "passage": "When a whale dies and sinks to the deep seafloor, its carcass can sustain a series of communities for decades: scavengers strip the flesh, small worms and crustaceans colonize the surrounding sediment, and finally bacteria break down the fats inside the bones. Marine biologist Selu Fonoti argues that such 'whale falls' are not isolated curiosities. Because great whales were once far more numerous, she reasons, their carcasses would have been scattered across the ocean floor closely enough to serve as stepping stones, letting species that depend on them spread across entire ocean basins. The hunting that reduced whale populations may therefore have affected life far below the surface.",
+   "stem": "Which choice best states the main idea of the text?",
+   "choices": [
+    "Whale carcasses on the seafloor are consumed in a fixed order, beginning with scavengers and ending with bacteria.",
+    "Deep-sea species that feed on whale carcasses have gone extinct since whale populations declined.",
+    "A researcher proposes that whale carcasses once connected deep-sea habitats across oceans, so the decline of whales may have had far-reaching effects on deep-sea life.",
+    "Whale hunting was the main cause of the decline of deep-sea ecosystems."
+   ],
+   "answer": 2,
+   "explanation": "The text's focus is Fonoti's argument that abundant carcasses once linked deep-sea communities and that whaling may therefore have affected them. A is only the opening background; B and D turn her cautious 'may' into definite claims the text does not make."
+  },
+  {
+   "id": "rw-182",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Inferences",
+   "difficulty": "medium",
+   "passage": "In the first years of sound film, microphones were bulky and had to stay in fixed positions, and the noisy cameras were shut inside soundproof booths so that their whirring would not be recorded. Film historians have observed that many movies from those years look stiffer and more static than the silent films made just a few years earlier. Taken together, these points suggest that ______",
+   "stem": "Which choice most logically completes the text?",
+   "choices": [
+    "the technical demands of recording sound limited how freely early sound films could move the camera and position actors.",
+    "audiences preferred silent films to sound films once both were widely available.",
+    "most actors from silent films were unable to adapt to speaking roles.",
+    "early microphones recorded sound more clearly than the microphones used later."
+   ],
+   "answer": 0,
+   "explanation": "Fixed microphones and cameras sealed in booths would restrict movement, which accounts for the stiffness historians observe. B and C offer explanations the text never mentions, and D is unsupported."
+  },
+  {
+   "id": "rw-183",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "hard",
+   "passage": "The leatherback, which, unlike other sea turtles, lacks a hard ______ is covered instead by a layer of tough, oily skin stretched over a mosaic of small bones.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "shell",
+    "shell;",
+    "shell—",
+    "shell,"
+   ],
+   "answer": 3,
+   "explanation": "The clause 'which, unlike other sea turtles, lacks a hard shell' is nonessential and opens with a comma, so a comma must close it before the main verb 'is.' A dash (C) would not match the opening comma, a semicolon (B) cannot separate a subject from its verb, and no punctuation (A) leaves the clause unclosed."
+  },
+  {
+   "id": "rw-184",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Form, Structure, and Sense",
+   "difficulty": "medium",
+   "passage": "When the photographer finally developed the roll of film from her trip, she discovered that the camera's shutter ______ open the entire time, so every frame was a blank white rectangle.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "sticks",
+    "had stuck",
+    "will stick",
+    "is sticking"
+   ],
+   "answer": 1,
+   "explanation": "The shutter's sticking happened before the past-tense discovery ('she discovered'), so the past perfect 'had stuck' is needed. The present and future forms do not fit a narrative set in the past."
+  },
+  {
+   "id": "rw-185",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Transitions",
+   "difficulty": "medium",
+   "passage": "Most people who resolve to start a new habit expect the first few days to be the hardest. Psychologist Lionel Okonjo found something different: among the participants he followed, consistency was high in the first week, when motivation was strong, and dropped most sharply in the third and fourth weeks. ______ he advises people building a habit to plan for extra support once the novelty wears off, not only at the start.",
+   "stem": "Which choice completes the text with the most logical transition?",
+   "choices": [
+    "Accordingly,",
+    "Nevertheless,",
+    "For example,",
+    "Previously,"
+   ],
+   "answer": 0,
+   "explanation": "The advice follows from the finding that the drop comes weeks in, so 'Accordingly' fits. 'Nevertheless' would set the advice against the finding, 'For example' treats it as an instance, and 'Previously' misstates the time order."
+  },
+  {
+   "id": "rw-186",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Rhetorical Synthesis",
+   "difficulty": "easy",
+   "passage": "While researching a topic, a student has taken the following notes:\n\n• The blue whale is the largest animal known to have ever lived.\n• Adult blue whales can grow to about 30 meters (roughly 100 feet) long.\n• Blue whales feed mainly on krill, tiny shrimp-like animals.\n• They filter krill from seawater using baleen plates in their mouths.\n• An adult blue whale can eat several tons of krill in a single day.",
+   "stem": "The student wants to emphasize the contrast between the size of blue whales and the size of their food. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+   "choices": [
+    "Blue whales filter krill from seawater using baleen plates in their mouths.",
+    "An adult blue whale can eat several tons of krill in a single day.",
+    "Although blue whales, the largest animals known to have ever lived, can grow to about 30 meters long, they feed mainly on tiny shrimp-like animals called krill.",
+    "Adult blue whales can grow to about 30 meters (roughly 100 feet) long."
+   ],
+   "answer": 2,
+   "explanation": "A contrast in size needs both the whale's size and the food's; only choice C gives both. D gives the whale's size alone, and A and B describe feeding without contrasting sizes."
+  },
+  {
+   "id": "rw-187",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Cross-Text Connections",
+   "difficulty": "hard",
+   "passage": "Text 1\nFood historian Marguerite Osei argues that the spread of home refrigeration in the twentieth century eroded many regional food traditions. Techniques such as pickling, smoking, and fermenting, she contends, survived for centuries because they were needed to keep food through the winter; once cold storage made them unnecessary, the knowledge behind them began to disappear.\n\nText 2\nIt is true that fewer households now preserve food out of necessity. But many preserved foods have outlived the need that created them. In regions where fermented vegetables or cured fish were once winter staples, cooks continue to prepare them because families have come to prize their flavors and to associate them with holidays and gatherings. Necessity may explain how such traditions began without explaining why they last.",
+   "stem": "Based on the texts, how would the author of Text 2 most likely respond to Osei's argument in Text 1?",
+   "choices": [
+    "By agreeing that preservation techniques have largely vanished from the regions where they were once common.",
+    "By arguing that refrigeration has had little effect on how often households preserve food.",
+    "By suggesting that Osei treats these traditions as depending on necessity alone, overlooking other reasons people continue them.",
+    "By claiming that techniques such as pickling were first developed for their flavor rather than to keep food through the winter."
+   ],
+   "answer": 2,
+   "explanation": "Text 2 grants that necessity has declined but argues that flavor and association with gatherings keep the traditions alive, which Osei's necessity-based account overlooks. Choice D contradicts Text 2's statement that necessity 'may explain how such traditions began'; B contradicts its opening concession."
+  },
+  {
+   "id": "rw-188",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Command of Evidence",
+   "difficulty": "medium",
+   "passage": "Botanist Kofi Adjei hypothesizes that a species of wild strawberry in a mountain meadow reproduces mainly by runners, horizontal stems that take root to form new plants, rather than by seed, and that as a result, strawberry plants growing close together in the meadow are usually genetically identical.",
+   "stem": "Which finding, if true, would most directly support Adjei's hypothesis?",
+   "choices": [
+    "Genetic tests showed that most clusters of strawberry plants growing within a few meters of one another in the meadow consisted of plants with identical DNA.",
+    "Strawberry plants in the meadow produced fewer fruits than strawberry plants of the same species in a nearby valley.",
+    "Birds that visit the meadow eat strawberry fruits and scatter the seeds over long distances.",
+    "The runners of strawberry plants in the meadow grew to an average length of about 30 centimeters."
+   ],
+   "answer": 0,
+   "explanation": "The hypothesis predicts that neighboring plants will be genetically identical, and choice A confirms that prediction. Choice D shows only that runners exist, not that they are the main means of reproduction; C points toward spread by seed and would weaken the hypothesis."
+  },
+  {
+   "id": "rw-189",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Text Structure and Purpose",
+   "difficulty": "easy",
+   "passage": "The wheelbarrow may seem too ordinary to be called an invention, yet it changed how people move heavy loads. A worker carrying a sack of soil must hold up its entire weight. With a wheelbarrow, the wheel bears much of the load, and the worker lifts and steers only a fraction of it. As a result, one person can move far more material in a day than by carrying it.",
+   "stem": "Which choice best states the main purpose of the text?",
+   "choices": [
+    "To trace the history of the wheelbarrow's invention.",
+    "To argue that the wheelbarrow should be replaced by more modern tools.",
+    "To compare the wheelbarrow with other simple machines.",
+    "To explain how an ordinary tool makes it easier to move heavy loads."
+   ],
+   "answer": 3,
+   "explanation": "The text explains that the wheel carries much of the weight, so a worker can move more material. It gives no dates or inventor (A), mentions no other machines (C), and praises the tool rather than calling for its replacement (B)."
+  },
+  {
+   "id": "rw-190",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "medium",
+   "passage": "In the fishing villages that anthropologist Lucía Benavides studied, the first catch of each season is never sold. Instead, it is divided among every household, including those with no fishers of their own. Benavides argues that the custom is not merely ______: by guaranteeing each family a share of food at the start of the season, it gives real support to households that might otherwise go without.",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "practical",
+    "ceremonial",
+    "profitable",
+    "competitive"
+   ],
+   "answer": 1,
+   "explanation": "The colon contrasts the custom's ritual side with the real, material support it provides, so the custom is 'not merely ceremonial.' 'Practical' (A) cannot be right, because the real support described after the colon is itself a practical benefit; 'profitable' contradicts the fact that the catch is never sold, and nothing suggests the custom is 'competitive.'"
+  },
+  {
+   "id": "rw-191",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Central Ideas and Details",
+   "difficulty": "hard",
+   "passage": "The following text is from a story. The narrator is returning to the town where she grew up after many years abroad.\n\nThe bus let me off where the fountain used to be. It had been replaced by a flat stone plaza, and the bakery on the corner now sold shoes. I stood with my suitcase and tried to feel something like arrival. Then a boy ran past with a paper cone of roasted chestnuts, and the smell—burnt sugar and woodsmoke—reached me before he did. I was nine again, counting coins at the vendor's cart, and for a moment the plaza did not matter at all.",
+   "stem": "Which choice best states the main idea of the text?",
+   "choices": [
+    "The narrator is disappointed by how the town has changed and decides to leave.",
+    "Although the changed town at first feels unfamiliar, a familiar smell briefly reconnects the narrator with her childhood there.",
+    "The narrator comes to prefer the new stone plaza to the fountain she remembers.",
+    "The narrator regrets the years she spent abroad and wishes she had never left."
+   ],
+   "answer": 1,
+   "explanation": "The narrator cannot 'feel something like arrival' amid the changes until the smell of chestnuts returns her to age nine. Choice C misreads 'the plaza did not matter at all,' which means the plaza stopped troubling her, not that she prefers it; A and D are not supported."
+  },
+  {
+   "id": "rw-192",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Inferences",
+   "difficulty": "easy",
+   "passage": "Many desert plants open their pores, called stomata, only at night, when the air is cooler and more humid. They take in carbon dioxide through the open pores and store it in a chemical form until daylight, when they use it in photosynthesis. Keeping the pores closed during the heat of the day greatly reduces the amount of water the plants lose. This adaptation is therefore especially useful for plants that ______",
+   "stem": "Which choice most logically completes the text?",
+   "choices": [
+    "grow in shady rainforests where rain falls almost every day.",
+    "flower only at night.",
+    "need unusually large amounts of carbon dioxide.",
+    "grow where water is scarce and daytime temperatures are high."
+   ],
+   "answer": 3,
+   "explanation": "The adaptation's benefit is saving water during hot days, so it helps most where water is scarce and days are hot. Choice A describes the opposite conditions; B confuses when the pores open with when the plants flower, and C is not supported."
+  },
+  {
+   "id": "rw-193",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "medium",
+   "passage": "The engineer who designed the valley's first suspension ______ had never built anything longer than a barn before taking on the project, yet her bridge carried traffic across the river for more than sixty years.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "bridge",
+    "bridge,",
+    "bridge;",
+    "bridge:"
+   ],
+   "answer": 0,
+   "explanation": "'The engineer who designed the valley's first suspension bridge' is the subject, and 'had never built' is its verb; no punctuation should separate them. A comma (B), semicolon (C), or colon (D) would wrongly split the subject from its verb."
+  },
+  {
+   "id": "rw-194",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Form, Structure, and Sense",
+   "difficulty": "hard",
+   "passage": "Among the dishes prepared for the village's spring festival ______ a flatbread stuffed with wild greens, which families gather from the surrounding hills on the morning of the celebration.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "are",
+    "have been",
+    "is",
+    "were"
+   ],
+   "answer": 2,
+   "explanation": "The sentence is inverted: its subject is 'a flatbread,' which comes after the verb and is singular, so 'is' is required. The plural choices agree with 'dishes,' which is part of the opening prepositional phrase and cannot be the subject."
+  },
+  {
+   "id": "rw-195",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Transitions",
+   "difficulty": "easy",
+   "passage": "Young sunflower plants often turn their heads to follow the sun across the sky, facing east in the morning and west by evening. ______ once the flowers are fully open, most heads stop moving and stay facing east.",
+   "stem": "Which choice completes the text with the most logical transition?",
+   "choices": [
+    "However,",
+    "For example,",
+    "Therefore,",
+    "Similarly,"
+   ],
+   "answer": 0,
+   "explanation": "Mature flowers stop moving, in contrast to the young plants that track the sun, so 'however' fits. 'For example' (B) would present the second sentence as an instance of sun-tracking, which it is not; 'therefore' and 'similarly' also misstate the relationship."
+  },
+  {
+   "id": "rw-196",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Rhetorical Synthesis",
+   "difficulty": "medium",
+   "passage": "While researching a topic, a student has taken the following notes:\n\n• Injera is a flatbread eaten widely in Ethiopia and Eritrea.\n• It is traditionally made from teff, a tiny grain native to the Ethiopian highlands.\n• The batter is left to ferment for several days before cooking, giving injera a slightly sour taste.\n• Stews and vegetables are served on top of a large round of injera.\n• Diners tear off pieces of injera to scoop up the food.",
+   "stem": "The student wants to emphasize that injera serves more than one purpose during a meal. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+   "choices": [
+    "Injera is traditionally made from teff, a tiny grain native to the Ethiopian highlands.",
+    "Injera's batter ferments for several days before cooking, which gives the bread a slightly sour taste.",
+    "Injera, a flatbread made from teff, is eaten widely in Ethiopia and Eritrea.",
+    "Injera is both plate and utensil: stews and vegetables are served on top of a large round of it, and diners tear off pieces to scoop up the food."
+   ],
+   "answer": 3,
+   "explanation": "Choice D shows injera doing two jobs at a meal, holding the food and serving to scoop it. A and C describe its ingredients and where it is eaten, and B its preparation, none of which conveys more than one use."
+  },
+  {
+   "id": "rw-197",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Words in Context",
+   "difficulty": "hard",
+   "passage": "Director Soledad Ferrante's revival of the comedy changed none of its dialogue, yet her staging was hardly ______: by moving the action from an elegant drawing room to a crowded train station, she altered how nearly every line would be understood.",
+   "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+   "choices": [
+    "inventive",
+    "abridged",
+    "deferential",
+    "elaborate"
+   ],
+   "answer": 2,
+   "explanation": "Keeping every line suggests respect for the original, but 'yet... hardly' introduces the opposite: the new setting transformed the play, so it was hardly deferential. 'Inventive' is what the staging actually was, so 'hardly inventive' contradicts the text, and 'abridged' would not contrast with keeping all the dialogue."
+  },
+  {
+   "id": "rw-198",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Text Structure and Purpose",
+   "difficulty": "medium",
+   "passage": "Snowflakes are often said to be unique, and in a sense they are: each forms along its own path through a cloud, meeting slightly different temperatures and humidity as it grows. Yet those same conditions also explain why snowflakes fall into recognizable types. Physicist Mireille Onwuachi has shown in laboratory chambers that ice crystals grown at about −2°C tend to form thin, flat plates, while those grown near −5°C form long needles, so flakes that grew under similar conditions share a basic shape.",
+   "stem": "Which choice best describes the function of the second sentence?",
+   "choices": [
+    "It introduces a qualification to the idea that every snowflake is unique, which the rest of the text develops.",
+    "It restates the claim made in the first sentence in different terms.",
+    "It presents a hypothesis that Onwuachi's experiments later disproved.",
+    "It explains why snowflakes can form only at certain temperatures."
+   ],
+   "answer": 0,
+   "explanation": "'Yet' turns from uniqueness to the recognizable types that snowflakes share, a point Onwuachi's findings then support. Choice C reverses the relationship: the experiments support the sentence rather than disprove it."
+  },
+  {
+   "id": "rw-199",
+   "section": "rw",
+   "domain": "Craft and Structure",
+   "skill": "Cross-Text Connections",
+   "difficulty": "medium",
+   "passage": "Text 1\nMany dance teachers ask beginning students to practice in front of mirrors, reasoning that dancers who can see their own movements can correct errors in alignment and timing immediately. Dance educator Priya Castellanos argues that the mirror is among the most valuable tools a beginning dancer has.\n\nText 2\nIn a study by kinesiologist Aarav Lindgren, two groups of beginning dancers learned the same routine, one with mirrors and one without. Right after the lessons, the mirror group performed slightly better. A week later, however, when both groups were tested in a room without mirrors, the group that had practiced without them performed the routine more accurately, apparently because those dancers had learned to rely on their own sense of where their bodies were.",
+   "stem": "Based on the texts, how would the author of Text 2 most likely respond to Castellanos's argument?",
+   "choices": [
+    "By agreeing that mirrors help beginning dancers remember routines over time.",
+    "By suggesting that the immediate benefits of practicing with mirrors may come at the cost of dancers' ability to perform without them later.",
+    "By arguing that beginning dancers should not learn routines until they have developed good alignment.",
+    "By claiming that mirrors make it harder for dancers to correct errors during practice."
+   ],
+   "answer": 1,
+   "explanation": "Text 2 reports that the mirror group did better at first but worse a week later without mirrors, which complicates Castellanos's praise. Choice D contradicts Text 2, which found the mirror group performing better right after practice."
+  },
+  {
+   "id": "rw-200",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Central Ideas and Details",
+   "difficulty": "hard",
+   "passage": "The following text is from a story. Tomasz has lived alone in his apartment since his daughter, Ania, moved to another city.\n\nThe plant on the windowsill had been Ania's. She had left it behind with a note, water on Sundays, and Tomasz followed the instruction so exactly that he sometimes felt foolish, standing at the sink with the little blue watering can at nine o'clock each Sunday as if someone were checking. The plant did not seem to care much either way. It grew slowly, leaning toward the glass. Still, when Ania called and asked, as she always did, how it was doing, he found that he had a great deal to say.",
+   "stem": "Which choice best states the main idea of the text?",
+   "choices": [
+    "Tomasz resents having to care for a plant he never wanted.",
+    "Tomasz is unsure how to keep the plant healthy.",
+    "The plant is thriving because of Tomasz's careful attention.",
+    "Tomasz's devoted care of the plant serves partly as a way of staying connected to his daughter."
+   ],
+   "answer": 3,
+   "explanation": "Tomasz follows Ania's note exactly and has 'a great deal to say' when she asks about the plant, so caring for it keeps him close to her. His feeling 'foolish' is self-consciousness, not resentment (A), and the plant 'did not seem to care much,' which rules out C."
+  },
+  {
+   "id": "rw-201",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Command of Evidence",
+   "difficulty": "easy",
+   "passage": "Average Number of Foggy Days per Year at Four Coastal Weather Stations\n\nStation         Distance from shore (km)  Foggy days\nHarwick Point   0.5                       94\nSelby Cove      2                         71\nOrmond Ridge    8                         40\nTallis Flats    15                        18\n\nA meteorology student claims that, at these four stations, fog is less frequent farther from the shore. She supports the claim by noting that ______",
+   "stem": "Which choice most effectively uses data from the table to complete the statement?",
+   "choices": [
+    "Harwick Point, the station closest to shore, averages 94 foggy days per year, while Tallis Flats, the station farthest from shore, averages only 18.",
+    "Selby Cove averages 71 foggy days per year.",
+    "Ormond Ridge is 8 kilometers from shore.",
+    "Harwick Point and Selby Cove together average 165 foggy days per year."
+   ],
+   "answer": 0,
+   "explanation": "The claim links distance to fog frequency, so the support must pair the two; choice A compares the nearest and farthest stations. Choices B and C each give only one measure for one station."
+  },
+  {
+   "id": "rw-202",
+   "section": "rw",
+   "domain": "Information and Ideas",
+   "skill": "Inferences",
+   "difficulty": "medium",
+   "passage": "A string stretched between two posts on a board produces only a faint sound when plucked, because a thin string pushes very little air as it vibrates. An acoustic guitar solves this problem with its hollow body: the vibrating strings set the guitar's thin wooden top vibrating, and because the top is light and flexible, its broad surface moves far more air than the strings could alone. It follows that a solid, heavy block of wood shaped like a guitar and fitted with the same strings would most likely ______",
+   "stem": "Which choice most logically completes the text?",
+   "choices": [
+    "produce a louder sound than an acoustic guitar, because it contains more wood.",
+    "cause its strings to vibrate more slowly than those of an acoustic guitar.",
+    "produce a much fainter sound than an acoustic guitar, since its rigid surface would move relatively little air.",
+    "be easier to keep in tune than an acoustic guitar."
+   ],
+   "answer": 2,
+   "explanation": "The text credits the guitar's volume to a light, flexible top that vibrates and moves air; a heavy, rigid block could not do so, so it would sound faint. Choice A assumes the amount of wood matters, but the text says the top's lightness and flexibility are what matter."
+  },
+  {
+   "id": "rw-203",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Boundaries",
+   "difficulty": "hard",
+   "passage": "After months of public comment, the town's election committee issued a report recommending three changes: moving the District 2 polling place to the public ______ a larger building with more parking; extending voting hours by one hour in the evening; and adding a second ballot drop box downtown.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "library;",
+    "library,",
+    "library:",
+    "library"
+   ],
+   "answer": 1,
+   "explanation": "'A larger building with more parking' describes the library and belongs to the first item, so a comma sets it off; semicolons separate the three items because the first contains a comma. A semicolon (A) would make the description a separate fourth item, contradicting 'three changes'; a colon (C) cannot introduce a description inside a list that a colon already introduces, and no punctuation (D) runs the description into 'library.'"
+  },
+  {
+   "id": "rw-204",
+   "section": "rw",
+   "domain": "Standard English Conventions",
+   "skill": "Form, Structure, and Sense",
+   "difficulty": "easy",
+   "passage": "For the spring showcase, the members of the Riverside Youth Dance Troupe ______ their own costumes over the winter, sewing hundreds of sequins onto each one by hand.",
+   "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+   "choices": [
+    "designs",
+    "is designing",
+    "designed",
+    "has designed"
+   ],
+   "answer": 2,
+   "explanation": "The subject is the plural 'members,' so the verb must be plural, and 'designed' is the only plural-compatible choice. 'Designs,' 'is designing,' and 'has designed' agree with the singular 'troupe,' which is inside a prepositional phrase."
+  },
+  {
+   "id": "rw-205",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Transitions",
+   "difficulty": "hard",
+   "passage": "Stage actors are often taught to 'cheat out,' angling their bodies partly toward the audience even while speaking to another character. Critics of the practice say it looks unnatural, and they have a point. ______ people in real conversations turn to face each other. But a play is not a real conversation: an actor who fully faced a scene partner would hide half of her face, and much of her voice, from the audience.",
+   "stem": "Which choice completes the text with the most logical transition?",
+   "choices": [
+    "Instead,",
+    "Consequently,",
+    "Meanwhile,",
+    "After all,"
+   ],
+   "answer": 3,
+   "explanation": "The sentence gives the reason the critics 'have a point,' and 'after all' introduces such a supporting reason. 'Consequently' would wrongly present how people converse as a result of the critics' complaint."
+  },
+  {
+   "id": "rw-206",
+   "section": "rw",
+   "domain": "Expression of Ideas",
+   "skill": "Rhetorical Synthesis",
+   "difficulty": "easy",
+   "passage": "While researching a topic, a student has taken the following notes:\n\n• A town meeting is a form of local government in which a town's voters gather to debate and decide local laws and budgets directly.\n• Town meetings are used in many small towns in New England.\n• In a town meeting, any registered voter of the town who attends may speak and vote.\n• In most other U.S. cities and towns, voters elect representatives, such as council members, who make these decisions.",
+   "stem": "The student wants to contrast town meetings with the way most U.S. cities and towns make local decisions. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+   "choices": [
+    "Whereas voters in most U.S. cities and towns elect representatives to decide local laws and budgets, voters at a town meeting debate and decide these matters directly.",
+    "Town meetings, in which voters debate and decide local laws and budgets, are used in many small New England towns.",
+    "In a town meeting, any registered voter of the town who attends may speak and vote.",
+    "In most U.S. cities and towns, voters elect representatives, such as council members, to make decisions about local laws and budgets."
+   ],
+   "answer": 0,
+   "explanation": "A contrast needs both systems, and only choice A sets elected representatives against direct decision-making. Choice D describes only the representative system, and B and C describe only town meetings."
+  },
+  {
    "id": "m-001",
    "section": "math",
    "domain": "Algebra",
@@ -4561,6 +5581,891 @@
    ],
    "answer": 1,
    "explanation": "The radius is the distance from the center to the point: √((7 − 3)² + (1 − (−2))²) = √(16 + 9) = 5."
+  },
+  {
+   "id": "m-134",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Evaluating statistical claims",
+   "difficulty": "medium",
+   "stem": "A researcher selected 300 students at random from a large high school. She found that the students in the sample who play on a school sports team had a higher mean grade point average than the students in the sample who do not. Which of the following is the most appropriate conclusion?",
+   "choices": [
+    "Playing on a sports team causes students at the school to earn higher grade point averages.",
+    "Playing on a sports team is associated with a higher grade point average for all high school students in the country.",
+    "No association can be concluded, because the students were not randomly assigned to play on a team.",
+    "Among students at the school, playing on a sports team is associated with a higher grade point average, but it cannot be concluded that playing on a team causes the higher average."
+   ],
+   "answer": 3,
+   "explanation": "Selecting students at random lets the result extend to all students at this school, but the students chose whether to play on a team; they were not randomly assigned. So the study shows an association, not a cause, and it says nothing about students at other schools. An association can still be concluded without random assignment."
+  },
+  {
+   "id": "m-135",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Evaluating statistical claims",
+   "difficulty": "hard",
+   "stem": "A community garden association selected 80 plots at random from all the plots in the city's community gardens. It then randomly assigned 40 of the selected plots to receive a new compost and the other 40 to receive no compost. At the end of the season, the plots that received the compost had a significantly greater mean vegetable yield. Which of the following conclusions is best supported by the study?",
+   "choices": [
+    "The compost is likely to increase vegetable yield for all vegetable gardens in the country.",
+    "The compost will increase the vegetable yield of every plot in the city's community gardens.",
+    "The compost is likely to increase vegetable yield for plots in the city's community gardens.",
+    "Only an association between the compost and vegetable yield can be concluded, because only 80 plots were studied."
+   ],
+   "answer": 2,
+   "explanation": "Random assignment of the compost supports a cause-and-effect conclusion, and random selection from all the city's community garden plots lets that conclusion extend to those plots. It cannot extend to gardens across the country, a greater mean yield does not mean every plot improves, and a sample of 80 does not prevent a causal conclusion."
+  },
+  {
+   "id": "m-136",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Evaluating statistical claims",
+   "difficulty": "easy",
+   "stem": "To estimate the percentage of students at Northfield High School who favor moving sports practices to early morning, the athletic director surveyed the 45 members of the swim team, which already practices at 6:00 a.m. Of the students surveyed, 80% favored early practices. Which of the following is the most likely reason the survey's result is biased?",
+   "choices": [
+    "The sample included fewer than 50 students.",
+    "The survey was conducted by the athletic director rather than by a student.",
+    "More than half of the students surveyed favored early practices.",
+    "The sample consisted only of students who already practice early in the morning."
+   ],
+   "answer": 3,
+   "explanation": "Swim team members already practice at 6:00 a.m., so they are not representative of all students and are likely to favor early practices more than other students. A small sample makes an estimate less precise but does not by itself bias it, and neither who ran the survey nor the size of the result makes the sample unrepresentative."
+  },
+  {
+   "id": "m-137",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Inference from sample statistics and margin of error",
+   "difficulty": "medium",
+   "stem": "A random sample of 200 students was selected from the 4,500 students in a school district. Of the students in the sample, 62 said they play on a school sports team. Based on the sample, which of the following is the best estimate of the number of students in the district who play on a school sports team?",
+   "choices": [
+    "62",
+    "1,395",
+    "3,105",
+    "4,438"
+   ],
+   "answer": 1,
+   "explanation": "In the sample, 62/200 = 0.31, or 31%, play on a team. Applying this to the district: 0.31 × 4,500 = 1,395 students."
+  },
+  {
+   "id": "m-138",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Inference from sample statistics and margin of error",
+   "difficulty": "medium",
+   "stem": "The student council at a high school surveyed a random sample of 120 of the school's students and found that 45% of the students in the sample plan to attend the spring bake sale. The margin of error for this estimate is 8 percentage points. Which of the following conclusions is best supported by the survey?",
+   "choices": [
+    "Exactly 45% of all the school's students plan to attend the bake sale.",
+    "Between 37% and 53% of the 120 students surveyed plan to attend the bake sale.",
+    "It is plausible that fewer than half of all the school's students plan to attend the bake sale.",
+    "A random sample of 60 students would most likely have produced a smaller margin of error."
+   ],
+   "answer": 2,
+   "explanation": "The plausible values for the percentage of all the school's students who plan to attend are 45% ± 8%, or 37% to 53%. That interval includes values below 50%, so it is plausible that fewer than half plan to attend. The interval describes all students, not the 120 surveyed (exactly 45% of them plan to attend), and a smaller sample would give a larger margin of error."
+  },
+  {
+   "id": "m-139",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Inference from sample statistics and margin of error",
+   "difficulty": "hard",
+   "stem": "A gardening association selected 80 of the 1,200 plots in a large community garden at random and found that 30% of the selected plots had tomato plants. The margin of error for this estimate is 10 percentage points. Which of the following is a plausible value for the total number of plots in the community garden that have tomato plants?",
+   "choices": [
+    "24",
+    "120",
+    "420",
+    "840"
+   ],
+   "answer": 2,
+   "explanation": "The plausible values for the percentage of all plots with tomato plants are 30% ± 10%, or 20% to 40%. For 1,200 plots, that is 0.20 × 1,200 = 240 to 0.40 × 1,200 = 480 plots. Of the choices, only 420 is in this range."
+  },
+  {
+   "id": "m-140",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Systems of equations in two variables",
+   "difficulty": "medium",
+   "stem": "y = x² − 4x + 5\ny − 2x = 12\n\nIf (x, y) is a solution to the given system of equations and x > 0, what is the value of x + y?",
+   "type": "spr",
+   "answer": "33",
+   "explanation": "The second equation gives y = 2x + 12. Substituting into the first: 2x + 12 = x² − 4x + 5, so x² − 6x − 7 = 0 and (x − 7)(x + 1) = 0. Since x > 0, x = 7, and y = 2(7) + 12 = 26. So x + y = 7 + 26 = 33."
+  },
+  {
+   "id": "m-141",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Systems of equations in two variables",
+   "difficulty": "hard",
+   "stem": "In the xy-plane, the graph of y = −x² + 6x − 5 intersects the graph of y = k, where k is a constant, at exactly two points. Which of the following could be the value of k?",
+   "choices": [
+    "3",
+    "4",
+    "5",
+    "9"
+   ],
+   "answer": 0,
+   "explanation": "Complete the square: y = −(x² − 6x + 9) + 9 − 5 = −(x − 3)² + 4. The parabola opens downward and has a maximum value of 4 at x = 3. A horizontal line y = k meets it at exactly two points when k < 4, at one point when k = 4, and at no points when k > 4. Of the choices, only 3 is less than 4."
+  },
+  {
+   "id": "m-142",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Systems of equations in two variables",
+   "difficulty": "hard",
+   "stem": "x² + y² = 50\ny = x + 10\n\nIf (x, y) is the solution to the given system of equations, what is the value of y?",
+   "type": "spr",
+   "answer": "5",
+   "explanation": "Substitute y = x + 10 into the first equation: x² + (x + 10)² = 50, so 2x² + 20x + 100 = 50. Then 2x² + 20x + 50 = 0, or x² + 10x + 25 = 0, which is (x + 5)² = 0. So x = −5 and y = −5 + 10 = 5."
+  },
+  {
+   "id": "m-143",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Two-variable data: models and scatterplots",
+   "difficulty": "medium",
+   "stem": "Which of the following functions best models the value V(t), in dollars, of the phone t years after it was purchased?",
+   "choices": [
+    "V(t) = 800 − 200t",
+    "V(t) = 800(0.25)^t",
+    "V(t) = 600(0.75)^t",
+    "V(t) = 800(0.75)^t"
+   ],
+   "answer": 3,
+   "explanation": "Each year the value is multiplied by the same factor: 600/800 = 450/600 = 337.50/450 = 0.75. A constant ratio means exponential decay with a factor of 0.75, starting at 800. The value does not drop by a constant amount (it drops by 200, then 150, then 112.50), so a linear model does not fit.",
+   "passage": "Years since purchase   Value (dollars)\n0                      800\n1                      600\n2                      450\n3                      337.50\n\nThe table shows the value of a phone, in dollars, t years after it was purchased, for t = 0 through 3."
+  },
+  {
+   "id": "m-144",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Two-variable data: models and scatterplots",
+   "difficulty": "easy",
+   "stem": "A garden club measured the heights of its sunflower plants each week. The line of best fit for the data is y = 3.5x + 4, where y is the predicted height, in centimeters, of a plant x weeks after planting. According to the line of best fit, how many weeks after planting will a plant's predicted height be 39 centimeters?",
+   "type": "spr",
+   "answer": "10",
+   "explanation": "Set 3.5x + 4 = 39. Subtract 4: 3.5x = 35. Divide by 3.5: x = 10."
+  },
+  {
+   "id": "m-145",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Two-variable data: models and scatterplots",
+   "difficulty": "hard",
+   "stem": "A school's sports podcast tracked its number of subscribers after it launched. An exponential function fit to the data estimates 250 subscribers at launch and 360 subscribers 2 years after launch. According to the model, by what percent does the estimated number of subscribers increase each year?",
+   "choices": [
+    "20%",
+    "22%",
+    "44%",
+    "55%"
+   ],
+   "answer": 0,
+   "explanation": "An exponential model has the form S(t) = 250b^t. The model gives 250b² = 360, so b² = 1.44 and b = 1.2. A growth factor of 1.2 is a 20% increase each year. (The 44% increase happens over 2 years.)"
+  },
+  {
+   "id": "m-146",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Probability and conditional probability",
+   "difficulty": "easy",
+   "stem": "A bakery box contains 6 blueberry muffins, 4 bran muffins, and 10 lemon muffins. If one muffin is selected from the box at random, what is the probability that it is a lemon muffin?",
+   "type": "spr",
+   "answer": "1/2",
+   "explanation": "There are 6 + 4 + 10 = 20 muffins, and 10 of them are lemon, so the probability is 10/20 = 1/2."
+  },
+  {
+   "id": "m-147",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Probability and conditional probability",
+   "difficulty": "medium",
+   "stem": "If one of the customers who is 30 or older is selected at random, what is the probability that the customer has a prepaid plan?",
+   "choices": [
+    "3/25",
+    "1/5",
+    "2/5",
+    "3/5"
+   ],
+   "answer": 1,
+   "explanation": "There are 30 + 120 = 150 customers who are 30 or older, and 30 of them have prepaid plans. The probability is 30/150 = 1/5.",
+   "passage": "           Under 30   30 or older\nPrepaid    45         30\nMonthly    55         120\n\nThe table shows the type of phone plan, prepaid or monthly, chosen by each of 250 customers of a phone company, by age group."
+  },
+  {
+   "id": "m-148",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Probability and conditional probability",
+   "difficulty": "hard",
+   "stem": "At a summer sports camp, 40% of the campers play soccer. Of the campers who play soccer, 30% also play basketball. Of the campers who do not play soccer, 50% play basketball. If a camper who plays basketball is selected at random, what is the probability that the camper plays soccer?",
+   "choices": [
+    "3/25",
+    "2/7",
+    "3/10",
+    "2/5"
+   ],
+   "answer": 1,
+   "explanation": "Soccer and basketball: 0.40 × 0.30 = 0.12 of the campers. Basketball but not soccer: 0.60 × 0.50 = 0.30 of the campers. So 0.12 + 0.30 = 0.42 of the campers play basketball, and the probability is 0.12/0.42 = 2/7."
+  },
+  {
+   "id": "m-149",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Systems of two linear equations",
+   "difficulty": "medium",
+   "stem": "In a basketball game, Keisha scored 23 points, all on 2-point and 3-point shots. She made 10 shots in all. How many 3-point shots did Keisha make?",
+   "choices": [
+    "3",
+    "5",
+    "7",
+    "13"
+   ],
+   "answer": 0,
+   "explanation": "Let t be the number of 2-point shots and h the number of 3-point shots. Then t + h = 10 and 2t + 3h = 23. Substituting t = 10 − h: 2(10 − h) + 3h = 23, so 20 + h = 23 and h = 3."
+  },
+  {
+   "id": "m-150",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Linear inequalities",
+   "difficulty": "medium",
+   "stem": "Phone plan A costs $40 per month plus $0.10 per minute of calls. Phone plan B costs $25 per month plus $0.25 per minute of calls. For which numbers of minutes of calls per month, m, does plan A cost less than plan B?",
+   "choices": [
+    "m > 100",
+    "m < 100",
+    "m > 60",
+    "m > 150"
+   ],
+   "answer": 0,
+   "explanation": "Plan A costs less when 40 + 0.10m < 25 + 0.25m. Subtract 25 and 0.10m from both sides: 15 < 0.15m. Divide by 0.15: m > 100."
+  },
+  {
+   "id": "m-151",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Nonlinear equations in one variable",
+   "difficulty": "hard",
+   "stem": "x/(x − 2) + 3/(x + 4) = 1\n\nWhat is the solution to the given equation?",
+   "type": "spr",
+   "answer": "-2/5",
+   "explanation": "Multiply both sides by (x − 2)(x + 4): x(x + 4) + 3(x − 2) = (x − 2)(x + 4). So x² + 4x + 3x − 6 = x² + 2x − 8, which gives 7x − 6 = 2x − 8, 5x = −2, and x = −2/5. This value does not make either denominator 0, so it is the solution."
+  },
+  {
+   "id": "m-152",
+   "section": "math",
+   "domain": "Geometry and Trigonometry",
+   "skill": "Circles",
+   "difficulty": "hard",
+   "stem": "In the xy-plane, the points (−1, 4) and (7, −2) are the endpoints of a diameter of a circle. Which equation represents the circle?",
+   "choices": [
+    "(x − 3)² + (y − 1)² = 100",
+    "(x − 3)² + (y − 1)² = 25",
+    "(x + 3)² + (y + 1)² = 25",
+    "(x − 4)² + (y + 3)² = 25"
+   ],
+   "answer": 1,
+   "explanation": "The center is the midpoint of the diameter: ((−1 + 7)/2, (4 + (−2))/2) = (3, 1). The diameter's length is √((7 − (−1))² + (−2 − 4)²) = √(64 + 36) = 10, so the radius is 5 and r² = 25. The equation is (x − 3)² + (y − 1)² = 25."
+  },
+  {
+   "id": "m-153",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Percentages",
+   "difficulty": "easy",
+   "stem": "A school's sports club has 80 members. Of the members, 60% play soccer, and 25% of the members who play soccer are goalkeepers. How many of the club's members are soccer goalkeepers?",
+   "type": "spr",
+   "answer": "12",
+   "explanation": "The number of soccer players is 0.60 × 80 = 48. The number of goalkeepers is 0.25 × 48 = 12."
+  },
+  {
+   "id": "m-154",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Evaluating statistical claims",
+   "difficulty": "easy",
+   "stem": "A band posted a poll on its website asking visitors which song it should play to open its next concert. Of the 1,600 visitors who chose to respond, 62% picked the same song. The band says this shows that 62% of all the people who will attend the concert prefer that song. Which of the following best explains why this conclusion is not justified?",
+   "choices": [
+    "The people who responded chose to take the poll on the band's website, so they may not be representative of all the people who will attend.",
+    "A sample of 1,600 people is too small to support any conclusion.",
+    "The percentage should have been rounded to the nearest 10 percent.",
+    "A poll cannot be used to learn about people's preferences."
+   ],
+   "answer": 0,
+   "explanation": "The respondents volunteered and were all visitors to the band's website, so they are not a random sample of concert attendees; people who answer such a poll may prefer different songs than other attendees. A sample of 1,600 is not too small, and rounding has nothing to do with whether the sample is representative."
+  },
+  {
+   "id": "m-155",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Evaluating statistical claims",
+   "difficulty": "medium",
+   "stem": "The owner of a bike shop surveyed the first 50 customers who came into the shop on a Saturday. Of those surveyed, 70% said they ride a bike to work at least once a week. Which of the following is the most appropriate conclusion?",
+   "choices": [
+    "The result should not be generalized to all adults in the town, because the sample was not selected at random from that population.",
+    "About 70% of all adults in the town ride a bike to work at least once a week.",
+    "About 70% of all people who visit bike shops in the country ride a bike to work at least once a week.",
+    "Riding a bike to work causes people to visit the bike shop."
+   ],
+   "answer": 0,
+   "explanation": "The first 50 customers of a bike shop are not a random sample of the town's adults; people who shop at a bike shop are more likely than others to ride bikes. So the 70% cannot be generalized to the town, and certainly not to the whole country. A survey with no random assignment also cannot show that one thing causes another."
+  },
+  {
+   "id": "m-156",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Evaluating statistical claims",
+   "difficulty": "hard",
+   "stem": "For a science fair project, a student randomly selected 40 bean plants from the 300 bean plants in a school greenhouse. She then randomly assigned 20 of the selected plants to receive a new plant food and the other 20 to receive none. After four weeks, the plants that received the plant food had grown significantly more, on average. Which of the following is the most appropriate conclusion?",
+   "choices": [
+    "The plant food is likely to cause increased growth for all types of plants.",
+    "There is an association between the plant food and growth, but the plant food cannot be said to cause the increase.",
+    "The plant food is likely to cause increased growth only for the 20 plants that received it.",
+    "The plant food is likely to cause increased growth for bean plants in the school greenhouse."
+   ],
+   "answer": 3,
+   "explanation": "Random assignment of the treatment supports a cause-and-effect conclusion, and random selection from the 300 greenhouse plants lets the result extend to that population. It does not extend to other kinds of plants, which were never sampled."
+  },
+  {
+   "id": "m-157",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Inference from sample statistics and margin of error",
+   "difficulty": "medium",
+   "stem": "A town has 2,400 households that take part in its curbside recycling program. A random sample of 80 of these households found that 15 of them recycled glass during a certain week. Based on the sample, what is the best estimate of the number of the 2,400 households that recycled glass that week?",
+   "type": "spr",
+   "answer": "450",
+   "explanation": "In the sample, 15/80 = 0.1875 of the households recycled glass. Applying that proportion to all 2,400 households gives 0.1875 × 2,400 = 450 households."
+  },
+  {
+   "id": "m-158",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Inference from sample statistics and margin of error",
+   "difficulty": "medium",
+   "stem": "At a music festival, a random sample of 120 attendees was asked how much they spent on food. The sample mean was $23.40, with an estimated margin of error of $1.85. Which of the following is a plausible value for the mean amount spent on food by all attendees of the festival?",
+   "choices": [
+    "$19.70",
+    "$21.40",
+    "$24.90",
+    "$27.10"
+   ],
+   "answer": 2,
+   "explanation": "Plausible values for the population mean lie within the margin of error of the sample mean: from 23.40 − 1.85 = 21.55 to 23.40 + 1.85 = 25.25 dollars. Of the choices, only $24.90 is in this interval."
+  },
+  {
+   "id": "m-159",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Inference from sample statistics and margin of error",
+   "difficulty": "hard",
+   "stem": "A city's bus system surveyed a random sample of 500 riders in 2024 and another random sample of 500 riders in 2025. In 2024, 62% of the sampled riders said they were satisfied with the service, with a margin of error of 4.3 percentage points. In 2025, 58% of the sampled riders said they were satisfied, with a margin of error of 4.4 percentage points. Which of the following is the most appropriate conclusion?",
+   "choices": [
+    "The surveys do not provide convincing evidence that the percentage of all riders who were satisfied decreased from 2024 to 2025.",
+    "The percentage of all riders who were satisfied decreased by exactly 4 percentage points from 2024 to 2025.",
+    "The percentage of all riders who were satisfied decreased from 2024 to 2025, because 58% is less than 62%.",
+    "The 2025 survey is more reliable than the 2024 survey because its margin of error is larger."
+   ],
+   "answer": 0,
+   "explanation": "The plausible range for 2024 is 62% ± 4.3%, or 57.7% to 66.3%, and for 2025 it is 58% ± 4.4%, or 53.6% to 62.4%. These ranges overlap, so the true percentage could be the same in both years (for example, 60%). The surveys do not show a decrease, and a larger margin of error means less precision, not more."
+  },
+  {
+   "id": "m-160",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Systems of equations in two variables",
+   "difficulty": "medium",
+   "stem": "y = 2x² − 5x + 1\ny = x + 9\n\nIf (x, y) is a solution to the given system of equations and x > 0, what is the value of y?",
+   "type": "spr",
+   "answer": "13",
+   "explanation": "Set 2x² − 5x + 1 = x + 9, so 2x² − 6x − 8 = 0, or x² − 3x − 4 = 0. This factors as (x − 4)(x + 1) = 0, so x = 4 or x = −1. Since x > 0, x = 4, and y = 4 + 9 = 13."
+  },
+  {
+   "id": "m-161",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Systems of equations in two variables",
+   "difficulty": "hard",
+   "stem": "In the xy-plane, the graph of y = x² + bx + 10, where b is a positive constant, intersects the graph of y = 2x + 1 at exactly one point. What is the value of b?",
+   "choices": [
+    "−4",
+    "6",
+    "8",
+    "38"
+   ],
+   "answer": 2,
+   "explanation": "Setting x² + bx + 10 = 2x + 1 gives x² + (b − 2)x + 9 = 0. The graphs meet at exactly one point when this equation has exactly one real solution, which happens when its discriminant is 0: (b − 2)² − 4(1)(9) = 0. So (b − 2)² = 36, and b − 2 = 6 or b − 2 = −6, giving b = 8 or b = −4. Since b is positive, b = 8."
+  },
+  {
+   "id": "m-162",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Systems of equations in two variables",
+   "difficulty": "easy",
+   "stem": "y = 3x\ny = x² − 4\n\nWhich of the following is a solution (x, y) to the given system of equations?",
+   "choices": [
+    "(1, 3)",
+    "(−1, −3)",
+    "(2, 0)",
+    "(−4, −12)"
+   ],
+   "answer": 1,
+   "explanation": "Substitute 3x for y in the second equation: 3x = x² − 4, so x² − 3x − 4 = 0, or (x − 4)(x + 1) = 0. The solutions are (4, 12) and (−1, −3); of the choices, only (−1, −3) is a solution. Each other choice lies on only one of the two graphs."
+  },
+  {
+   "id": "m-163",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Two-variable data: models and scatterplots",
+   "difficulty": "easy",
+   "stem": "A bike rental shop recorded the number of bikes rented and the high temperature, in degrees Fahrenheit, on each of 30 days. The line of best fit for the data is y = 2.4x − 96, where x is the high temperature and y is the number of bikes rented. Based on the line of best fit, how many bikes are predicted to be rented on a day when the high temperature is 75 degrees Fahrenheit?",
+   "choices": [
+    "−50.4",
+    "84",
+    "180",
+    "276"
+   ],
+   "answer": 1,
+   "explanation": "Substitute x = 75: y = 2.4(75) − 96 = 180 − 96 = 84 bikes."
+  },
+  {
+   "id": "m-164",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Two-variable data: models and scatterplots",
+   "difficulty": "medium",
+   "stem": "A recycling center tracked the total amount of material, in tons, it had collected since the start of the year. A line of best fit for the data is y = 0.8x + 12.5, where x is the number of weeks since a new curbside program began and y is the total amount of material collected, in tons. Which of the following is the best interpretation of 12.5 in this context?",
+   "choices": [
+    "The estimated increase in the total amount of material collected, in tons, each week",
+    "The estimated number of weeks it takes to collect 1 ton of material",
+    "The estimated total amount of material collected, in tons, when the curbside program began",
+    "The estimated total amount of material collected, in tons, 12.5 weeks after the curbside program began"
+   ],
+   "answer": 2,
+   "explanation": "12.5 is the value of y when x = 0, that is, the estimated total collected (in tons) at the moment the curbside program began. The weekly increase is the slope, 0.8."
+  },
+  {
+   "id": "m-165",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Two-variable data: models and scatterplots",
+   "difficulty": "hard",
+   "stem": "For data collected at the stops along a bus route, a line of best fit is y = −0.4x + 38, where x is the distance, in kilometers, of a stop from downtown and y is the average number of riders who board at that stop each hour. For one stop, the actual average number of riders is 28.5, and the residual for that stop (the actual value minus the value predicted by the line of best fit) is −1.5. How far, in kilometers, is this stop from downtown?",
+   "type": "spr",
+   "answer": "20",
+   "explanation": "The residual is actual minus predicted, so 28.5 − predicted = −1.5, and the predicted value is 30. Then −0.4x + 38 = 30, so −0.4x = −8 and x = 20 kilometers."
+  },
+  {
+   "id": "m-166",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Probability and conditional probability",
+   "difficulty": "easy",
+   "stem": "A bin at a recycling drive contains 24 aluminum cans, 36 plastic bottles, and 20 glass jars. If one item is selected at random from the bin, what is the probability that it is not a glass jar?",
+   "choices": [
+    "1/4",
+    "3/10",
+    "9/20",
+    "3/4"
+   ],
+   "answer": 3,
+   "explanation": "There are 24 + 36 + 20 = 80 items, and 80 − 20 = 60 of them are not glass jars. The probability is 60/80 = 3/4."
+  },
+  {
+   "id": "m-167",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Probability and conditional probability",
+   "difficulty": "medium",
+   "stem": "If an attendee under 21 is selected at random, what is the probability that the attendee has a floor seat?",
+   "choices": [
+    "9/40",
+    "9/20",
+    "1/2",
+    "3/5"
+   ],
+   "answer": 3,
+   "explanation": "Restrict to attendees under 21: 180 + 120 = 300 people, of whom 180 have floor seats. The probability is 180/300 = 3/5.",
+   "passage": "           Under 21    21 or older\nFloor      180         220\nBalcony    120         280\n\nThe table shows the numbers of attendees at a concert, by seating section and age group."
+  },
+  {
+   "id": "m-168",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Probability and conditional probability",
+   "difficulty": "hard",
+   "stem": "Last month a bike shop sold 200 bikes, 80 of which were electric bikes. Of the electric bikes sold, 25% were sold with an extended warranty, and of the other bikes sold, 10% were sold with an extended warranty. If one of the bikes sold with an extended warranty is selected at random, what is the probability that it is an electric bike?",
+   "type": "spr",
+   "answer": "5/8",
+   "explanation": "Electric bikes with a warranty: 25% of 80 = 20. Other bikes with a warranty: 10% of 120 = 12. So 20 + 12 = 32 bikes were sold with a warranty, and 20 of them are electric. The probability is 20/32 = 5/8, or 0.625."
+  },
+  {
+   "id": "m-169",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Systems of two linear equations",
+   "difficulty": "medium",
+   "stem": "On one day, 360 riders paid fares on a bus route. Adults paid $3.50 each and students paid $2.25 each, and the route collected a total of $1,110 in fares. How many of the riders were students?",
+   "choices": [
+    "120",
+    "180",
+    "240",
+    "360"
+   ],
+   "answer": 0,
+   "explanation": "Let a be the number of adults and s the number of students: a + s = 360 and 3.50a + 2.25s = 1,110. Substituting a = 360 − s: 3.50(360 − s) + 2.25s = 1,110, so 1,260 − 1.25s = 1,110. Then 1.25s = 150 and s = 120."
+  },
+  {
+   "id": "m-170",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Linear inequalities",
+   "difficulty": "medium",
+   "stem": "y ≥ 3x − 1\ny ≤ −x + 9\n\nThe point (2, k) is a solution to the given system of inequalities in the xy-plane. Which of the following could be the value of k?",
+   "choices": [
+    "4",
+    "6",
+    "8",
+    "10"
+   ],
+   "answer": 1,
+   "explanation": "Substitute x = 2 into each inequality. The first gives k ≥ 3(2) − 1 = 5, and the second gives k ≤ −2 + 9 = 7. So 5 ≤ k ≤ 7, and of the choices only 6 works."
+  },
+  {
+   "id": "m-171",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Linear functions",
+   "difficulty": "hard",
+   "stem": "For the linear function f, f(2) = 11 and f(6) = 3. If f(a) = 0, what is the value of a?",
+   "type": "spr",
+   "answer": "15/2",
+   "explanation": "The slope is (3 − 11)/(6 − 2) = −8/4 = −2, so f(x) = 11 − 2(x − 2) = −2x + 15. Setting −2a + 15 = 0 gives a = 15/2, or 7.5."
+  },
+  {
+   "id": "m-172",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Ratios, rates, proportional relationships, and units",
+   "difficulty": "medium",
+   "stem": "A cyclist rides at a constant speed of 18 miles per hour. What is the cyclist's speed, in feet per second? (1 mile = 5,280 feet)",
+   "choices": [
+    "0.3",
+    "26.4",
+    "1584",
+    "95040"
+   ],
+   "answer": 1,
+   "explanation": "18 miles per hour is 18 × 5,280 = 95,040 feet per hour. There are 60 × 60 = 3,600 seconds in an hour, so the speed is 95,040/3,600 = 26.4 feet per second."
+  },
+  {
+   "id": "m-173",
+   "section": "math",
+   "domain": "Geometry and Trigonometry",
+   "skill": "Circles",
+   "difficulty": "medium",
+   "stem": "A circle has a radius of 10 centimeters. An arc of the circle has a length of 6π centimeters. What is the measure, in degrees, of the central angle that intercepts this arc?",
+   "choices": [
+    "21.6",
+    "54",
+    "108",
+    "216"
+   ],
+   "answer": 2,
+   "explanation": "The circumference is 2π(10) = 20π. The arc is 6π/20π = 3/10 of the circle, so the central angle is (3/10) × 360° = 108°."
+  },
+  {
+   "id": "m-174",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Systems of two linear equations",
+   "difficulty": "hard",
+   "stem": "The system of equations 6x − 4y = 10 and 9x + ay = 15, where a is a constant, has infinitely many solutions. What is the value of a?",
+   "choices": [
+    "−6",
+    "−4",
+    "4",
+    "6"
+   ],
+   "answer": 0,
+   "explanation": "A system has infinitely many solutions when one equation is a multiple of the other. Since 9 = (3/2)(6) and 15 = (3/2)(10), the second equation must be 3/2 times the first, so a = (3/2)(−4) = −6."
+  },
+  {
+   "id": "m-175",
+   "section": "math",
+   "domain": "Algebra",
+   "skill": "Linear inequalities",
+   "difficulty": "medium",
+   "stem": "A theater has 420 seats. Adult tickets for a show cost $22 each, and student tickets cost $14 each. The theater wants to collect at least $7,000 from ticket sales for the show without selling more tickets than there are seats. Which of the following combinations of adult and student tickets meets both conditions?",
+   "choices": [
+    "100 adult tickets and 300 student tickets",
+    "150 adult tickets and 260 student tickets",
+    "200 adult tickets and 200 student tickets",
+    "250 adult tickets and 180 student tickets"
+   ],
+   "answer": 2,
+   "explanation": "The conditions are a + s ≤ 420 and 22a + 14s ≥ 7,000. For 200 adult and 200 student tickets, 400 ≤ 420 and 22(200) + 14(200) = 7,200 ≥ 7,000, so both hold. The other choices each fail one condition: 100 and 300 collects 6,400 dollars; 150 and 260 collects 6,940 dollars; 250 and 180 is 430 tickets, more than 420."
+  },
+  {
+   "id": "m-176",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Systems of equations in two variables",
+   "difficulty": "medium",
+   "stem": "y = x² + 4x − 5\ny = 2x + 3\n\nIf (x, y) is a solution to the given system of equations and x > 0, what is the value of y?",
+   "type": "spr",
+   "answer": "7",
+   "explanation": "Setting the expressions for y equal gives x² + 4x − 5 = 2x + 3, or x² + 2x − 8 = 0, which factors as (x + 4)(x − 2) = 0. Since x > 0, x = 2, and y = 2(2) + 3 = 7."
+  },
+  {
+   "id": "m-177",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Systems of equations in two variables",
+   "difficulty": "medium",
+   "stem": "y = x² − 4x + 7\ny = 2x − 2\n\nHow many solutions (x, y) does the given system of equations have?",
+   "choices": [
+    "Zero",
+    "Exactly one",
+    "Exactly two",
+    "Infinitely many"
+   ],
+   "answer": 1,
+   "explanation": "Setting the expressions for y equal gives x² − 4x + 7 = 2x − 2, or x² − 6x + 9 = 0. This factors as (x − 3)² = 0, so x = 3 is the only solution, and y = 2(3) − 2 = 4. The system has exactly one solution, (3, 4)."
+  },
+  {
+   "id": "m-178",
+   "section": "math",
+   "domain": "Advanced Math",
+   "skill": "Systems of equations in two variables",
+   "difficulty": "hard",
+   "stem": "If (x, y) is a solution to the system of equations x + y = 7 and x² + y² = 25, what is the value of xy?",
+   "choices": [
+    "12",
+    "24",
+    "37",
+    "49"
+   ],
+   "answer": 0,
+   "explanation": "Squaring both sides of x + y = 7 gives x² + 2xy + y² = 49. Substituting x² + y² = 25 gives 25 + 2xy = 49, so 2xy = 24 and xy = 12. (The solutions are (3, 4) and (4, 3), and xy = 12 for both.)"
+  },
+  {
+   "id": "m-179",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Percentages",
+   "difficulty": "medium",
+   "stem": "Viewers of a streaming channel watched 2,400 hours of its content in March. The number of hours watched in April was 15% greater than in March, and the number of hours watched in May was 20% less than in April. How many hours of the channel's content did viewers watch in May?",
+   "type": "spr",
+   "answer": "2208",
+   "explanation": "April's total was 1.15 × 2,400 = 2,760 hours. May's total was 20% less than April's, or 0.80 × 2,760 = 2,208 hours."
+  },
+  {
+   "id": "m-180",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Two-variable data: models and scatterplots",
+   "difficulty": "easy",
+   "stem": "A park ranger recorded the high temperature x, in degrees Fahrenheit, and the number of hikers y who used a trail on each of 40 days. The line of best fit for the data is y = 4.5x − 120. According to the line of best fit, how many hikers are predicted to use the trail on a day when the high temperature is 70°F?",
+   "choices": [
+    "120",
+    "195",
+    "315",
+    "435"
+   ],
+   "answer": 1,
+   "explanation": "Substitute x = 70 into the equation of the line of best fit: y = 4.5(70) − 120 = 315 − 120 = 195."
+  },
+  {
+   "id": "m-181",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Two-variable data: models and scatterplots",
+   "difficulty": "medium",
+   "stem": "Which of the following functions best models the number of followers, F, w weeks after the food truck opened?",
+   "choices": [
+    "F(w) = 1,024 + 256w",
+    "F(w) = 1,024(0.25)^w",
+    "F(w) = 1,280(1.25)^w",
+    "F(w) = 1,024(1.25)^w"
+   ],
+   "answer": 3,
+   "explanation": "Each week's number of followers is 1.25 times the previous week's: 1,280/1,024 = 1,600/1,280 = 2,000/1,600 = 1.25. The number of followers when the truck opened was 1,024, so F(w) = 1,024(1.25)^w. A linear model with slope 256 fits only the first two weeks.",
+   "passage": "Week   Followers\n0      1,024\n1      1,280\n2      1,600\n3      2,000\n\nA food truck tracked the number of followers of its social media account for the first four weeks after it opened."
+  },
+  {
+   "id": "m-182",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Two-variable data: models and scatterplots",
+   "difficulty": "hard",
+   "stem": "A construction company fit the model V(x) = 86,000(0.88)^x to data on the resale value V, in dollars, of its excavators x years after purchase. According to the model, by what percent does the predicted value of an excavator decrease over any 2-year period?",
+   "choices": [
+    "12",
+    "22.56",
+    "24",
+    "77.44"
+   ],
+   "answer": 1,
+   "explanation": "Each year the predicted value is multiplied by 0.88, so over 2 years it is multiplied by (0.88)² = 0.7744. The value keeps 77.44% of what it was, so it decreases by 100 − 77.44 = 22.56%."
+  },
+  {
+   "id": "m-183",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Probability and conditional probability",
+   "difficulty": "easy",
+   "stem": "A theater sold 250 raffle tickets at a fundraiser, and 15 of the tickets are winning tickets. If one of the 250 tickets is selected at random, what is the probability that it is a winning ticket?",
+   "type": "spr",
+   "answer": "3/50",
+   "explanation": "15 of the 250 tickets are winning tickets, so the probability is 15/250 = 3/50."
+  },
+  {
+   "id": "m-184",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Probability and conditional probability",
+   "difficulty": "medium",
+   "stem": "If one of the Strenuous hikes is selected at random, what is the probability that the group turned back before finishing?",
+   "choices": [
+    "11/100",
+    "1/5",
+    "11/24",
+    "11/20"
+   ],
+   "answer": 3,
+   "explanation": "There were 18 + 22 = 40 Strenuous hikes, and the group turned back on 22 of them. The probability is 22/40 = 11/20.",
+   "passage": "             Completed   Turned back\nEasy         74          6\nModerate     60          20\nStrenuous    18          22\n\nA hiking club recorded whether each of its 200 group hikes last year was completed or turned back before finishing, by the difficulty of the trail."
+  },
+  {
+   "id": "m-185",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Probability and conditional probability",
+   "difficulty": "hard",
+   "stem": "A greenhouse worker will randomly select 2 of 16 seedling trays, without replacement, to inspect. Of the 16 trays, 12 contain basil seedlings and 4 contain mint seedlings. What is the probability that at least one of the 2 selected trays contains mint seedlings?",
+   "type": "spr",
+   "answer": "9/20",
+   "explanation": "Find the probability that neither tray contains mint. The first tray is basil with probability 12/16, and then the second is basil with probability 11/15. So P(both basil) = (12/16)(11/15) = 132/240 = 11/20. The probability that at least one tray contains mint is 1 − 11/20 = 9/20."
+  },
+  {
+   "id": "m-186",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Inference from sample statistics and margin of error",
+   "difficulty": "easy",
+   "stem": "A state park selected a random sample of 200 of the 5,000 hikers who registered to use its trails this season. Of the hikers in the sample, 45 said they had seen a black bear on the trails. Based on the sample, which of the following is the best estimate of the number of the 5,000 registered hikers who had seen a black bear on the trails?",
+   "choices": [
+    "22.5",
+    "45",
+    "1,125",
+    "4,955"
+   ],
+   "answer": 2,
+   "explanation": "In the sample, 45/200 = 22.5% of the hikers had seen a black bear. Applying this proportion to all registered hikers gives 0.225 × 5,000 = 1,125."
+  },
+  {
+   "id": "m-187",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Inference from sample statistics and margin of error",
+   "difficulty": "medium",
+   "stem": "A theater surveyed a random sample of 300 of its 6,000 season subscribers. Of those surveyed, 62% said they would attend a new afternoon performance. The margin of error for this estimate is 5.5 percentage points. Based on the survey, which of the following is a plausible number of the theater's 6,000 season subscribers who would attend the afternoon performance?",
+   "choices": [
+    "186",
+    "3,200",
+    "3,720",
+    "4,200"
+   ],
+   "answer": 2,
+   "explanation": "The plausible percentages for all subscribers run from 62 − 5.5 = 56.5% to 62 + 5.5 = 67.5%. Applied to 6,000 subscribers, that is from 0.565 × 6,000 = 3,390 to 0.675 × 6,000 = 4,050. Of the choices, only 3,720 is in this range. (186 is 62% of the 300 people surveyed, not of all subscribers.)"
+  },
+  {
+   "id": "m-188",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Inference from sample statistics and margin of error",
+   "difficulty": "hard",
+   "stem": "A greenhouse tested seeds from two suppliers. In a random sample of seeds from Supplier A, 81% germinated, with an associated margin of error of 4 percentage points. In a random sample of seeds from Supplier B, 76% germinated, with an associated margin of error of 6 percentage points. Which of the following conclusions is best supported by these results?",
+   "choices": [
+    "The results do not provide convincing evidence that the germination rate of all of Supplier A's seeds is greater than that of all of Supplier B's seeds.",
+    "The germination rate of all of Supplier A's seeds is greater than that of all of Supplier B's seeds.",
+    "The germination rate of all of Supplier B's seeds is between 76% and 82%.",
+    "The germination rate of all of Supplier A's seeds is exactly 81%."
+   ],
+   "answer": 0,
+   "explanation": "The plausible germination rates for Supplier A run from 77% to 85%, and for Supplier B from 70% to 82%. The intervals overlap (both rates could be 80%, for example), so the samples do not show that A's rate is greater. B's interval is 70% to 82%, not 76% to 82%, and a sample percentage is an estimate, not an exact population value."
+  },
+  {
+   "id": "m-189",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Evaluating statistical claims",
+   "difficulty": "easy",
+   "stem": "The owner of a food truck posted a poll on the truck's social media page asking followers whether the truck should add a vegetarian dish to its menu. Of the 412 followers who chose to respond, 71% said yes. Which of the following is the most appropriate conclusion?",
+   "choices": [
+    "About 71% of all the truck's customers want a vegetarian dish added to the menu.",
+    "Adding a vegetarian dish will increase the truck's sales by 71%.",
+    "Exactly 71% of the truck's social media followers want a vegetarian dish added to the menu.",
+    "The poll results may not represent the truck's customers, because the people who responded chose to take part."
+   ],
+   "answer": 3,
+   "explanation": "The respondents selected themselves rather than being chosen at random, so they may differ from customers in general (and from followers who did not respond). The poll therefore cannot support a conclusion about all customers or all followers, and it says nothing about sales."
+  },
+  {
+   "id": "m-190",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Evaluating statistical claims",
+   "difficulty": "hard",
+   "stem": "A researcher selected 120 tomato plants at random from the 2,000 tomato plants in a greenhouse. Half of the 120 plants were randomly assigned to receive a new plant food, and the other half received none. The plants that received the plant food produced significantly more tomatoes, on average, than the plants that did not. Which of the following conclusions is best supported?",
+   "choices": [
+    "The plant food causes an increase in tomato production for all tomato plants everywhere.",
+    "The plant food is associated with greater tomato production, but it cannot be said to cause the increase.",
+    "No conclusion can be drawn, because not all 2,000 plants in the greenhouse were used.",
+    "The plant food is likely to cause an increase in tomato production for tomato plants in this greenhouse."
+   ],
+   "answer": 3,
+   "explanation": "Random assignment to the two groups allows a cause-and-effect conclusion, and because the 120 plants were selected at random from the greenhouse's 2,000 plants, the conclusion extends to the plants in this greenhouse. It does not extend to all tomato plants everywhere, since only this greenhouse was sampled."
+  },
+  {
+   "id": "m-191",
+   "section": "math",
+   "domain": "Problem-Solving and Data Analysis",
+   "skill": "Evaluating statistical claims",
+   "difficulty": "easy",
+   "stem": "A researcher surveyed 50 randomly selected students at a high school. Students who reported streaming more than 3 hours of video per day had lower average test scores than students who reported streaming less. Which of the following is the most appropriate conclusion?",
+   "choices": [
+    "Among students at the school, streaming more video is associated with lower test scores, but the survey does not show that streaming causes lower scores.",
+    "Streaming more than 3 hours of video per day causes students at the school to have lower test scores.",
+    "Among all high school students in the country, streaming more video is associated with lower test scores.",
+    "There is no relationship between streaming video and test scores among students at the school."
+   ],
+   "answer": 0,
+   "explanation": "The students were a random sample from the school, so the association can be generalized to students at that school. Because the researcher did not assign streaming time, the survey shows association, not causation, and it says nothing about students at other schools."
+  },
+  {
+   "id": "m-192",
+   "section": "math",
+   "domain": "Geometry and Trigonometry",
+   "skill": "Lines, angles, and triangles",
+   "difficulty": "medium",
+   "stem": "At a construction site, two parallel steel beams are crossed by a straight brace. Two same-side interior angles formed by the brace and the beams measure (5x + 12)° and (3x + 32)°. What is the value of x?",
+   "type": "spr",
+   "answer": "17",
+   "explanation": "When a line crosses two parallel lines, same-side interior angles are supplementary. So (5x + 12) + (3x + 32) = 180, which gives 8x + 44 = 180, 8x = 136, and x = 17."
+  },
+  {
+   "id": "m-193",
+   "section": "math",
+   "domain": "Geometry and Trigonometry",
+   "skill": "Circles",
+   "difficulty": "medium",
+   "stem": "A theater's circular revolving stage has a radius of 12 feet. During one scene, the stage rotates so that a point on its outer edge travels 5π feet along the edge. Through what angle, in radians, does the stage rotate?",
+   "choices": [
+    "5/12",
+    "5π/24",
+    "5π/12",
+    "60π"
+   ],
+   "answer": 2,
+   "explanation": "Arc length equals radius times the central angle in radians: s = rθ. So 5π = 12θ, and θ = 5π/12 radians."
   }
  ]
 }

@@ -49,6 +49,10 @@ window.Practice = (() => {
       elimMode: false, seconds: opts.seconds || 0, remaining: opts.seconds || 0, pace: opts.pace || 0, qRemaining: 0,
       timerHidden: false, timerId: null, qTimerId: null, startedAt: Date.now(), shownAt: null, reviewing: false,
       times: opts.times || {}, elapsed: opts.elapsed || 0, onExit: opts.onExit || (() => {}), parent: opts.parent || null,
+      // Full practice tests chain modules: onModuleDone takes the finished
+      // module instead of the results screen, and onReviewExit returns from
+      // reviewing a module to the test's score report.
+      onModuleDone: opts.onModuleDone || null, onReviewExit: opts.onReviewExit || null,
       studentName: (window.Store && Store.load().settings.name) || "ABLE Preps student"
     };
     const sec = S.section === "all" ? null : S.section;
@@ -244,6 +248,11 @@ window.Practice = (() => {
     else S.elapsed = Math.round((Date.now() - S.startedAt) / 1000);
     S.questions.forEach((q) => S.checked.add(q.id));
     if (S.mode !== "bank") Store.addHistory(S.questions.map(entry)); // bank recorded per Check
+    if (S.onModuleDone) {
+      const done = { questions: S.questions, answers: S.answers, times: S.times, elapsed: S.elapsed, seconds: S.seconds, correct: S.questions.filter(isCorrect).length };
+      const cb = S.onModuleDone; S = null;
+      return cb(done);
+    }
     const ok = S.questions.filter(isCorrect).length;
     S.stars = S.mode === "rush" ? S.questions.reduce((sum, q) => sum + starsFor(q), 0) : undefined;
     Store.addAttempt({ mode: S.mode, section: S.section, label: S.label, ts: Date.now(), n: S.questions.length, correct: ok, seconds: S.elapsed, stars: S.stars });
@@ -261,7 +270,7 @@ window.Practice = (() => {
 
   const exit = () => {
     if (S.mode === "review") return showResults();
-    if ((S.mode === "test" || S.mode === "diagnostic" || S.mode === "rush") && !confirm("Leave now? This session won't be scored.")) return;
+    if ((S.mode === "test" || S.mode === "diagnostic" || S.mode === "rush") && !confirm(S.onModuleDone ? "Leave the practice test? It won't be scored." : "Leave now? This session won't be scored.")) return;
     stopTimers();
     const cb = S.onExit; S = null;
     cb();
@@ -312,6 +321,7 @@ window.Practice = (() => {
 
   // ---------------------------------------------------------------- results
   const showResults = () => {
+    if (S.mode === "review" && S.onReviewExit) { stopTimers(); const cb = S.onReviewExit; S = null; return cb(); }
     const s = S.parent || S;
     renderResults(s);
     document.querySelectorAll(".view").forEach((v) => { v.hidden = v.id !== "view-results"; });

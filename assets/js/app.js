@@ -7,7 +7,7 @@
   const SECONDS_PER_Q = { rw: (32 * 60) / 27, math: (35 * 60) / 22 };
   const MODULE_SIZE = { rw: 27, math: 22 }; // the real module lengths
 
-  let bank = null, vocab = null;
+  let bank = null, vocab = null, tests = { tests: [] };
   const secName = (s) => (s === "all" ? "Both sections" : bank.meta.sections[s].name);
   const qsIn = (f) => bank.questions.filter((q) =>
     (!f.section || f.section === "all" || q.section === f.section) &&
@@ -217,29 +217,145 @@
   };
 
   // ---- Practice tests ----------------------------------------------------
+  // A quick module: random questions from the bank at a module's length and
+  // pace (also what the study planner launches).
   const startModule = (section) => {
     const all = bank.questions.filter((q) => q.section === section);
     const qs = Practice.shuffle(all).slice(0, MODULE_SIZE[section]);
     launch({ mode: "test", section, questions: qs, label: secName(section), seconds: moduleSeconds(section, qs.length) });
   };
-  PAGES.tests = () => {
-    const attempts = Store.load().attempts.filter((a) => a.mode === "test").slice().reverse();
+
+  // Numbered full-length tests (data/tests.json): Reading and Writing in two
+  // 27-question modules of 32 minutes, a 10-minute break, then Math in two
+  // 22-question modules of 35 minutes, scored together at the end. Their
+  // questions are kept out of the bank so a test is unseen the first time.
+  // The forms are fixed rather than adaptive; the report says so.
+  const MODULE_MIN = { rw: 32, math: 35 };
+  const BREAK_SECONDS = 600;
+  const PARTS = { full: "Full test", rw: "Reading and Writing only", math: "Math only" };
+  const testMinutes = (mods) => mods.reduce((t, m) => t + MODULE_MIN[m.section], 0);
+  const fmtLong = (min) => `${Math.floor(min / 60) ? Math.floor(min / 60) + " hr " : ""}${min % 60 ? (min % 60) + " min" : ""}`.trim();
+  const showApp = (html) => {
+    document.querySelectorAll(".view").forEach((v) => { v.hidden = v.id !== "app"; });
+    $("page").innerHTML = html;
+    window.scrollTo(0, 0);
+  };
+
+  const runTest = (t, part) => {
+    const mods = t.modules.filter((m) => part === "full" || m.section === part);
+    const done = [];
+    const runModule = (i) => {
+      const m = mods[i];
+      launch({
+        mode: "test", section: m.section, questions: m.questions, seconds: MODULE_MIN[m.section] * 60,
+        label: `${t.name} · ${secName(m.section)}, Module ${m.module}`,
+        onModuleDone: (res) => { done.push({ ...m, ...res }); after(i); }
+      });
+    };
+    const after = (i) => {
+      if (i + 1 >= mods.length) return finishTest();
+      const n = mods[i + 1];
+      const nextLine = `${secName(n.section)}, Module ${n.module}: ${n.questions.length} questions, ${MODULE_MIN[n.section]} minutes.`;
+      if (n.section !== mods[i].section) {
+        // The real test's 10-minute break between sections; resume any time.
+        let left = BREAK_SECONDS;
+        showApp(`${pageHead("tests", "Take a break", `${secName(mods[i].section)} is done. The next section starts when you're ready, or when the break ends.`)}
+          <section class="card break-card" id="break-card"><div class="break-clock" id="break-clock">10:00</div><p>Up next: ${nextLine}</p><button class="btn btn-primary" id="break-go">Resume testing</button></section>`);
+        const go = () => { clearInterval(timer); if ($("break-card")) runModule(i + 1); };
+        const timer = setInterval(() => {
+          if (!$("break-card")) return clearInterval(timer); // left the page
+          left--; $("break-clock").textContent = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`;
+          if (left <= 0) go();
+        }, 1000);
+        $("break-go").addEventListener("click", go);
+      } else {
+        showApp(`${pageHead("tests", `Module ${mods[i].module} complete`, "")}
+          <section class="card break-card"><p>Up next: ${nextLine}</p><button class="btn btn-primary" id="next-go">Start Module ${n.module}</button></section>`);
+        $("next-go").addEventListener("click", () => runModule(i + 1));
+      }
+    };
+    const finishTest = () => {
+      const sec = (s) => { const ms = done.filter((d) => d.section === s); if (!ms.length) return null; const n = ms.reduce((x, d) => x + d.questions.length, 0), c = ms.reduce((x, d) => x + d.correct, 0); return { n, correct: c, score: Scoring.scaled(s, c / n) }; };
+      const rw = sec("rw"), math = sec("math");
+      const a = Store.addAttempt({
+        mode: "fulltest", testId: t.id, part, section: part === "full" ? "all" : part, ts: Date.now(),
+        label: part === "full" ? t.name : `${t.name} · ${secName(part)}`,
+        n: done.reduce((x, d) => x + d.questions.length, 0), correct: done.reduce((x, d) => x + d.correct, 0),
+        seconds: done.reduce((x, d) => x + (d.elapsed || 0), 0),
+        scores: { rw: rw && rw.score, math: math && math.score, total: rw && math ? rw.score + math.score : null },
+        modules: done.map((d) => ({ key: d.key, section: d.section, module: d.module, n: d.questions.length, correct: d.correct, elapsed: d.elapsed, answers: d.answers, times: Object.fromEntries(Object.entries(d.times || {}).map(([k, v]) => [k, Math.round(v)])) }))
+      });
+      window.ableTrack?.(`test-finished/${t.id}-${part}`);
+      location.hash = `#/tests?report=${a.id}`;
+      render();
+    };
+    runModule(0);
+  };
+
+  const testReport = (a) => {
+    const t = (tests.tests || []).find((x) => x.id === a.testId);
+    const mod = (k) => t && t.modules.find((m) => m.key === k);
+    const qs = a.modules.flatMap((m) => { const src = mod(m.key); return src ? src.questions.map((q) => ({ q, a: m.answers[q.id] })) : []; });
+    const right = (q, ans) => (q.type === "spr" ? typeof ans === "string" && Practice.normalizeSpr(ans) === Practice.normalizeSpr(q.answer) : ans === q.answer);
+    const by = {};
+    qs.forEach(({ q, a: ans }) => { const d = by[q.domain] || (by[q.domain] = { s: q.section, n: 0, ok: 0 }); d.n++; if (right(q, ans)) d.ok++; });
+    const big = a.scores.total != null ? a.scores.total : a.scores.rw != null ? a.scores.rw : a.scores.math;
     $("page").innerHTML = `
-      ${pageHead("tests", "Practice tests", `Full-length timed modules in the Digital SAT format.`)}
+      ${pageHead("tests", esc(a.label), `Taken ${fmtDate(a.ts)} · ${Math.round(a.seconds / 60)} minutes of testing`)}
       <div class="two-col">
-        ${["rw", "math"].map((s) => { const n = Math.min(MODULE_SIZE[s], bank.questions.filter((q) => q.section === s).length); return `
-        <section class="card module-card">
-          ${spot(s === "rw" ? "vocab" : "calculator")}
-          <h2>${secName(s)}</h2>
-          <p>${icon("clock", 15)} ${n} questions, ${fmtMin(moduleSeconds(s, n))}</p>
-          <button class="btn btn-primary" data-module="${s}">Start module</button>
+        <section class="card calc-out"><h2>Estimated score</h2>
+          <div class="pred-total">${big}<small>${a.scores.total != null ? "400 to 1600" : "200 to 800"}</small></div>
+          ${a.scores.total != null ? `<div class="pred-split"><div><span>Reading &amp; Writing</span><strong>${a.scores.rw}</strong></div><div><span>Math</span><strong>${a.scores.math}</strong></div></div>` : ""}
+          <p class="fine" style="margin-top:14px">An estimate from your raw score. The real SAT is adaptive and each form has its own curve; these forms are fixed.</p>
+        </section>
+        <section class="card"><h2>By module</h2>
+          <table class="table"><tbody>${a.modules.map((m) => `<tr><td>${secName(m.section)}, Module ${m.module}</td><td>${m.correct}/${m.n}</td><td>${Math.round((m.elapsed || 0) / 60)} min</td><td><button class="btn-text" data-review="${m.key}">Review</button></td></tr>`).join("")}</tbody></table>
+          <h2 style="margin-top:20px">By domain</h2>
+          ${["rw", "math"].flatMap((sc) => bank.meta.sections[sc].domains).filter((d) => by[d]).map((d) => pctBar(d, by[d].ok, by[d].n)).join("")}
+        </section>
+      </div>
+      <p><a class="btn btn-outline" href="#/tests">All practice tests</a></p>`;
+    document.querySelectorAll("[data-review]").forEach((b) => b.addEventListener("click", () => {
+      const m = a.modules.find((x) => x.key === b.dataset.review), src = mod(m.key);
+      if (!src) return;
+      Practice.start({ mode: "review", section: m.section, label: `${t.name} · ${secName(m.section)}, Module ${m.module}`, questions: src.questions, answers: m.answers, checked: src.questions.map((q) => q.id), times: m.times || {}, elapsed: m.elapsed, seconds: MODULE_MIN[m.section] * 60, onExit: () => render(), onReviewExit: () => render() });
+    }));
+  };
+
+  PAGES.tests = () => {
+    const all = Store.load().attempts;
+    const rid = (location.hash.split("?report=")[1] || "").split("&")[0];
+    const rep = rid && all.find((x) => x.id === rid && x.mode === "fulltest");
+    if (rep) return testReport(rep);
+    const list = tests.tests || [];
+    const hist = all.filter((a) => a.mode === "test" || a.mode === "fulltest").slice().reverse();
+    const lastFull = (id) => all.filter((a) => a.mode === "fulltest" && a.testId === id).slice(-1)[0];
+    $("page").innerHTML = `
+      ${pageHead("tests", "Practice tests", `Full-length, timed practice tests in the Digital SAT format: Reading and Writing in two modules, a 10-minute break, then Math in two modules, with a score report at the end.`)}
+      <div class="test-grid">
+        ${list.map((t) => { const L = lastFull(t.id); const n = t.modules.reduce((x, m) => x + m.questions.length, 0); return `
+        <section class="card test-card">
+          <div class="test-num">${t.number}</div>
+          <div class="test-body-text">
+            <h2>${esc(t.name)}</h2>
+            <p class="fine">${n} questions · ${fmtLong(testMinutes(t.modules))} + a 10-minute break</p>
+            <p class="test-last">${L ? `Last: <strong>${L.scores.total ?? L.scores.rw ?? L.scores.math}</strong>${L.part === "full" ? "" : ` (${secName(L.part)})`} · ${fmtDate(L.ts)} · <a href="#/tests?report=${L.id}">Report</a>` : "Not taken yet"}</p>
+            <div class="test-actions"><button class="btn btn-primary" data-test="${t.id}" data-part="full">Start full test</button><button class="btn-text" data-test="${t.id}" data-part="rw">Reading and Writing only</button><button class="btn-text" data-test="${t.id}" data-part="math">Math only</button></div>
+          </div>
         </section>`; }).join("")}
       </div>
+      <section class="card"><h2>Quick module</h2><p>One timed module of random questions from the question bank, when you don't have time for a full test.</p>
+        <div class="test-actions">${["rw", "math"].map((s) => `<button class="btn btn-outline" data-module="${s}">${secName(s)} · ${MODULE_SIZE[s]} questions, ${fmtMin(moduleSeconds(s, MODULE_SIZE[s]))}</button>`).join("")}</div></section>
       <section class="card">
         <h2>History</h2>
-        ${attempts.length ? `<table class="table"><thead><tr><th>Date</th><th>Module</th><th>Score</th><th>Estimate</th><th>Time</th></tr></thead><tbody>${attempts.map((a) => `<tr><td>${fmtDate(a.ts)}</td><td>${esc(a.label)}</td><td>${a.correct}/${a.n}</td><td>${a.section !== "all" ? Scoring.scaled(a.section, a.correct / a.n) : "-"}</td><td>${Math.floor(a.seconds / 60)}:${String(a.seconds % 60).padStart(2, "0")}</td></tr>`).join("")}</tbody></table>` : `<p class="fine">No attempts yet.</p>`}
+        ${hist.length ? `<table class="table"><thead><tr><th>Date</th><th>Test</th><th>Correct</th><th>Estimate</th><th>Time</th></tr></thead><tbody>${hist.map((a) => `<tr><td>${fmtDate(a.ts)}</td><td>${a.mode === "fulltest" ? `<a href="#/tests?report=${a.id}">${esc(a.label)}</a>` : `Quick module · ${esc(a.label)}`}</td><td>${a.correct}/${a.n}</td><td>${a.mode === "fulltest" ? (a.scores.total ?? a.scores.rw ?? a.scores.math) : a.section !== "all" ? Scoring.scaled(a.section, a.correct / a.n) : "-"}</td><td>${Math.floor(a.seconds / 60)}:${String(a.seconds % 60).padStart(2, "0")}</td></tr>`).join("")}</tbody></table>` : `<p class="fine">No attempts yet.</p>`}
       </section>`;
     document.querySelectorAll("[data-module]").forEach((b) => b.addEventListener("click", () => startModule(b.dataset.module)));
+    document.querySelectorAll("[data-test]").forEach((b) => b.addEventListener("click", () => {
+      const t = list.find((x) => x.id === b.dataset.test), part = b.dataset.part;
+      const mods = t.modules.filter((m) => part === "full" || m.section === part);
+      if (confirm(`${t.name}, ${PARTS[part].toLowerCase()}: ${mods.reduce((x, m) => x + m.questions.length, 0)} questions in ${fmtLong(testMinutes(mods))}${part === "full" ? ", with a 10-minute break between sections" : ""}. Each module is timed, and leaving part-way won't be scored. Start now?`)) runTest(t, part);
+    }));
   };
 
   // ---- Question Rush -----------------------------------------------------
@@ -411,7 +527,7 @@
         <section class="card"><h2>Pacing</h2><p class="fine">Average seconds per question</p>${byDiff.map((r) => `<div class="pace-row"><span>${r.d[0].toUpperCase() + r.d.slice(1)}</span><strong>${r.avg === null ? "-" : Math.round(r.avg) + "s"}</strong><small>${r.acc.n ? `${r.acc.pct}% correct, ${r.acc.n} answered` : ""}</small></div>`).join("")}
         <h2 style="margin-top:28px">Activity</h2>${heatmap(16)}</section>
       </div>
-      <section class="card"><h2>Recent sessions</h2>${attempts.length ? `<table class="table"><thead><tr><th>Date</th><th>Type</th><th>Set</th><th>Result</th></tr></thead><tbody>${attempts.map((a) => `<tr><td>${fmtDate(a.ts)}</td><td>${{ test: "Module", rush: "Rush", diagnostic: "Diagnostic", bank: "Bank" }[a.mode] || a.mode}</td><td>${esc(a.label)}</td><td>${a.correct}/${a.n}${a.stars != null ? `, ${a.stars} stars` : ""}</td></tr>`).join("")}</tbody></table>` : '<p class="fine">No sessions yet.</p>'}</section>`;
+      <section class="card"><h2>Recent sessions</h2>${attempts.length ? `<table class="table"><thead><tr><th>Date</th><th>Type</th><th>Set</th><th>Result</th></tr></thead><tbody>${attempts.map((a) => `<tr><td>${fmtDate(a.ts)}</td><td>${{ test: "Module", fulltest: "Practice test", rush: "Rush", diagnostic: "Diagnostic", bank: "Bank" }[a.mode] || a.mode}</td><td>${esc(a.label)}</td><td>${a.correct}/${a.n}${a.stars != null ? `, ${a.stars} stars` : ""}</td></tr>`).join("")}</tbody></table>` : '<p class="fine">No sessions yet.</p>'}</section>`;
     wireGo();
   };
 
@@ -573,9 +689,10 @@
   };
 
   // ---------------------------------------------------------------- boot
-  Promise.all([fetch("data/questions.json?v=4").then((r) => r.json()), fetch("data/vocab.json?v=3").then((r) => r.json())])
-    .then(([q, v]) => {
-      bank = q; vocab = v;
+  Promise.all([fetch("data/questions.json?v=5").then((r) => r.json()), fetch("data/vocab.json?v=3").then((r) => r.json()),
+    fetch("data/tests.json?v=1").then((r) => (r.ok ? r.json() : { tests: [] })).catch(() => ({ tests: [] }))])
+    .then(([q, v, t]) => {
+      bank = q; vocab = v; tests = t;
       Practice.init();
       College.register({ PAGES, ROUTES, ICON, pageHead, esc, $, render });
       document.querySelectorAll(".nav-item[data-route]").forEach((a) => { a.insertAdjacentHTML("afterbegin", icon(a.dataset.route)); });
